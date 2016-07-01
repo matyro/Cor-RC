@@ -13,6 +13,8 @@ from Website.site_login import LoginHandler
 from Website.site_logout import LogoutHandler
 from Website.site_register import RegisterHandler
 
+from Website.site_about import AboutHandler
+
 from Website.site_main import MainHandler
 
 from Website.site_steeringEdit import SteeringCardEditHandler

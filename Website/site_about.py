@@ -1,3 +1,5 @@
+from Website.site_base import BaseHandler
+
 import tornado.web
 
 class AboutHandler(BaseHandler):

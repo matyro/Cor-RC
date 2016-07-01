@@ -11,8 +11,7 @@
     <link rel="stylesheet" type= "text/css" href="{{ static_url('css/bootstrap.min.css') }}">
     <!-- Bootstrap theme -->
     <link rel="stylesheet" type= "text/css" href="{{ static_url('css/bootstrap-theme.min.css') }}">
-    <!-- Custom -->
-    <link rel="stylesheet" type= "text/css" href="{{ static_url('css/custom.css') }}">
+    
 
     <link rel="apple-touch-icon" sizes="180x180" href="{{ static_url('favicon/apple-touch-icon.png') }}">
     <link rel="icon" type="image/png" href="{{ static_url('favicon/favicon-32x32.png') }}" sizes="32x32">
@@ -21,7 +20,13 @@
     <link rel="mask-icon" href="{{ static_url('favicon/safari-pinned-tab.svg') }}" color="#5bbad5">
     <link rel="shortcut icon" href="{{ static_url('favicon/favicon.ico') }}">
     <meta name="msapplication-config" content="{{ static_url('favicon/browserconfig.xml') }}">
-   
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
   </head>
   <style>
     html, body {
@@ -38,16 +43,16 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-          </button>    
-	  <ul class="nav navbar-nav navbar-left">     
-            <a href="#" class="navbar-left"><img style="max-width:50px" src="{{ static_url('favicon/android-chrome-192x192.png') }}"></a>   
-            <a class="navbar-brand" href="/"> CORSIKA RemoteControl</a>
-          </ul>
+          </button>         
+          <a href="#" class="navbar-left"><img style="max-width:50px" src="{{ static_url('favicon/android-chrome-192x192.png') }}"></a>   
+          <a class="navbar-brand" href="/">                      
+           CORSIKA RemoteControl
+          </a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-                        
-            {% if current_user is not None %}	
-            <ul class="nav navbar-nav">  		
+          <ul class="nav navbar-nav">           
+            <li><a href="#about">About</a></li>    
+            {% if current_user is not None %}			
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Shortcuts <span class="caret"></span></a>
               <ul class="dropdown-menu">
@@ -56,14 +61,10 @@
                 <li><a href="#">Steering Cards</a></li>                
               </ul>
             </li>			
-	    <li><a href="#">{{current_user.username}}</a></li>
-<form action="/logout" class="navbar-form navbar-right" method="GET" role="form">
-			{% raw xsrf_form_html() %}
-		    <button class="btn btn-danger" type="submit">Logout</button> 
-</ul>
-		  {% else %}
-                  
-		 	
+		    <li><a href="#">{{current_user.username}}</a></li>
+		  {% end %}
+          </ul>        
+		  {% if current_user is None %}		
 		  <form action="/login" class="navbar-form navbar-right" method="POST" role="form">
             <div class="form-group">
               <input type="text" name="username" id="inputName" class="form-control" placeholder="Username" required>
@@ -78,9 +79,11 @@
             </div>			
 		    {% raw xsrf_form_html() %}
             <button class="btn btn-success" type="submit">Sign in</button>           
-		    {% end %}
-		    
-                    
+		    {% else %}
+		    <form action="/logout" class="navbar-form navbar-right" method="GET" role="form">
+			{% raw xsrf_form_html() %}
+		    <button class="btn btn-danger" type="submit">Logout</button> 
+            {% end %}          
          </form> 
         </div><!--/.nav-collapse -->       
       </div>

@@ -1,0 +1,24 @@
+{% include "header.html" %}
+	
+    <div class="container" style="padding: 70px;">   
+     {% if steering is None or len(steering) is 0 %}	   
+       <div class="alert alert-warning">
+         <strong>Warning!</strong> Steering card not found or no permission to view.
+       </div>
+	 {% else %}	 
+	   {% for card in steering %}
+         <div class="panel panel-default">
+           <div class="panel-heading">{{card.name}}</div>
+           <div class="panel-body">{{card.card}}</div>
+         </div>
+	   {% end %}
+	 {% end %}
+    </div>    
+
+    <script>
+      function runningFormatter(value, row, index) { return index; }
+    </script>
+	
+    <div class="footer navbar-fixed-bottom">
+
+{% include "footer.html" %}

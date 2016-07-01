@@ -1,0 +1,35 @@
+{% include "header.html" %}
+	
+  <div class="container" style="padding: 70px;">   
+     {% if steering is None %}	   
+       <div class="alert alert-warning">
+         <strong>Warning!</strong> Steering card not found or no permission to view.
+       </div>
+	 {& else %}
+	 <form action="/edit_card" method="POST" role="form">
+       <div class="panel panel-default">
+	      <div class="form-group">
+            <label for="sel1">Select list:</label>
+            <select class="form-control" id="sel1">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            </select>
+			<button type="button" class="btn btn-default btn-sm">Copy</button>
+         </div>
+         <div class="panel-heading">
+		   <input type="text" class="form-control" id="name">
+		 </div>
+         <div class="panel-body">
+		   <label for="card">Steering-Card:</label>
+           <textarea class="form-control" rows="5" id="comment">{{steering.card}}</textarea>
+		 </div>
+		 <button type="submit" class="btn btn-success">Save</button>
+       </div>
+	 </form>
+	 {% end %}
+  </div>
+
+
+{% include "footer.html" %}

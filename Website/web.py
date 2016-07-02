@@ -20,6 +20,8 @@ from Website.site_main import MainHandler
 from Website.site_steeringEdit import SteeringCardEditHandler
 from Website.site_steeringShow import SteeringCardShowHandler
 
+from Website.site_edit import EditHandler
+
 
 ##loader = template.Loader('templates/')
 
@@ -42,7 +44,8 @@ def make_web(sql_session):
         (r'/about', AboutHandler, dict(database=sql_session)),
         (r'/main', MainHandler, dict(database=sql_session)),
         (r'/show_cards', SteeringCardShowHandler, dict(database=sql_session)),
-        (r'/edit_card', SteeringCardEditHandler, dict(database=sql_session))
+        (r'/edit_card', SteeringCardEditHandler, dict(database=sql_session)),
+		(r'/edit', EditHandler, dict(database=sql_session))
     ], **settings)
 
 

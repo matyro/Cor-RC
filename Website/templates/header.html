@@ -13,6 +13,14 @@
 		<link rel="stylesheet" type= "text/css" href="{{ static_url('css/bootstrap-theme.min.css') }}" />
 		<!-- Custom -->
 		<link rel="stylesheet" type= "text/css" href="{{ static_url('css/custom.css') }}" />
+		
+		<link href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+		
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src=" {{ static_url('js/jquery-2.2.4.min.js') }}"></script>
+		
+		 <!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src=" {{ static_url('js/bootstrap.min.js') }} "></script>
 
 		<link rel="apple-touch-icon" sizes="180x180" href="{{ static_url('favicon/apple-touch-icon.png') }}" />
 		<link rel="icon" type="image/png" href="{{ static_url('favicon/favicon-32x32.png') }}" sizes="32x32" />
@@ -30,7 +38,7 @@
 	<body role="document">
 
 		<!-- Fixed navbar -->
-		<nav id="custom-bootstrap-menu" class="navbar navbar-trans navbar-fixed-top" role="navigation">
+		<nav id="custom-bootstrap-menu" class="navbar navbar-custom navbar-fixed-top" role="navigation">
 			<div class="container-fluid">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -74,23 +82,20 @@
 							</div>
 						</div>
 					</form>
-
-
-
 					{% else %} 
 					<div class="nav navbar-nav navbar-right">
-
-						<form action="/login" class="navbar-form navbar-right" method="POST" role="form">
-							<div class="form-group">
-								<input type="text" name="username" id="inputName" class="form-control" placeholder="Username" required />
-							</div>			
-							<div class="form-group">
-								<input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required />
-							</div>					
+						<form action="/login" class="navbar-form" method="POST" role="form">
+							<div class="input-group">
+								<div class="form-group">
+									<input type="text" name="username" id="inputName" class="form-control" placeholder="Username" required />
+								</div>			
+								<div class="form-group">
+									<input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required />
+								</div>					
 								{% raw xsrf_form_html() %}
-							<button class="btn btn-success" type="submit">Sign in</button> 					          
+								<button class="btn btn-success" type="submit">Sign in</button>
+							</div>
 						</form> 
-
 					</div>
 					{% end %}
 				</div>

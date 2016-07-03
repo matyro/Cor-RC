@@ -20,7 +20,7 @@ class User(Base):
     salt = Column('salt',  String(32))
         
     email = Column('email', String(128), default='')
-    permission = Column('permission', Integer(), default=10000)
+    permission = Column('permission', Integer(), default=1)
         
     session_id = Column('session_id', BigInteger())
     session_date = Column('lastLogin', DateTime())

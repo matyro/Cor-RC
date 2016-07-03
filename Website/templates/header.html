@@ -69,19 +69,15 @@
 								</li>                
 							</ul>
 						</li>						
-					</ul> 
-					<div class="col-sm-2 col-md-2 pull-right" />
-					<div class="navbar-text">
-						<a href="/ucp">{{current_user.username}}</a>
-					</div>
-					<form action="/logout" class="navbar-form" method="GET" role="form">
-						<div class="input-group">								
-							<div class="input-group-btn">
-								{% raw xsrf_form_html() %}
-								<button class="btn btn-danger" type="submit">Logout</button>
-							</div>
-						</div>
-					</form>
+					</ul> 					
+					<ul class="nav navbar-nav navbar-right" style="margin-right:0px">						
+						<li>
+							<a href="/ucp">{{current_user.username}}</a>
+						</li>
+						<li>
+							<p class="navbar-btn"><a href="/logout" class="btn btn-danger">Logout</a></p>		
+						</li>						
+					</ul>
 					{% else %} 
 					<div class="nav navbar-nav navbar-right">
 						<form action="/login" class="navbar-form" method="POST" role="form">

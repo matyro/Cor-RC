@@ -8,7 +8,7 @@ from SQL.table_steeringcard import Steering_Card
 
 def default_user(session):
     dummy = User(username='', password=''.join(random.SystemRandom().choice(string.ascii_letters + string.digits) for _ in range(32)))
-    admin = User(username='dbaack', fullname='Dominik Baack', password='abcd', email='dominik.baack@udo.edu', permission='0')       
+    admin = User(username='dbaack', fullname='Dominik Baack', password='abcd', email='dominik.baack@udo.edu', permission='9999')       
     try:
         session.add(dummy)
         session.add(admin)    

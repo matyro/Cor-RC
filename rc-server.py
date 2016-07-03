@@ -11,7 +11,7 @@ import tornado  #PeriodicCallback
 
 def start_web(sql_session):
     print('Create webservice')
-    app = web.make_web(session['session'])
+    app = web.make_web(sql_session)
     web_server = tornado.httpserver.HTTPServer(app)    
     web_server.bind(10003)    
     web_server.start(1)
@@ -26,6 +26,12 @@ def start_corsika(sql_session):
     return corsika_server
 
 
+def stop(sql_session):
+    print('Close tornado')
+    tornado.ioloop.IOLoop.current().stop()
+    print('Close SQL')
+    sql_session.close()
+
 if __name__ == '__main__':
 
     print('Connect to SQL Database')
@@ -38,21 +44,18 @@ if __name__ == '__main__':
 
     start_web(session['session'])
     
-    start_corsika(session['session'])
-  
-    
+    start_corsika(session['session'])    
 
     try:
         print('Start tornado')
         tornado.ioloop.IOLoop.current().start()
-        print('Tornado running')
+       
 
-    except KeyboardInterrupt:
-        print('Close tornado')
-        tornado.ioloop.IOLoop.current().stop()
-        print('Close SQL')
-        session['session'].close()
+    except (KeyboardInterrupt, SystemExit):
+        print('Exception INT or EXIT')
         
+        
+    stop(session['session'])        
 
 else:
     print('Start this program as main application')

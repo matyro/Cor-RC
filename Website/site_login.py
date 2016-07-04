@@ -32,9 +32,7 @@ class LoginHandler(BaseHandler):
         elif usr.password == password: 
             print('Login ' + usr.username)
             cookie = usr.login( self.database, random.getrandbits(32) )
-            self.set_secure_cookie('user', tornado.escape.json_encode(cookie))  
-            print('uri: ' + str(self.request.uri))  
-            print('path: ' + str(self.request.path))        
+            self.set_secure_cookie('user', tornado.escape.json_encode(cookie))                     
             self.redirect(self.get_argument('next', u'/main'))  
         else:
             error_msg = u'?error=' + tornado.escape.url_escape('1')

@@ -43,14 +43,14 @@ h1, h2, h3, h4, h5, h6, a, div, p{
 }
 #custom-bootstrap-menu.navbar-default .navbar-nav>li>a:hover,
 #custom-bootstrap-menu.navbar-default .navbar-nav>li>a:focus {
-    color: #010101;
-    background-color: #D60000;
+    color: #262626;
+    background-color: #DBDBDB;
 }
 #custom-bootstrap-menu.navbar-default .navbar-nav>.active>a,
 #custom-bootstrap-menu.navbar-default .navbar-nav>.active>a:hover,
 #custom-bootstrap-menu.navbar-default .navbar-nav>.active>a:focus {
-    color: #010101;
-    background-color: #D60000;
+    color: #262626;
+    background-color: #DBDBDB;
 }
 #custom-bootstrap-menu.navbar-default .navbar-toggle {
     border-color: #800000;
@@ -81,8 +81,8 @@ h1, h2, h3, h4, h5, h6, a, div, p{
 #custom-bootstrap-menu.navbar-default .navbar-nav > .dropdown-menu > a:focus,
 #custom-bootstrap-menu.navbar-default .navbar-nav > li > .dropdown-menu > a:hover,
 #custom-bootstrap-menu.navbar-default .navbar-nav > li > .dropdown-menu > a:focus{
-	color: #010101;
-	background-color: #D60000;
+    color: #262626;
+    background-color: #DBDBDB;
 }
 
 #custom-bootstrap-menu.navbar-default .navbar-nav > li > .dropdown-menu>li,
@@ -95,8 +95,8 @@ h1, h2, h3, h4, h5, h6, a, div, p{
 #custom-bootstrap-menu.navbar-default .navbar-nav > .dropdown-menu>li>a:focus,
 #custom-bootstrap-menu.navbar-default .navbar-nav > li > .dropdown-menu>li>a:hover,
 #custom-bootstrap-menu.navbar-default .navbar-nav > li > .dropdown-menu>li>a:focus {
-	color: #010101;
-	background-color: #D60000;
+    color: #262626;
+    background-color: #DBDBDB;
 }
 
 #custom-bootstrap-menu.navbar-default .navbar-nav > li > .dropdown-menu > li > .divider {

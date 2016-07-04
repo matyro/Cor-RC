@@ -28,7 +28,7 @@ class LoginHandler(BaseHandler):
         usr = self.database.query(User).filter(User.username==str(username)).first()
         if usr is None:
             error_msg = u'?error=' + tornado.escape.url_escape('2')
-            self.redirect(u'/login' + error_msg + '&' + self.get_argument('next')) 
+            self.redirect(u'/login' + error_msg) 
         elif usr.password == password: 
             print('Login ' + usr.username)
             cookie = usr.login( self.database, random.getrandbits(32) )
@@ -36,4 +36,4 @@ class LoginHandler(BaseHandler):
             self.redirect(self.get_argument('next', u'/main'))  
         else:
             error_msg = u'?error=' + tornado.escape.url_escape('1')
-            self.redirect(u'/login' + error_msg + '&' + self.get_argument('next')) 
+            self.redirect(u'/login' + error_msg) 

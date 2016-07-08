@@ -8,6 +8,9 @@ import SQL.default_data as sql_default
 
 
 import tornado  #PeriodicCallback
+from sqlalchemy import exc
+
+import time
 
 def start_web(sql_session):
     print('Create webservice')
@@ -32,6 +35,35 @@ def stop(sql_session):
     print('Close SQL')
     sql_session.close()
 
+
+t0 = time.time()
+periodic_counter = 0
+def periodic_callback1(sql_session, sql_engine):
+    global periodic_counter
+
+    if(periodic_counter == 30):
+        print('Uptime: ' + str(round(time.time() - t0)) + ' seconds')
+        periodic_counter = 0
+    periodic_counter += 1
+
+    try:
+        sql_engine.execute("SELECT 1")  # could also be .ping(),
+                                    # not sure what is better
+    except (exc.OperationalError, ex):
+        if ex.args[0] in (2006,   # MySQL server has gone away
+                          2013,   # Lost connection to MySQL server during query
+                          2055):  # Lost connection to MySQL server at '%s', system error: %d
+            # caught by pool, which will retry with a new connection
+            print('Disconnected')
+            raise exc.DisconnectionError()
+        else:
+            raise
+
+
+    return
+
+
+
 if __name__ == '__main__':
 
     print('Connect to SQL Database')
@@ -46,6 +78,10 @@ if __name__ == '__main__':
     
     start_corsika(session['session'])    
 
+
+    periodic1 = tornado.ioloop.PeriodicCallback(lambda: periodic_callback1(session['session'], session['engine']), 2000)
+    periodic1.start()
+
     try:
         print('Start tornado')
         tornado.ioloop.IOLoop.current().start()
@@ -54,7 +90,7 @@ if __name__ == '__main__':
     except (KeyboardInterrupt, SystemExit):
         print('Exception INT or EXIT')
         
-        
+    periodic1.stop()
     stop(session['session'])        
 
 else:

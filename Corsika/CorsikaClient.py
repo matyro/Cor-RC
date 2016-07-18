@@ -31,13 +31,27 @@ class CorsikaClient(object):
     def dispatch_client(self):
         try:
             while True:               
-                length_byte = yield self.stream.read_bytes(8)
-                header = struct.unpack("<I I", length_byte)                
+                header_raw = yield self.stream.read_bytes(8)
+                header = struct.unpack("<I I", header_raw)                
 
                 self.log('Length: |%s Byte|' % header[0])
                 self.log('Header: |%s|' % header[1])
-                data = yield self.stream.read_bytes(header[0])
-                self.log('got |%s|' % data.decode('utf-8').strip())
+                if header[0] > 8:
+                    data = yield self.stream.read_bytes(header[0] - 8) #returnes bytes
+                    try:
+                         self.log('Pass : |%s| to callback' % header[1])
+                        #callback[header](data)   
+                    except KeyError:
+                        continue
+                    
+                else:    
+                    try:
+                        self.log('Pass : |%s| to callback without data' % header[1])
+                        #callback[header](b'')     
+                    except KeyError:
+                        continue
+                                
+                                
                 #yield self.stream.write(line)
         except tornado.iostream.StreamClosedError:
             pass

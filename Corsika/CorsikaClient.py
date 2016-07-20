@@ -11,11 +11,13 @@ import struct
 class CorsikaClient(object):
     client_id = 0
 
-    def __init__(self, stream):
+    def __init__(self, stream, manager):
         super().__init__()
         CorsikaClient.client_id += 1
+        
         self.id = CorsikaClient.client_id
         self.stream = stream
+        self.manager = manager
 
         #self.stream.socket.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1) # Deactivates packet collection to bigger ones
         #self.stream.socket.setsockopt(socket.IPPROTO_TCP, socket.SO_KEEPALIVE, 1) # activates keep_alive message
@@ -24,6 +26,7 @@ class CorsikaClient(object):
 
     @tornado.gen.coroutine
     def on_disconnect(self):
+        self.manager.remove_con(self.id)
         self.log("disconnected")
         yield []
 

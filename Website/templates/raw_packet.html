@@ -9,10 +9,9 @@
 			<div class="form-inline">
 				<div class="form-group">
 					<b>Client list:</b> <select id="client" name="client">
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
+						{% for itr in simulation %}
+						<option>{{itr.ip}}</option>
+						{% end %}
 					</select>
 				</div>
 				<div class="form-group">

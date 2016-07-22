@@ -2,20 +2,18 @@
 <steering>
 <setting>
 	<name>RUNNR</name>
-	<desc>
-		Run Number
-	</desc>
+	<desc>Run Number</desc>
 	<format>A5</format>
-	<option></option>
+	<options></options>
+	<id>1</id>
 	<parameter>
 		<para>
 			<name>NRRUN</name>
-			<min>0</min>
-			<max>999999</max>
-			<desc>
-				Run number of this simulation. This number is used to form part of the
-				name of the various output files.
-			</desc>
+			<limits>
+				<min>0</min>
+				<max>999999</max>
+			</limits>
+			<desc>Run number of this simulation. This number is used to form part of the name of the various output files.</desc>
 			<default>1</default>			
 			<format>I</format>
 		</para>
@@ -24,307 +22,58 @@
 
 <setting>
 	<name>EVTNR</name>
-	<desc>
-		First Event Number
-	</desc>
+	<desc>First Event Number</desc>
 	<format>A5</format>
-	<option></option>
+	<options></options>
+	<id>2</id>
 	<parameter>
 		<para>
 			<name>SHOWNO</name>
-			<min>1</min>
-			<max>999999</max>
-			<desc>
-			Event number of first shower. The second shower will get number SHOWNO+1 and so on.
-			</desc>
-			<default>1</default>
-			
+			<limits>
+				<min>1</min>
+				<max>999999</max>
+			</limits>
+			<desc>Event number of first shower. The second shower will get number SHOWNO+1 and so on.</desc>
+			<default>1</default>			
 			<format>I</format>
 		</para>
 	</parameter>
 </setting>
 
 <setting>
-	<name>SEED1</name>
-	<desc>		
-		Random Number Generator Initialization (Hadron)
-	</desc>
+	<name>SEED</name>
+	<desc>Random Number Generator Initialization (Hadron,EGS4,Cherenkov photons,Offset of telescope systems,offset scattering to Auger core,Parallel,Conex)</desc>
 	<format>A4</format>
-	<option></option>
+	<options></options>
+	<id>3</id>
 	<parameter>
 		<para>
 			<name>ISEED1</name>
-			<min>1</min>
-			<max>900000000</max>
-			<desc>
-				Contains the seed of the random number sequence. 
-			</desc>
+			<limits>
+				<min>1</min>
+				<max>900000000</max>
+			</limits>
+			<desc>Contains the seed of the random number sequence.</desc>
 			<default>1</default>
 			<format>I</format>
 		</para>
 		<para>
 			<name>ISEED2</name>
-			<min>1</min>
-			<max>900000000</max>
-			<desc>
-				Number of calls to the RNG for initialization.  
-			</desc>
+			<limits>
+				<min>1</min>
+				<max>900000000</max>
+			</limits>
+			<desc>Number of calls to the RNG for initialization.</desc>
 			<default>1</default>
 			<format>I</format>
 		</para>
 		<para>
 			<name>ISEED3</name>
-			<min>1</min>
-			<max>900000000</max>
-			<desc>
-				Number of calls to the RNG for initialization times 10^9. Should be avoided because of cinsiderable computing time.  
-			</desc>
-			<default>1</default>
-			<format>I</format>
-		</para>
-	</parameter>
-</setting>
-
-<setting>
-	<name>SEED2</name>
-	<desc>		
-		Random Number Generator Initialization (EGS4)
-	</desc>
-	<format>A4</format>
-	<option></option>
-	<parameter>
-		<para>
-			<name>ISEED1</name>
-			<min>1</min>
-			<max>900000000</max>
-			<desc>
-				Contains the seed of the random number sequence. 
-			</desc>
-			<default>1</default>
-			<format>I</format>
-		</para>
-		<para>
-			<name>ISEED2</name>
-			<min>1</min>
-			<max>900000000</max>
-			<desc>
-				Number of calls to the RNG for initialization.  
-			</desc>
-			<default>1</default>
-			<format>I</format>
-		</para>
-		<para>
-			<name>ISEED3</name>
-			<min>1</min>
-			<max>900000000</max>
-			<desc>
-				Number of calls to the RNG for initialization times 10^9. Should be avoided because of cinsiderable computing time.  
-			</desc>
-			<default>1</default>
-			<format>I</format>
-		</para>
-	</parameter>
-</setting>
-
-<setting>
-	<name>SEED3</name>
-	<desc>		
-		Random Number Generator Initialization (Cherenkov photons)
-	</desc>
-	<format>A4</format>
-	<option>CHERENKOV</option>
-	<parameter>
-		<para>
-			<name>ISEED1</name>
-			<min>1</min>
-			<max>900000000</max>
-			<desc>
-				Contains the seed of the random number sequence. 
-			</desc>
-			<default>1</default>
-			<format>I</format>
-		</para>
-		<para>
-			<name>ISEED2</name>
-			<min>1</min>
-			<max>900000000</max>
-			<desc>
-				Number of calls to the RNG for initialization.  
-			</desc>
-			<default>1</default>
-			<format>I</format>
-		</para>
-		<para>
-			<name>ISEED3</name>
-			<min>1</min>
-			<max>900000000</max>
-			<desc>
-				Number of calls to the RNG for initialization times 10^9. Should be avoided because of cinsiderable computing time.  
-			</desc>
-			<default>1</default>
-			<format>I</format>
-		</para>
-	</parameter>
-</setting>
-
-<setting>
-	<name>SEED4</name>
-	<desc>		
-		Random Number Generator Initialization (Offset of telescope systems)
-	</desc>
-	<format>A4</format>
-	<option>IACT</option>
-	<parameter>
-		<para>
-			<name>ISEED1</name>
-			<min>1</min>
-			<max>900000000</max>
-			<desc>
-				Contains the seed of the random number sequence. 
-			</desc>
-			<default>1</default>
-			<format>I</format>
-		</para>
-		<para>
-			<name>ISEED2</name>
-			<min>1</min>
-			<max>900000000</max>
-			<desc>
-				Number of calls to the RNG for initialization.  
-			</desc>
-			<default>1</default>
-			<format>I</format>
-		</para>
-		<para>
-			<name>ISEED3</name>
-			<min>1</min>
-			<max>900000000</max>
-			<desc>
-				Number of calls to the RNG for initialization times 10^9. Should be avoided because of cinsiderable computing time.  
-			</desc>
-			<default>1</default>
-			<format>I</format>
-		</para>
-	</parameter>
-</setting>
-
-<setting>
-	<name>SEED5</name>
-	<desc>		
-		Random Number Generator Initialization (offset scattering to Auger core)
-	</desc>
-	<format>A4</format>
-	<option>AUGERHIT</option>
-	<parameter>
-		<para>
-			<name>ISEED1</name>
-			<min>1</min>
-			<max>900000000</max>
-			<desc>
-				Contains the seed of the random number sequence. 
-			</desc>
-			<default>1</default>
-			<format>I</format>
-		</para>
-		<para>
-			<name>ISEED2</name>
-			<min>1</min>
-			<max>900000000</max>
-			<desc>
-				Number of calls to the RNG for initialization.  
-			</desc>
-			<default>1</default>
-			<format>I</format>
-		</para>
-		<para>
-			<name>ISEED3</name>
-			<min>1</min>
-			<max>900000000</max>
-			<desc>
-				Number of calls to the RNG for initialization times 10^9. Should be avoided because of cinsiderable computing time.  
-			</desc>
-			<default>1</default>
-			<format>I</format>
-		</para>
-	</parameter>
-</setting>
-
-<setting>
-	<name>SEED6</name>
-	<desc>		
-		Random Number Generator Initialization (Parallel)
-	</desc>
-	<format>A4</format>
-	<option>PARALLEL</option>
-	<parameter>
-		<para>
-			<name>ISEED1</name>
-			<min>1</min>
-			<max>900000000</max>
-			<desc>
-				Contains the seed of the random number sequence. 
-			</desc>
-			<default>1</default>
-			<format>I</format>
-		</para>
-		<para>
-			<name>ISEED2</name>
-			<min>1</min>
-			<max>900000000</max>
-			<desc>
-				Number of calls to the RNG for initialization.  
-			</desc>
-			<default>1</default>
-			<format>I</format>
-		</para>
-		<para>
-			<name>ISEED3</name>
-			<min>1</min>
-			<max>900000000</max>
-			<desc>
-				Number of calls to the RNG for initialization times 10^9. Should be avoided because of cinsiderable computing time.  
-			</desc>
-			<default>1</default>
-			<format>I</format>
-		</para>
-	</parameter>
-</setting>
-
-<setting>
-	<name>SEED7</name>
-	<desc>		
-		Random Number Generator Initialization (Conex)
-	</desc>
-	<format>A4</format>
-	<option>CONEX</option>
-	<parameter>
-		<para>
-			<name>ISEED1</name>
-			<min>1</min>
-			<max>900000000</max>
-			<desc>
-				Contains the seed of the random number sequence. 
-			</desc>
-			<default>1</default>
-			<format>I</format>
-		</para>
-		<para>
-			<name>ISEED2</name>
-			<min>1</min>
-			<max>900000000</max>
-			<desc>
-				Number of calls to the RNG for initialization.  
-			</desc>
-			<default>1</default>
-			<format>I</format>
-		</para>
-		<para>
-			<name>ISEED3</name>
-			<min>1</min>
-			<max>900000000</max>
-			<desc>
-				Number of calls to the RNG for initialization times 10^9. Should be avoided because of cinsiderable computing time.  
-			</desc>
+			<limits>
+				<min>1</min>
+				<max>900000000</max>
+			</limits>
+			<desc>Number of calls to the RNG for initialization times 10^9. Should be avoided because of cinsiderable computing time.</desc>
 			<default>1</default>
 			<format>I</format>
 		</para>
@@ -333,19 +82,18 @@
 
 <setting>
 	<name>NSHOW</name>
-	<desc>	
-		Number of SHowers	
-	</desc>
+	<desc>Number of SHowers</desc>
 	<format>A5</format>
-	<option></option>
+	<options></options>
+	<id>4</id>
 	<parameter>
 		<para>
 			<name>NSHOW</name>
-			<min>1</min>
-			<max></max>
-			<desc>
-				Number of showers to be generated in a run.
-			</desc>
+			<limits>
+				<min>1</min>
+				<max></max>
+			</limits>
+			<desc>Number of showers to be generated in a run.</desc>
 			<default>10</default>			
 			<format>I</format>
 		</para>
@@ -354,19 +102,18 @@
 
 <setting>
 	<name>PRMPAR</name>
-	<desc>	
-		Primary Particle Definition	
-	</desc>
+	<desc>Primary Particle Definition</desc>
 	<format>A6</format>
-	<option>!STACKINT</option>	
+	<options>!STACKINT</options>
+	<id>5</id>	
 	<parameter>
 		<para>
 			<name>PRMPAR</name>
-			<min>1</min>
-			<max>5656</max>
-			<desc>
-				Particle format of the primary particle. See Table 4 (page 110) for the particle codes in the userguide.
-			</desc>
+			<limits>
+				<min>1</min>
+				<max>5656</max>
+			</limits>
+			<desc>Particle format of the primary particle. See Table 4 (page 110) for the particle codes in the userguide.</desc>
 			<default>14</default>			
 			<format>I</format>
 		</para>
@@ -375,29 +122,28 @@
 
 <setting>
 	<name>ERANGE</name>
-	<desc>	
-		Energy Range: If LLIMIT = ULIMIT, the primary energy is fixed at this value.	
-	</desc>
+	<desc>Energy Range: If LLIMIT = ULIMIT, the primary energy is fixed at this value.</desc>
 	<format>A6</format>
-	<option>!STACKIN</option>
+	<options>!STACKIN</options>
+	<id>6</id>
 	<parameter>
 		<para>
 			<name>LLIMIT</name>
-			<min></min>
-			<max></max>
-			<desc>
-				Lower limit of the primary particle energy range (in GeV). The primary energy is selected at random out of this interval. For detailed limits see page 65 in the userguide.
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc>Lower limit of the primary particle energy range (in GeV). The primary energy is selected at random out of this interval. For detailed limits see page 65 in the userguide.</desc>
 			<default>1000.0</default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>ULIMIT</name>
-			<min></min>
-			<max></max>
-			<desc>
-				Upper limit of the primary particle energy range (in GeV). The primary energy is selected at random out of this interval. For detailed limits see page 65 in the userguide.
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc>Upper limit of the primary particle energy range (in GeV). The primary energy is selected at random out of this interval. For detailed limits see page 65 in the userguide.</desc>
 			<default>1000.0</default>			
 			<format>F</format>
 		</para>
@@ -406,19 +152,18 @@
 
 <setting>
 	<name>ESLOPE</name>
-	<desc>	
-		Slope of Energy Spectrum	
-	</desc>
+	<desc>Slope of Energy Spectrum</desc>
 	<format>A6</format>
-	<option>!STACKIN</option>
+	<options>!STACKIN</options>
+	<id>7</id>
 	<parameter>
 		<para>
 			<name>PSLOPE</name>
-			<min></min>
-			<max></max>
-			<desc>
-				Exponent gamma of differential primary energy spectrum. PSLOPE has no meaning in case of fixed primary energy. The energies are total energies and include the particle rest mass.
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc>Exponent gamma of differential primary energy spectrum. PSLOPE has no meaning in case of fixed primary energy. The energies are total energies and include the particle rest mass.</desc>
 			<default>0.0</default>			
 			<format>F</format>
 		</para>
@@ -427,29 +172,28 @@
 
 <setting>
 	<name>THETAP</name>
-	<desc>		
-		Zenith Angle Definition: THETPR is the angle of incidence at a horizontal detector. THETPR = 0 is vertical.
-	</desc>
+	<desc>Zenith Angle Definition: THETPR is the angle of incidence at a horizontal detector. THETPR = 0 is vertical.</desc>
 	<format>A6</format>
-	<option></option>
+	<options></options>
+	<id>8</id>
 	<parameter>
 		<para>
 			<name>THETPR1</name>
-			<min>0</min>
-			<max>70</max>
-			<desc>
-				Low edge of zenith angle range of primary particle (in degree).
-			</desc>
+			<limits>
+				<min>0</min>
+				<max>70</max>
+			</limits>
+			<desc>Low edge of zenith angle range of primary particle (in degree).</desc>
 			<default>0</default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>THETPR2</name>
-			<min>0</min>
-			<max>70</max>
-			<desc>
-				High edge of zenith angle range of primary particle (in degree).
-			</desc>
+			<limits>
+				<min>0</min>
+				<max>70</max>
+			</limits>
+			<desc>High edge of zenith angle range of primary particle (in degree).</desc>
 			<default>0.0</default>			
 			<format>F</format>
 		</para>
@@ -458,29 +202,28 @@
 
 <setting>
 	<name>PHIP</name>
-	<desc>	
-		Azimuth Angle Definition: For 0 degree the shower axis points to magnetic North, for 90 degree it points to West, see Fig. 1 (page 108).
-	</desc>
+	<desc>Azimuth Angle Definition: For 0 degree the shower axis points to magnetic North, for 90 degree it points to West, see Fig. 1 (page 108).</desc>
 	<format>A4</format>
-	<option></option>
+	<options></options>
+	<id>9</id>
 	<parameter>
 		<para>
 			<name>PHIPR1</name>
-			<min>-360</min>
-			<max>360</max>
-			<desc>
-				Low edge of azimuth angle range of primary particle (in degree).
-			</desc>
+			<limits>
+				<min>-360</min>
+				<max>360</max>
+			</limits>
+			<desc>Low edge of azimuth angle range of primary particle (in degree).</desc>
 			<default>0</default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>PHIPR2</name>
-			<min>-360.0</min>
-			<max>360.0</max>
-			<desc>
-				High edge of azimuth angle range of primary particle (in degree).
-			</desc>
+			<limits>
+				<min>-360.0</min>
+				<max>360.0</max>
+			</limits>
+			<desc>High edge of azimuth angle range of primary particle (in degree).</desc>
 			<default>0.0</default>			
 			<format>F</format>
 		</para>
@@ -489,29 +232,28 @@
 
 <setting>
 	<name>VIEWCONE</name>
-	<desc>	
-		Viewing Cone Specifications: The VIEWCONE option (see Sect. 3.5.34 page 60) selects the direction of primaries in a circular cone around the fixed primary direction.
-	</desc>
+	<desc>Viewing Cone Specifications: The VIEWCONE option (see Sect. 3.5.34 page 60) selects the direction of primaries in a circular cone around the fixed primary direction.</desc>
 	<format>A8</format>
-	<option>VIEWCONE</option>
+	<options>VIEWCONE</options>
+	<id>10</id>
 	<parameter>
 		<para>
 			<name>VUECON1</name>
-			<min>0</min>
-			<max>90</max>
-			<desc>
-				Inner limiting angle of viewing cone (in degree).
-			</desc>
+			<limits>
+				<min>0</min>
+				<max>90</max>
+			</limits>
+			<desc>Inner limiting angle of viewing cone (in degree).</desc>
 			<default>0.0</default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>VUECON2</name>
-			<min>0</min>
-			<max>90</max>
-			<desc>
-				Outer  limiting angle of viewing cone (in degree).
-			</desc>
+			<limits>
+				<min>0</min>
+				<max>90</max>
+			</limits>
+			<desc>Outer  limiting angle of viewing cone (in degree).</desc>
 			<default>0.0</default>			
 			<format>F</format>
 		</para>
@@ -520,19 +262,18 @@
 
 <setting>
 	<name>FIXCHI</name>
-	<desc>		
-		Starting Grammage
-	</desc>
+	<desc>Starting Grammage</desc>
 	<format>A6</format>
-	<option></option>
+	<options></options>
+	<id>11</id>
 	<parameter>
 		<para>
 			<name>THICK0</name>
-			<min>0</min>
-			<max></max>
-			<desc>
-				The starting altitude (in g/cm^2 mass overburden) of the primary particle is set for all showers. This choice is not effective if the height of the first interaction is set by FIXHEI > 0. (see Sect. 4.13 below). With this keyword the development of sub-showers starting at the chosen altitude within the atmosphere may be followed. The starting altitude must be above the lowest observation level.
-			</desc>
+			<limits>
+				<min>0</min>
+				<max></max>
+			</limits>
+			<desc>The starting altitude (in g/cm^2 mass overburden) of the primary particle is set for all showers. This choice is not effective if the height of the first interaction is set by FIXHEI > 0. (see Sect. 4.13 below). With this keyword the development of sub-showers starting at the chosen altitude within the atmosphere may be followed. The starting altitude must be above the lowest observation level.</desc>
 			<default>0</default>			
 			<format>F</format>
 		</para>
@@ -541,17 +282,18 @@
 
 <setting>
 	<name>TSTART</name>
-	<desc>		
-	</desc>
+	<desc></desc>
 	<format>A6</format>
-	<option>!CONEX,!CURVED,!SLANT,!STACKIN</option>
+	<options>!CONEX,!CURVED,!SLANT,!STACKIN</options>
+	<id>12</id>
 	<parameter>
 		<para>
 			<name>TMARGIN</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>F</default>			
 			<format>L</format>
 		</para>
@@ -560,27 +302,28 @@
 
 <setting>
 	<name>FIXHEI</name>
-	<desc>		
-		First Interaction Definition
-	</desc>
+	<desc>First Interaction Definition</desc>
 	<format></format>
-	<option></option>
+	<options></options>
+	<id>13</id>
 	<parameter>
 		<para>
 			<name>FIXHEI</name>
-			<min>0</min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min>0</min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>0.0</default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>N1STTR</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>0</default>			
 			<format>I</format>
 		</para>
@@ -589,29 +332,28 @@
 
 <setting>
 	<name>IMPACT</name>
-	<desc>		
-		Skimming Incidence
-	</desc>
+	<desc>Skimming Incidence</desc>
 	<format>A6</format>
-	<option>CURVED+UPWARD</option>
+	<options>CURVED+UPWARD</options>
+	<id>14</id>
 	<parameter>
 		<para>
 			<name>HIMPACT1</name>
-			<min></min>
-			<max></max>
-			<desc>
-				Lower value (in cm) for minimum altitude of horizontal shower axis.
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc>Lower value (in cm) for minimum altitude of horizontal shower axis.</desc>
 			<default>0.0</default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>HIMPACT2</name>
-			<min></min>
-			<max></max>
-			<desc>
-				Upper value (in cm) for minimum altitude of horizontal shower axis.
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc>Upper value (in cm) for minimum altitude of horizontal shower axis.</desc>
 			<default>0.0</default>			
 			<format>F</format>
 		</para>
@@ -620,17 +362,18 @@
 
 <setting>
 	<name>INFILE</name>
-	<desc>		
-	</desc>
+	<desc></desc>
 	<format>A6</format>
-	<option>STACKIN</option>
+	<options>STACKIN</options>
+	<id>15</id>
 	<parameter>
 		<para>
 			<name>FILINP</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default> </default>			
 			<format>A132</format>
 		</para>
@@ -639,19 +382,18 @@
 
 <setting>
 	<name>OUTFILE</name>
-	<desc>		
-		Stack Output File Name
-	</desc>
+	<desc>Stack Output File Name</desc>
 	<format>A7</format>
-	<option>!CONEX,!STACKIN</option>
+	<options>!CONEX,!STACKIN</options>
+	<id>16</id>
 	<parameter>
 		<para>
 			<name>FILOUT</name>
-			<min></min>
-			<max></max>
-			<desc>
-				File name to define the name and directory of the output file which will contain the parameters of the secondary particles produced in the first interaction. These particles are written only if the file name is defined. These particles may be read in in a later CORSIKA-run established with the STACKIN option (see Sect. 3.5.29 page 56).
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc>File name to define the name and directory of the output file which will contain the parameters of the secondary particles produced in the first interaction. These particles are written only if the file name is defined. These particles may be read in in a later CORSIKA-run established with the STACKIN option (see Sect. 3.5.29 page 56).</desc>
 			<default> </default>			
 			<format>A132</format>
 		</para>
@@ -660,19 +402,18 @@
 
 <setting>
 	<name>ATMOD</name>
-	<desc>	
-		Atmospheric Model Selection	
-	</desc>
+	<desc>Atmospheric Model Selection</desc>
 	<format>A5</format>
-	<option></option>
+	<options></options>
+	<id>17</id>
 	<parameter>
 		<para>
 			<name>MODATM</name>
-			<min>0</min>
-			<max>29</max>
-			<desc>
-				Gives the number of the atmospheric parameterization. See page 69 for a list.
-			</desc>
+			<limits>
+				<min>0</min>
+				<max>29</max>
+			</limits>
+			<desc>Gives the number of the atmospheric parameterization. See page 69 for a list.</desc>
 			<default>1</default>			
 			<format>I</format>
 		</para>
@@ -681,17 +422,18 @@
 
 <setting>
 	<name>ATMA</name>
-	<desc>		
-	</desc>
+	<desc></desc>
 	<format></format>
-	<option></option>
+	<options></options>
+	<id>18</id>
 	<parameter>
 		<para>
 			<name></name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default> </default>			
 			<format></format>
 		</para>
@@ -700,17 +442,18 @@
 
 <setting>
 	<name>ATMB</name>
-	<desc>		
-	</desc>
+	<desc></desc>
 	<format></format>
-	<option></option>
+	<options></options>
+	<id>19</id>
 	<parameter>
 		<para>
 			<name></name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default> </default>			
 			<format></format>
 		</para>
@@ -719,17 +462,18 @@
 
 <setting>
 	<name>ATMC</name>
-	<desc>		
-	</desc>
+	<desc></desc>
 	<format></format>
-	<option></option>
+	<options></options>
+	<id>20</id>
 	<parameter>
 		<para>
 			<name></name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default> </default>			
 			<format></format>
 		</para>
@@ -738,17 +482,18 @@
 
 <setting>
 	<name>ATMLAY</name>
-	<desc>		
-	</desc>
+	<desc></desc>
 	<format></format>
-	<option></option>
+	<options></options>
+	<id>21</id>
 	<parameter>
 		<para>
 			<name></name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default> </default>			
 			<format></format>
 		</para>
@@ -757,29 +502,28 @@
 
 <setting>
 	<name>ATMOSPHERE</name>
-	<desc>		
-		External Tabulated Atmosphere
-	</desc>
+	<desc>External Tabulated Atmosphere</desc>
 	<format>A10</format>
-	<option>ATMEXT</option>
+	<options>ATMEXT</options>
+	<id>22</id>
 	<parameter>
 		<para>
 			<name>IATMOX</name>
-			<min>1</min>
-			<max></max>
-			<desc>
-				MODTRAN Atmospheric model. This requires a file named atmprofi.dat to be present in CORSIKA directory.
-			</desc>
+			<limits>
+				<min>1</min>
+				<max></max>
+			</limits>
+			<desc>MODTRAN Atmospheric model. This requires a file named atmprofi.dat to be present in CORSIKA directory.</desc>
 			<default>0</default>			
 			<format>I</format>
 		</para>
 		<para>
 			<name>FREFRX</name>
-			<min></min>
-			<max></max>
-			<desc>
-				If .true., the atmospheric refraction for Cherenkov photons is taken into account (for plane-parallel atmosphere); if .false., refraction is ignored.
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc>If .true., the atmospheric refraction for Cherenkov photons is taken into account (for plane-parallel atmosphere); if .false., refraction is ignored.</desc>
 			<default>F</default>			
 			<format>L</format>
 		</para>
@@ -788,29 +532,28 @@
 
 <setting>
 	<name>MAGNET</name>
-	<desc>	
-		Earth's Magnetic Field	
-	</desc>
+	<desc>Earth's Magnetic Field</desc>
 	<format>A6</format>
-	<option></option>
+	<options></options>
+	<id>23</id>
 	<parameter>
 		<para>
 			<name>BX</name>
-			<min></min>
-			<max></max>
-			<desc>
-				Is the horizontal component of the Earth’s magnetic field (in μT) to the x-direction of the coordinate system (North) (see Fig. 1 page 108)
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc>Is the horizontal component of the Earth’s magnetic field (in μT) to the x-direction of the coordinate system (North) (see Fig. 1 page 108)</desc>
 			<default>20.40</default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>BZ</name>
-			<min></min>
-			<max></max>
-			<desc>
-				Is the vertical component of the Earth’s magnetic field (in μT) downwards.
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc>Is the vertical component of the Earth’s magnetic field (in μT) downwards.</desc>
 			<default>43.23</default>			
 			<format>F</format>
 		</para>
@@ -819,54 +562,58 @@
 
 <setting>
 	<name>GCOORD</name>
-	<desc>		
-		Experiment Coordinates for Pre-Showering and CONEX
-	</desc>
+	<desc>Experiment Coordinates for Pre-Showering and CONEX</desc>
 	<format>A6</format>
-	<option>CONEX,PRESHOWER</option>
+	<options>CONEX,PRESHOWER</options>
+	<id>24</id>
 	<parameter>
 		<para>
 			<name>GLONG</name>
-			<min>-180.0</min>
-			<max>180.0</max>
-			<desc>
-			</desc>
+			<limits>
+				<min>-180.0</min>
+				<max>180.0</max>
+			</limits>
+			<desc></desc>
 			<default>-69.585</default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>GLATI</name>
-			<min>-90.0</min>
-			<max>90.0</max>
-			<desc>
-			</desc>
+			<limits>
+				<min>-90.0</min>
+				<max>90.0</max>
+			</limits>
+			<desc></desc>
 			<default>-35.463</default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>GRFYEAR</name>
-			<min>1965.0</min>
-			<max>2015.0</max>
-			<desc>
-			</desc>
+			<limits>
+				<min>1965.0</min>
+				<max>2015.0</max>
+			</limits>
+			<desc></desc>
 			<default>2003.0</default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>IPREPR</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>1</default>			
 			<format>I</format>
 		</para>
 		<para>
 			<name>IPRSTP</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>0</default>			
 			<format>I</format>
 		</para>
@@ -875,18 +622,18 @@
 
 <setting>
 	<name>DPMJET</name>
-	<desc>		
-		DPMJET Selection Flag
-	</desc>
+	<desc>DPMJET Selection Flag</desc>
 	<format>A6</format>
-	<option>DPMJET</option>
+	<options>DPMJET</options>
+	<id>25</id>
 	<parameter>
 		<para>
 			<name></name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default> </default>			
 			<format></format>
 		</para>
@@ -895,18 +642,18 @@
 
 <setting>
 	<name>DPJSIG</name>
-	<desc>		
-		DPJSIG Selection Flag
-	</desc>
+	<desc>DPJSIG Selection Flag</desc>
 	<format></format>
-	<option>DPMJET</option>
+	<options>DPMJET</options>
+	<id>26</id>
 	<parameter>
 		<para>
 			<name></name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default> </default>			
 			<format></format>
 		</para>
@@ -915,18 +662,18 @@
 
 <setting>
 	<name>EPOS</name>
-	<desc>		
-		EPOS Selection Flag
-	</desc>
+	<desc>EPOS Selection Flag</desc>
 	<format></format>
-	<option>EPOS</option>
+	<options>EPOS</options>
+	<id>27</id>
 	<parameter>
 		<para>
 			<name></name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default> </default>			
 			<format></format>
 		</para>
@@ -935,18 +682,18 @@
 
 <setting>
 	<name>EPOPAR</name>
-	<desc>		
-		EPOS Parameters
-	</desc>
+	<desc>EPOS Parameters</desc>
 	<format></format>
-	<option>EPOS</option>
+	<options>EPOS</options>
+	<id>28</id>
 	<parameter>
 		<para>
 			<name></name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default> </default>			
 			<format></format>
 		</para>
@@ -955,18 +702,18 @@
 
 <setting>
 	<name>EPOSIG</name>
-	<desc>	
-		EPOSIG Selection Flag
-	</desc>
+	<desc>EPOSIG Selection Flag</desc>
 	<format></format>
-	<option>EPOS</option>
+	<options>EPOS</options>
+	<id>29</id>
 	<parameter>
 		<para>
 			<name></name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default> </default>			
 			<format></format>
 		</para>
@@ -975,27 +722,28 @@
 
 <setting>
 	<name>NEXUS</name>
-	<desc>	
-		NEXUS Selection Flag
-	</desc>
+	<desc>NEXUS Selection Flag</desc>
 	<format>A5</format>
-	<option>NEXUS</option>
+	<options>NEXUS</options>
+	<id>30</id>
 	<parameter>
 		<para>
 			<name>FNEXUS</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>T</default>			
 			<format>L</format>
 		</para>
 		<para>
 			<name>ISH0N</name>
-			<min>0</min>
-			<max>9</max>
-			<desc>
-			</desc>
+			<limits>
+				<min>0</min>
+				<max>9</max>
+			</limits>
+			<desc></desc>
 			<default>0</default>			
 			<format>I</format>
 		</para>
@@ -1004,18 +752,18 @@
 
 <setting>
 	<name>NEXPAR</name>
-	<desc>
-		NEXUS Parameters
-	</desc>
+	<desc>NEXUS Parameters</desc>
 	<format>A6</format>
-	<option>NEXUS</option>
+	<options>NEXUS</options>
+	<id>31</id>
 	<parameter>
 		<para>
 			<name>parcha</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default> </default>			
 			<format>A74</format>
 		</para>
@@ -1024,18 +772,18 @@
 
 <setting>
 	<name>NEXSIG</name>
-	<desc>	
-		NEXSIG Selection Flag
-	</desc>
+	<desc>NEXSIG Selection Flag</desc>
 	<format>A6</format>
-	<option>NEXUS</option>
+	<options>NEXUS</options>
+	<id>32</id>
 	<parameter>
 		<para>
 			<name>FNEXSG</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>T</default>			
 			<format>L</format>
 		</para>
@@ -1044,27 +792,28 @@
 
 <setting>
 	<name>QGSJET</name>
-	<desc>	
-		QGSJET Selection Flag
-	</desc>
+	<desc>QGSJET Selection Flag</desc>
 	<format>A6</format>
-	<option>QGSJET</option>
+	<options>QGSJET</options>
+	<id>33</id>
 	<parameter>
 		<para>
 			<name>FQGS</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>T</default>			
 			<format>L</format>
 		</para>
 		<para>
 			<name>LEVLDQ</name>
-			<min>0</min>
-			<max>4</max>
-			<desc>
-			</desc>
+			<limits>
+				<min>0</min>
+				<max>4</max>
+			</limits>
+			<desc></desc>
 			<default>0</default>			
 			<format>I</format>
 		</para>
@@ -1073,18 +822,18 @@
 
 <setting>
 	<name>QGSSIG</name>
-	<desc>
-		QGSSIG Selection Flag
-	</desc>
+	<desc>QGSSIG Selection Flag</desc>
 	<format>A6</format>
-	<option>QGSJET</option>
+	<options>QGSJET</options>
+	<id>34</id>
 	<parameter>
 		<para>
 			<name>FQGSSG</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>T</default>			
 			<format>L</format>
 		</para>
@@ -1093,27 +842,28 @@
 
 <setting>
 	<name>SIBYLL</name>
-	<desc>	
-		SIBYLL Selection Flag
-	</desc>
+	<desc>SIBYLL Selection Flag</desc>
 	<format>A6</format>
-	<option>SIBYLL</option>
+	<options>SIBYLL</options>
+	<id>35</id>
 	<parameter>
 		<para>
 			<name>FSIBYL</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>T</default>			
 			<format>L</format>
 		</para>
 		<para>
 			<name>ISDEBUG</name>
-			<min>0</min>
-			<max>6</max>
-			<desc>
-			</desc>
+			<limits>
+				<min>0</min>
+				<max>6</max>
+			</limits>
+			<desc></desc>
 			<default>0</default>			
 			<format>I</format>
 		</para>
@@ -1122,18 +872,18 @@
 
 <setting>
 	<name>SIBSIG</name>
-	<desc>	
-		SIBSIG Selection Flag
-	</desc>
+	<desc>SIBSIG Selection Flag</desc>
 	<format>A6</format>
-	<option>SIBYLL</option>
+	<options>SIBYLL</options>
+	<id>36</id>
 	<parameter>
 		<para>
 			<name>FSIBSG</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>T</default>			
 			<format>L</format>
 		</para>
@@ -1142,27 +892,28 @@
 
 <setting>
 	<name>VENUS</name>
-	<desc>	
-		VENUS Selection Flag
-	</desc>
+	<desc>VENUS Selection Flag</desc>
 	<format>A5</format>
-	<option>VENUS</option>
+	<options>VENUS</options>
+	<id>37</id>
 	<parameter>
 		<para>
 			<name>FVENUS</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>T</default>			
 			<format>L</format>
 		</para>
 		<para>
 			<name>ISH00</name>
-			<min>0</min>
-			<max>98</max>
-			<desc>
-			</desc>
+			<limits>
+				<min>0</min>
+				<max>98</max>
+			</limits>
+			<desc></desc>
 			<default>0</default>			
 			<format>I</format>
 		</para>
@@ -1171,27 +922,28 @@
 
 <setting>
 	<name>VENPAR</name>
-	<desc>
-		VENUS Parameters: Advanced user only
-	</desc>
+	<desc>VENUS Parameters: Advanced user only</desc>
 	<format>A6</format>
-	<option>VENUS</option>
+	<options>VENUS</options>
+	<id>38</id>
 	<parameter>
 		<para>
 			<name>PARCHA</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>      </default>			
 			<format>A6</format>
 		</para>
 		<para>
 			<name>PARVAL</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>0.0</default>			
 			<format>F</format>
 		</para>
@@ -1200,18 +952,18 @@
 
 <setting>
 	<name>VENSIG</name>
-	<desc>		
-		VENSIG Selection Flag
-	</desc>
+	<desc>VENSIG Selection Flag</desc>
 	<format>A6</format>
-	<option>VENUS</option>
+	<options>VENUS</options>
+	<id>39</id>
 	<parameter>
 		<para>
 			<name>FVENSG</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>T</default>			
 			<format>L</format>
 		</para>
@@ -1220,63 +972,68 @@
 
 <setting>
 	<name>HADFLG</name>
-	<desc>	
-		HDPM Interaction Parameters and Fragmentation
-	</desc>
+	<desc>HDPM Interaction Parameters and Fragmentation</desc>
 	<format>A6</format>
-	<option></option>
+	<options></options>
+	<id>40</id>
 	<parameter>
 		<para>
 			<name>NFLAIN</name>
-			<min>0</min>
-			<max>100</max>
-			<desc>
-			</desc>
+			<limits>
+				<min>0</min>
+				<max>100</max>
+			</limits>
+			<desc></desc>
 			<default>0</default>			
 			<format>I</format>
 		</para>
 		<para>
 			<name>NFLDIF</name>
-			<min>0</min>
-			<max>100</max>
-			<desc>
-			</desc>
+			<limits>
+				<min>0</min>
+				<max>100</max>
+			</limits>
+			<desc></desc>
 			<default>0</default>			
 			<format>I</format>
 		</para>
 		<para>
 			<name>NFLPI0</name>
-			<min>0</min>
-			<max>100</max>
-			<desc>
-			</desc>
+			<limits>
+				<min>0</min>
+				<max>100</max>
+			</limits>
+			<desc></desc>
 			<default>0</default>			
 			<format>I</format>
 		</para>
 		<para>
 			<name>NFLPIF</name>
-			<min>0</min>
-			<max>100</max>
-			<desc>
-			</desc>
+			<limits>
+				<min>0</min>
+				<max>100</max>
+			</limits>
+			<desc></desc>
 			<default>0</default>			
 			<format>I</format>
 		</para>
 		<para>
 			<name>NFLCHE</name>
-			<min>0</min>
-			<max>100</max>
-			<desc>
-			</desc>
+			<limits>
+				<min>0</min>
+				<max>100</max>
+			</limits>
+			<desc></desc>
 			<default>0</default>			
 			<format>I</format>
 		</para>
 		<para>
 			<name>NFRAGM</name>
-			<min>0</min>
-			<max>100</max>
-			<desc>
-			</desc>
+			<limits>
+				<min>0</min>
+				<max>100</max>
+			</limits>
+			<desc></desc>
 			<default>2</default>			
 			<format>I</format>
 		</para>
@@ -1285,18 +1042,18 @@
 
 <setting>
 	<name>NUSLCT</name>
-	<desc>		
-		Neutrino Interaction format Selection
-	</desc>
+	<desc>Neutrino Interaction format Selection</desc>
 	<format>A6</format>
-	<option></option>
+	<options></options>
+	<id>41</id>
 	<parameter>
 		<para>
 			<name>NUSLCT</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>2</default>			
 			<format>I</format>
 		</para>
@@ -1305,45 +1062,48 @@
 
 <setting>
 	<name>SIGMAQ</name>
-	<desc>		
-		Charm Interaction Cross Section
-	</desc>
+	<desc>Charm Interaction Cross Section</desc>
 	<format></format>
-	<option>CHARM</option>
+	<options>CHARM</options>
+	<id>42</id>
 	<parameter>
 		<para>
 			<name>SIGMAQ1</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>0.0</default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>SIGMAQ2</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>0.0</default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>SIGMAQ3</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>0.0</default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>SIGMAQ4</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>0.0</default>			
 			<format>F</format>
 		</para>
@@ -1352,18 +1112,18 @@
 
 <setting>
 	<name>PROPAQ</name>
-	<desc>	
-		Charm Interaction Selection
-	</desc>
+	<desc>Charm Interaction Selection</desc>
 	<format>A6</format>
-	<option>CHARM+QGSJET</option>
+	<options>CHARM+QGSJET</options>
+	<id>43</id>
 	<parameter>
 		<para>
 			<name>PROPMOD</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>1</default>			
 			<format>I</format>
 		</para>
@@ -1372,18 +1132,18 @@
 
 <setting>
 	<name>HILOW</name>
-	<desc>		
-		Transition Energy between Models
-	</desc>
+	<desc>Transition Energy between Models</desc>
 	<format>A5</format>
-	<option></option>
+	<options></options>
+	<id>44</id>
 	<parameter>
 		<para>
 			<name>HILOELB</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>80.0</default>			
 			<format>F</format>
 		</para>
@@ -1392,27 +1152,28 @@
 
 <setting>
 	<name>ELMFLG</name>
-	<desc>
-		Electromagnetic Interaction Steering Flags
-	</desc>
+	<desc>Electromagnetic Interaction Steering Flags</desc>
 	<format>A6</format>
-	<option></option>
+	<options></options>
+	<id>45</id>
 	<parameter>
 		<para>
 			<name>FNKG</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>T</default>			
 			<format>L</format>
 		</para>
 		<para>
 			<name>FEGS</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>T</default>			
 			<format>L</format>
 		</para>
@@ -1421,18 +1182,18 @@
 
 <setting>
 	<name>STEPFC</name>
-	<desc>	
-		Electron Multiple Scattering Length Factor
-	</desc>
+	<desc>Electron Multiple Scattering Length Factor</desc>
 	<format>A6</format>
-	<option></option>
+	<options></options>
+	<id>46</id>
 	<parameter>
 		<para>
 			<name>STEPFC</name>
-			<min>0.0</min>
-			<max>10.0</max>
-			<desc>
-			</desc>
+			<limits>
+				<min>0.0</min>
+				<max>10.0</max>
+			</limits>
+			<desc></desc>
 			<default>1.0</default>			
 			<format>F</format>
 		</para>
@@ -1441,17 +1202,18 @@
 
 <setting>
 	<name>RADNKG</name>
-	<desc>		
-	</desc>
+	<desc></desc>
 	<format>A6</format>
-	<option></option>
+	<options></options>
+	<id>47</id>
 	<parameter>
 		<para>
 			<name>RADNKG</name>
-			<min>100.0</min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min>100.0</min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>20000</default>			
 			<format>F</format>
 		</para>
@@ -1460,35 +1222,38 @@
 
 <setting>
 	<name>CASCADE</name>
-	<desc>		
-	</desc>
+	<desc></desc>
 	<format>A7</format>
-	<option>CONEX</option>
+	<options>CONEX</options>
+	<id>48</id>
 	<parameter>
 		<para>
 			<name>FCXCAS</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>T</default>			
 			<format>L</format>
 		</para>
 		<para>
 			<name>FCXLCE</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>F</default>			
 			<format>L</format>
 		</para>
 		<para>
 			<name>FCXGHE</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>F</default>			
 			<format>L</format>
 		</para>
@@ -1497,36 +1262,38 @@
 
 <setting>
 	<name>CONEX</name>
-	<desc>		
-		Thresholds for CONEX Cascade Equations
-	</desc>
+	<desc>Thresholds for CONEX Cascade Equations</desc>
 	<format>A5</format>
-	<option>CONEX</option>
+	<options>CONEX</options>
+	<id>49</id>
 	<parameter>
 		<para>
 			<name>CXTHR1</name>
-			<min>0.0</min>
-			<max>1.0</max>
-			<desc>
-			</desc>
+			<limits>
+				<min>0.0</min>
+				<max>1.0</max>
+			</limits>
+			<desc></desc>
 			<default>0.001</default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>CXTHR2</name>
-			<min>0.0</min>
-			<max>1.0</max>
-			<desc>
-			</desc>
+			<limits>
+				<min>0.0</min>
+				<max>1.0</max>
+			</limits>
+			<desc></desc>
 			<default>1.0</default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>CXTHR3</name>
-			<min>0.0</min>
-			<max>1.0</max>
-			<desc>
-			</desc>
+			<limits>
+				<min>0.0</min>
+				<max>1.0</max>
+			</limits>
+			<desc></desc>
 			<default>0.0001</default>			
 			<format>F</format>
 		</para>
@@ -1535,17 +1302,18 @@
 
 <setting>
 	<name>CX2COR</name>
-	<desc>		
-	</desc>
+	<desc>Thresholds for Transition from CONEX to CORSIKA</desc>
 	<format></format>
-	<option>CONEX</option>
+	<options>CONEX</options>
+	<id>50</id>
 	<parameter>
 		<para>
 			<name></name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default> </default>			
 			<format></format>
 		</para>
@@ -1554,17 +1322,18 @@
 
 <setting>
 	<name>CXWMX</name>
-	<desc>		
-	</desc>
+	<desc>Weight Sampling for CONEX</desc>
 	<format></format>
-	<option>CONEX</option>
+	<options>CONEX</options>
+	<id>51</id>
 	<parameter>
 		<para>
 			<name></name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default> </default>			
 			<format></format>
 		</para>
@@ -1573,18 +1342,18 @@
 
 <setting>
 	<name>CORSIKA</name>
-	<desc>		
-		CONEX without CORSIKA
-	</desc>
+	<desc>CONEX without CORSIKA</desc>
 	<format>A7</format>
-	<option>CONEX</option>
+	<options>CONEX</options>
+	<id>52</id>
 	<parameter>
 		<para>
 			<name>FCORS</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>T</default>			
 			<format>L</format>
 		</para>
@@ -1593,18 +1362,18 @@
 
 <setting>
 	<name>THIN</name>
-	<desc>	
-		Thinning Definition
-	</desc>
+	<desc>Thinning Definition</desc>
 	<format></format>
-	<option>THIN</option>
+	<options>THIN</options>
+	<id>53</id>
 	<parameter>
 		<para>
 			<name></name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default> </default>			
 			<format></format>
 		</para>
@@ -1613,18 +1382,18 @@
 
 <setting>
 	<name>THINH</name>
-	<desc>		
-		Hadronic Thinning Definition
-	</desc>
+	<desc>Hadronic Thinning Definition</desc>
 	<format></format>
-	<option>THIN</option>
+	<options>THIN</options>
+	<id>54</id>
 	<parameter>
 		<para>
 			<name></name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default> </default>			
 			<format></format>
 		</para>
@@ -1633,18 +1402,18 @@
 
 <setting>
 	<name>THINEM</name>
-	<desc>		
-		Electromagnetic Thinning Definition
-	</desc>
+	<desc>Electromagnetic Thinning Definition</desc>
 	<format></format>
-	<option>THIN</option>
+	<options>THIN</options>
+	<id>55</id>
 	<parameter>
 		<para>
 			<name></name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default> </default>			
 			<format></format>
 		</para>
@@ -1653,18 +1422,18 @@
 
 <setting>
 	<name>CORECUT</name>
-	<desc>		
-		CORECUT Maximum Radius Cut
-	</desc>
+	<desc>CORECUT Maximum Radius Cut</desc>
 	<format></format>
-	<option></option>
+	<options></options>
+	<id>56</id>
 	<parameter>
 		<para>
 			<name>RCUT</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>0.0</default>			
 			<format>F</format>
 		</para>
@@ -1673,49 +1442,48 @@
 
 <setting>
 	<name>ECUTS</name>
-	<desc>	
-		Energy Cut-Offs: The low energy cut-off (in GeV) of the particle kinetic energy
-	</desc>
+	<desc>Energy Cut-Offs: The low energy cut-off (in GeV) of the particle kinetic energy</desc>
 	<format>A5</format>
-	<option></option>
+	<options></options>
+	<id>57</id>
 	<parameter>
 		<para>
 			<name>ELCUT1</name>
-			<min>0.05</min>
-			<max></max>
-			<desc>
-				Hadron
-			</desc>
+			<limits>
+				<min>0.05</min>
+				<max></max>
+			</limits>
+			<desc>Hadron</desc>
 			<default>0.3</default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>ELCUT2</name>
-			<min>0.01</min>
-			<max></max>
-			<desc>
-				Muon
-			</desc>
+			<limits>
+				<min>0.01</min>
+				<max></max>
+			</limits>
+			<desc>Muon</desc>
 			<default>0.3</default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>ELCUT3</name>
-			<min>0.00005</min>
-			<max></max>
-			<desc>
-				Electron
-			</desc>
+			<limits>
+				<min>0.00005</min>
+				<max></max>
+			</limits>
+			<desc>Electron</desc>
 			<default>0.003</default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>ELCUT4</name>
-			<min>0.00005</min>
-			<max></max>
-			<desc>
-				Photon and pi0
-			</desc>
+			<limits>
+				<min>0.00005</min>
+				<max></max>
+			</limits>
+			<desc>Photon and pi0</desc>
 			<default>0.003</default>			
 			<format>F</format>
 		</para>
@@ -1724,27 +1492,28 @@
 
 <setting>
 	<name>TIMLIM</name>
-	<desc>	
-		Time Cut-Off
-	</desc>
+	<desc>Time Cut-Off</desc>
 	<format>A6</format>
-	<option>CURVED</option>
+	<options>CURVED</options>
+	<id>58</id>
 	<parameter>
 		<para>
 			<name>DSTLIM</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>100000000.0</default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>LTMLMPR</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>F</default>			
 			<format>L</format>
 		</para>
@@ -1753,45 +1522,48 @@
 
 <setting>
 	<name>LONGI</name>
-	<desc>	
-		Longitudinal Shower Development
-	</desc>
+	<desc>Longitudinal Shower Development</desc>
 	<format>A5</format>
-	<option></option>
+	<options></options>
+	<id>59</id>
 	<parameter>
 		<para>
 			<name>LLONGI</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>F</default>			
 			<format>L</format>
 		</para>
 		<para>
 			<name>THSTEP</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>20.0</default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>FLGFIT</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>F</default>			
 			<format>L</format>
 		</para>
 		<para>
 			<name>FLONGOUT</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>F</default>			
 			<format>L</format>
 		</para>
@@ -1800,18 +1572,18 @@
 
 <setting>
 	<name>MUMULT</name>
-	<desc>	
-		Muon Multiple Scattering Treatment
-	</desc>
+	<desc>Muon Multiple Scattering Treatment</desc>
 	<format>A6</format>
-	<option></option>
+	<options></options>
+	<id>60</id>
 	<parameter>
 		<para>
 			<name>FMOLI</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>T</default>			
 			<format>L</format>
 		</para>
@@ -1820,18 +1592,18 @@
 
 <setting>
 	<name>EMADDI</name>
-	<desc>	
-		Additional Electromagnetic Particle Information
-	</desc>
+	<desc>Additional Electromagnetic Particle Information</desc>
 	<format>A6</format>
-	<option>EHISTORY,!INTTEST</option>
+	<options>EHISTORY,!INTTEST</options>
+	<id>61</id>
 	<parameter>
 		<para>
 			<name>FEMADD</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>F</default>			
 			<format>L</format>
 		</para>
@@ -1840,18 +1612,18 @@
 
 <setting>
 	<name>MUADDI</name>
-	<desc>		
-		Additional Muon Information
-	</desc>
+	<desc>Additional Muon Information</desc>
 	<format>A6</format>
-	<option>!INTTEST</option>
+	<options>!INTTEST</options>
+	<id>62</id>
 	<parameter>
 		<para>
 			<name>FMUADD</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>F</default>			
 			<format>L</format>
 		</para>
@@ -1860,18 +1632,18 @@
 
 <setting>
 	<name>NUADDI</name>
-	<desc>
-		Additional Neutrino Information
-	</desc>
+	<desc>Additional Neutrino Information</desc>
 	<format>A6</format>
-	<option>EHISTORY,!INTTEST</option>
+	<options>EHISTORY,!INTTEST</options>
+	<id>63</id>
 	<parameter>
 		<para>
 			<name>FNUADD</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>F</default>			
 			<format>L</format>
 		</para>
@@ -1880,18 +1652,18 @@
 
 <setting>
 	<name>OBSLEV</name>
-	<desc>	
-		Observation Level Definition
-	</desc>
+	<desc>Observation Level Definition</desc>
 	<format>A6</format>
-	<option></option>
+	<options></options>
+	<id>64</id>
 	<parameter>
 		<para>
 			<name>OBSLEV</name>
-			<min>0.0</min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min>0.0</min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>11000.0</default>			
 			<format>F</format>
 		</para>
@@ -1900,54 +1672,58 @@
 
 <setting>
 	<name>INCLIN</name>
-	<desc>		
-		Inclined Observation Plane
-	</desc>
+	<desc>Inclined Observation Plane</desc>
 	<format>A6</format>
-	<option>INCLINED</option>
+	<options>INCLINED</options>
+	<id>65</id>
 	<parameter>
 		<para>
 			<name>XPINCL</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>0.0</default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>YPINCL</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>0.0</default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>ZPINCL</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default></default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>THINCL</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>0.0</default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>PHINCL</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>0.0</default>			
 			<format>F</format>
 		</para>
@@ -1956,18 +1732,18 @@
 
 <setting>
 	<name>CURVOUT</name>
-	<desc>		
-		Observation Level Curvature
-	</desc>
+	<desc>Observation Level Curvature</desc>
 	<format>A7</format>
-	<option>CURVED+!ANAHIST+!AUGERHIST</option>
+	<options>CURVED+!ANAHIST+!AUGERHIST</options>
+	<id>66</id>
 	<parameter>
 		<para>
 			<name>FCURVOUT</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>T</default>			
 			<format>L</format>
 		</para>
@@ -1976,18 +1752,18 @@
 
 <setting>
 	<name>ARRANG</name>
-	<desc>
-		Array Rotation
-	</desc>
+	<desc>Array Rotation</desc>
 	<format></format>
-	<option></option>
+	<options></options>
+	<id>67</id>
 	<parameter>
 		<para>
 			<name>ARRANG</name>
-			<min>-180.0</min>
-			<max>180.0</max>
-			<desc>
-			</desc>
+			<limits>
+				<min>-180.0</min>
+				<max>180.0</max>
+			</limits>
+			<desc></desc>
 			<default>0.0</default>			
 			<format>F</format>
 		</para>
@@ -1996,54 +1772,58 @@
 
 <setting>
 	<name>AUGSCT</name>
-	<desc>
-		Auger Detector Scattering
-	</desc>
+	<desc>Auger Detector Scattering</desc>
 	<format>A6</format>
-	<option>AUGERHIT</option>
+	<options>AUGERHIT</options>
+	<id>68</id>
 	<parameter>
 		<para>
 			<name>MAUGPOS</name>
-			<min>0</min>
-			<max>20</max>
-			<desc>
-			</desc>
+			<limits>
+				<min>0</min>
+				<max>20</max>
+			</limits>
+			<desc></desc>
 			<default>1</default>			
 			<format>I</format>
 		</para>
 		<para>
 			<name>DRADIUS</name>
-			<min>0.0</min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min>0.0</min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>35.0</default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>DETDIS</name>
-			<min>0.0</min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min>0.0</min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>1500.0</default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>FTANKSHADOW</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>T</default>			
 			<format>L</format>
 		</para>
 		<para>
 			<name>FANYMODE</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>T</default>			
 			<format>L</format>
 		</para>
@@ -2052,29 +1832,28 @@
 
 <setting>
 	<name>AUGHIT</name>
-	<desc>
-		Auger Detector Scattering Positions
-	</desc>
+	<desc>Auger Detector Scattering Positions</desc>
 	<format>A6</format>
-	<option>AUGERHIT</option>
+	<options>AUGERHIT</options>
+	<id>69</id>
 	<parameter>
 		<para>
 			<name>XSHCORE</name>
-			<min></min>
-			<max></max>
-			<desc>
-				Detector position in x-direction (in meter) of the ith scattering relative to the shower core.
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc>Detector position in x-direction (in meter) of the ith scattering relative to the shower core.</desc>
 			<default>0.0</default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>YSHCORE</name>
-			<min></min>
-			<max></max>
-			<desc>
-				Detector position in y-direction (in meter) of the ith scattering relative to the shower core.
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc>Detector position in y-direction (in meter) of the ith scattering relative to the shower core.</desc>
 			<default>0.0</default>			
 			<format>F</format>
 		</para>
@@ -2083,18 +1862,18 @@
 
 <setting>
 	<name>DETCFG</name>
-	<desc>		
-		String Detector Configuration
-	</desc>
+	<desc>String Detector Configuration</desc>
 	<format>A6</format>
-	<option>VOLUMECORR</option>
+	<options>VOLUMECORR</options>
+	<id>70</id>
 	<parameter>
 		<para>
 			<name>DETCFG</name>
-			<min>0.0</min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min>0.0</min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>0.0</default>			
 			<format>F</format>
 		</para>
@@ -2103,19 +1882,18 @@
 
 <setting>
 	<name>MAXPRT</name>
-	<desc>	
-		Event Printout
-	</desc>
+	<desc>Event Printout</desc>
 	<format>A6</format>
-	<option></option>
+	<options></options>
+	<id>71</id>
 	<parameter>
 		<para>
 			<name>MAXPRT</name>
-			<min>0</min>
-			<max></max>
-			<desc>
-				Is the maximum number of events that produce a detailed printout during the simulation run.
-			</desc>
+			<limits>
+				<min>0</min>
+				<max></max>
+			</limits>
+			<desc>Is the maximum number of events that produce a detailed printout during the simulation run.</desc>
 			<default>10</default>			
 			<format>I</format>
 		</para>
@@ -2124,19 +1902,18 @@
 
 <setting>
 	<name>ECTMAP</name>
-	<desc>	
-		Particle Printout
-	</desc>
+	<desc>Particle Printout</desc>
 	<format>A6</format>
-	<option></option>
+	<options></options>
+	<id>72</id>
 	<parameter>
 		<para>
 			<name>ECTMAP</name>
-			<min></min>
-			<max></max>
-			<desc>
-				Defines a cut in the particle gamma factor (or energy in GeV for em-particles and neutrinos) above which they are printed out on the logical unit MONIOU when passing an observation level.
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc>Defines a cut in the particle gamma factor (or energy in GeV for em-particles and neutrinos) above which they are printed out on the logical unit MONIOU when passing an observation level.</desc>
 			<default>10000</default>			
 			<format>F</format>
 		</para>
@@ -2145,18 +1922,18 @@
 
 <setting>
 	<name>DIRECT</name>
-	<desc>	
-		Output Directory
-	</desc>
+	<desc>Output Directory</desc>
 	<format>A6</format>
-	<option></option>
+	<options></options>
+	<id>73</id>
 	<parameter>
 		<para>
 			<name>DSN</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>anynameupto239characters/</default>			
 			<format>A239</format>
 		</para>
@@ -2165,27 +1942,28 @@
 
 <setting>
 	<name>PAROUT</name>
-	<desc>	
-		Table Output
-	</desc>
+	<desc>Table Output</desc>
 	<format>A6</format>
-	<option></option>
+	<options></options>
+	<id>74</id>
 	<parameter>
 		<para>
 			<name>FPAROUT</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>T</default>			
 			<format>L</format>
 		</para>
 		<para>
 			<name>FTABOUT</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>F</default>			
 			<format>L</format>
 		</para>
@@ -2194,18 +1972,18 @@
 
 <setting>
 	<name>COMOUT</name>
-	<desc>	
-		Compact Output
-	</desc>
+	<desc>Compact Output</desc>
 	<format></format>
-	<option>COMPACT</option>
+	<options>COMPACT</options>
+	<id>75</id>
 	<parameter>
 		<para>
 			<name>COMOUT</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>T</default>			
 			<format>L</format>
 		</para>
@@ -2214,18 +1992,18 @@
 
 <setting>
 	<name>OUTPUT</name>
-	<desc>	
-		Printer Output Unit
-	</desc>
+	<desc>Printer Output Unit</desc>
 	<format>A6</format>
-	<option></option>
+	<options></options>
+	<id>76</id>
 	<parameter>
 		<para>
 			<name>MONNEW</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>6</default>			
 			<format>I</format>
 		</para>
@@ -2234,18 +2012,18 @@
 
 <setting>
 	<name>DATDIR</name>
-	<desc>	
-		Data Table Directory
-	</desc>
+	<desc>Data Table Directory</desc>
 	<format>A6</format>
-	<option></option>
+	<options></options>
+	<id>77</id>
 	<parameter>
 		<para>
 			<name>DATDIR</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>./</default>			
 			<format>A132</format>
 		</para>
@@ -2254,45 +2032,48 @@
 
 <setting>
 	<name>PARALLEL</name>
-	<desc>	
-		Parameters for Parallel Treatment
-	</desc>
+	<desc>Parameters for Parallel Treatment</desc>
 	<format>A8</format>
-	<option>PARALLEL</option>
+	<options>PARALLEL</options>
+	<id>78</id>
 	<parameter>
 		<para>
 			<name>ECTCUT</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>10000.0</default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>ECTMAX</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>10000000.0</default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>MPIID</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>1</default>			
 			<format>I</format>
 		</para>
 		<para>
 			<name>FECTOUT</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>F</default>			
 			<format>L</format>
 		</para>
@@ -2301,35 +2082,38 @@
 
 <setting>
 	<name>CUTFILE</name>
-	<desc>		
-	</desc>
-	<format></format>
-	<option></option>
+	<desc>Reading of Cutted Particle File for Parallel Treatment</desc>
+	<format>A7</format>
+	<options>PARALLEL,!PARALLELIB</options>
+	<id>79</id>
 	<parameter>
 		<para>
 			<name>CFILINP</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default> </default>			
 			<format>A255</format>
 		</para>
 		<para>
 			<name>I1CUTPAR</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>0</default>			
 			<format>I</format>
 		</para>
 		<para>
 			<name>I2CUTPAR</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>0</default>			
 			<format>I</format>
 		</para>
@@ -2338,180 +2122,198 @@
 
 <setting>
 	<name>CUTPAR</name>
-	<desc>		
-		Parameters of Cutted Particles for Parallel Treatment
-	</desc>
+	<desc>Parameters of Cutted Particles for Parallel Treatment</desc>
 	<format>A6</format>
-	<option>PARALLEL+!PARALLELIB</option>
+	<options>PARALLEL+!PARALLELIB</options>
+	<id>80</id>
 	<parameter>
 		<para>
 			<name>CUTPAR0</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default></default>			
 			<format>Z</format>
 		</para>
 		<para>
 			<name>CUTPAR1</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default></default>			
 			<format>Z</format>
 		</para>
 		<para>
 			<name>CUTPAR2</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default></default>			
 			<format>Z</format>
 		</para>
 		<para>
 			<name>CUTPAR3</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default></default>			
 			<format>Z</format>
 		</para>
 		<para>
 			<name>CUTPAR4</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default></default>			
 			<format>Z</format>
 		</para>
 		<para>
 			<name>CUTPAR5</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default></default>			
 			<format>Z</format>
 		</para>
 		<para>
 			<name>CUTPAR6</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default></default>			
 			<format>Z</format>
 		</para>
 		<para>
 			<name>CUTPAR7</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default></default>			
 			<format>Z</format>
 		</para>
 		<para>
 			<name>CUTPAR8</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default></default>			
 			<format>Z</format>
 		</para>
 		<para>
 			<name>CUTPAR9</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default></default>			
 			<format>Z</format>
 		</para>
 		<para>
 			<name>CUTPAR10</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default></default>			
 			<format>Z</format>
 		</para>
 		<para>
 			<name>CUTPAR11</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default></default>			
 			<format>Z</format>
 		</para>
 		<para>
 			<name>CUTPAR12</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default></default>			
 			<format>Z</format>
 		</para>
 		<para>
 			<name>CUTPAR13</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default></default>			
 			<format>Z</format>
 		</para>
 		<para>
 			<name>CUTPAR14</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default></default>			
 			<format>Z</format>
 		</para>
 		<para>
 			<name>CUTPAR15</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default></default>			
 			<format>Z</format>
 		</para>
 		<para>
 			<name>CUTPAR16</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default></default>			
 			<format>Z</format>
 		</para>
 		<para>
 			<name>CUTPAR17</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default></default>			
 			<format>Z</format>
 		</para>
 		<para>
 			<name>CUTPAR18</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default></default>			
 			<format>Z</format>
 		</para>
@@ -2520,63 +2322,68 @@
 
 <setting>
 	<name>CERARY</name>
-	<desc>	
-		Cherenkov Detector Array Definition
-	</desc>
+	<desc>Cherenkov Detector Array Definition</desc>
 	<format>A6</format>
-	<option>CERENKOV,!IACT</option>
+	<options>CERENKOV,!IACT</options>
+	<id>81</id>
 	<parameter>
 		<para>
 			<name>NCERX</name>
-			<min>1</min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min>1</min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>27</default>			
 			<format>I</format>
 		</para>
 		<para>
 			<name>NCERY</name>
-			<min>1</min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min>1</min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>27</default>			
 			<format>I</format>
 		</para>
 		<para>
 			<name>DCERX</name>
-			<min>1.0</min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min>1.0</min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>1500.0</default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>DCERY</name>
-			<min>1.0</min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min>1.0</min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>1500.0</default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>ACERX</name>
-			<min>1.0</min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min>1.0</min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>100.0</default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>ACERY</name>
-			<min>1.0</min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min>1.0</min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>100.0</default>			
 			<format>F</format>
 		</para>
@@ -2585,29 +2392,28 @@
 
 <setting>
 	<name>CWAVLG</name>
-	<desc>	
-		CherenkovWavelength Band
-	</desc>
+	<desc>CherenkovWavelength Band</desc>
 	<format>A6</format>
-	<option>CERENKOV,AUGCERLONG,AUGERHIST</option>
+	<options>CERENKOV,AUGCERLONG,AUGERHIST</options>
+	<id>82</id>
 	<parameter>
 		<para>
 			<name>WAVLGL</name>
-			<min>100.0</min>
-			<max></max>
-			<desc>
-				Lower limit (in nm) of the wavelength band for Cherenkov radiation production.
-			</desc>
+			<limits>
+				<min>100.0</min>
+				<max></max>
+			</limits>
+			<desc>Lower limit (in nm) of the wavelength band for Cherenkov radiation production.</desc>
 			<default>300.0</default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>WAVLGU</name>
-			<min></min>
-			<max>700.0</max>
-			<desc>
-				Upper limit (in nm) of the wavelength band for Cherenkov radiation production.
-			</desc>
+			<limits>
+				<min></min>
+				<max>700.0</max>
+			</limits>
+			<desc>Upper limit (in nm) of the wavelength band for Cherenkov radiation production.</desc>
 			<default>450.0</default>			
 			<format>F</format>
 		</para>
@@ -2616,18 +2422,18 @@
 
 <setting>
 	<name>CERSIZ</name>
-	<desc>	
-		Cherenkov Bunch Size Definition
-	</desc>
+	<desc>Cherenkov Bunch Size Definition</desc>
 	<format>A6</format>
-	<option>CERENKOV,AUGCERLONG,AUGERHIST</option>
+	<options>CERENKOV,AUGCERLONG,AUGERHIST</options>
+	<id>83</id>
 	<parameter>
 		<para>
 			<name>CERSIZ</name>
-			<min>0.0</min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min>0.0</min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>0.0</default>			
 			<format>F</format>
 		</para>
@@ -2636,18 +2442,18 @@
 
 <setting>
 	<name>CERFIL</name>
-	<desc>		
-		Cherenkov Output Steering
-	</desc>
+	<desc>Cherenkov Output Steering</desc>
 	<format>A6</format>
-	<option>CERENKOV</option>
+	<options>CERENKOV</options>
+	<id>84</id>
 	<parameter>
 		<para>
 			<name>LCERFI</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>T</default>			
 			<format>L</format>
 		</para>
@@ -2656,36 +2462,38 @@
 
 <setting>
 	<name>CERQEF</name>
-	<desc>		
-		Cherenkov Quantum Efficiency
-	</desc>
+	<desc>Cherenkov Quantum Efficiency</desc>
 	<format>A6</format>
-	<option>CEFFIC+CERENKOV</option>
+	<options>CEFFIC+CERENKOV</options>
+	<id>85</id>
 	<parameter>
 		<para>
 			<name>CERQEF</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>F</default>			
 			<format>L</format>
 		</para>
 		<para>
 			<name>CERATA</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>F</default>			
 			<format>L</format>
 		</para>
 		<para>
 			<name>CERMIR</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>F</default>			
 			<format>L</format>
 		</para>
@@ -2694,38 +2502,38 @@
 
 <setting>
 	<name>CSCAT</name>
-	<desc>
-		Multiple Use of Cherenkov Events
-	</desc>
+	<desc>Multiple Use of Cherenkov Events</desc>
 	<format>A5</format>
-	<option>CERENKOV</option>
+	<options>CERENKOV</options>
+	<id>86</id>
 	<parameter>
 		<para>
 			<name>ICERML</name>
-			<min>0</min>
-			<max>20</max>
-			<desc>
-			</desc>
+			<limits>
+				<min>0</min>
+				<max>20</max>
+			</limits>
+			<desc></desc>
 			<default>1</default>			
 			<format>I</format>
 		</para>
 		<para>
 			<name>XSCATT</name>
-			<min>0.0</min>
-			<max></max>
-			<desc>
-				Maximum scattering of core location in +-X direction (in cm). See Sect. 3.4.1 page 36 ff.
-			</desc>
+			<limits>
+				<min>0.0</min>
+				<max></max>
+			</limits>
+			<desc>Maximum scattering of core location in +-X direction (in cm). See Sect. 3.4.1 page 36 ff.</desc>
 			<default>0.0</default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>YSCATT</name>
-			<min>0.0</min>
-			<max></max>
-			<desc>
-				Maximum scattering of core location in +-Y direction (in cm). See Sect. 3.4.1 page 36 ff.
-			</desc>
+			<limits>
+				<min>0.0</min>
+				<max></max>
+			</limits>
+			<desc>Maximum scattering of core location in +-Y direction (in cm). See Sect. 3.4.1 page 36 ff.</desc>
 			<default>0.0</default>			
 			<format>F</format>
 		</para>
@@ -2734,45 +2542,48 @@
 
 <setting>
 	<name>TELESCOPE</name>
-	<desc>	
-		Cherenkov Telescope Dimensions
-	</desc>
+	<desc>Cherenkov Telescope Dimensions</desc>
 	<format>A9</format>
-	<option>CERENKOV+IACT</option>
+	<options>CERENKOV+IACT</options>
+	<id>87</id>
 	<parameter>
 		<para>
 			<name>X</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default></default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>Y</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default></default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>Z</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default></default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>R</name>
-			<min>0</min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min>0</min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default></default>			
 			<format>F</format>
 		</para>
@@ -2781,18 +2592,18 @@
 
 <setting>
 	<name>TELFIL</name>
-	<desc>
-		Cherenkov Telescope Data File Name
-	</desc>
+	<desc>Cherenkov Telescope Data File Name</desc>
 	<format>A6</format>
-	<option>CERENKOV+IACT</option>
+	<options>CERENKOV+IACT</options>
+	<id>88</id>
 	<parameter>
 		<para>
 			<name>TELFNM</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default> </default>			
 			<format>A512</format>
 		</para>
@@ -2801,18 +2612,18 @@
 
 <setting>
 	<name>TRAFLG</name>
-	<desc>		
-		Trajectory Selection Flag
-	</desc>
+	<desc>Trajectory Selection Flag</desc>
 	<format>A6</format>
-	<option>TRAJECT</option>
+	<options>TRAJECT</options>
+	<id>89</id>
 	<parameter>
 		<para>
 			<name>TLOGIC</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>T</default>			
 			<format>L</format>
 		</para>
@@ -2821,27 +2632,28 @@
 
 <setting>
 	<name>SRCPOS</name>
-	<desc>		
-		Source Position Parameters
-	</desc>
+	<desc>Source Position Parameters</desc>
 	<format>A6</format>
-	<option>TRAJECT</option>
+	<options>TRAJECT</options>
+	<id>90</id>
 	<parameter>
 		<para>
 			<name>RA</name>
-			<min>0.0</min>
-			<max>24.0</max>
-			<desc>
-			</desc>
+			<limits>
+				<min>0.0</min>
+				<max>24.0</max>
+			</limits>
+			<desc></desc>
 			<default>5.57</default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>DEC</name>
-			<min>-90.0</min>
-			<max>90.0</max>
-			<desc>
-			</desc>
+			<limits>
+				<min>-90.0</min>
+				<max>90.0</max>
+			</limits>
+			<desc></desc>
 			<default>22.0</default>			
 			<format>F</format>
 		</para>
@@ -2850,79 +2662,78 @@
 
 <setting>
 	<name>TRATM</name>
-	<desc>		
-		Trajectory Time Parameters
-	</desc>
+	<desc>Trajectory Time Parameters</desc>
 	<format>A5</format>
-	<option>TRAJECT</option>
+	<options>TRAJECT</options>
+	<id>91</id>
 	<parameter>
 		<para>
 			<name>TYEAR</name>
-			<min></min>
-			<max></max>
-			<desc>
-				Define the start time of the observation.
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc>Define the start time of the observation.</desc>
 			<default>2000</default>			
 			<format>I</format>
 		</para>
 		<para>
 			<name>TMONTH</name>
-			<min></min>
-			<max></max>
-			<desc>
-				Define the start time of the observation.
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc>Define the start time of the observation.</desc>
 			<default>1</default>			
 			<format>I</format>
 		</para>
 		<para>
 			<name>TDAY</name>
-			<min></min>
-			<max></max>
-			<desc>
-				Define the start time of the observation.
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc>Define the start time of the observation.</desc>
 			<default>1</default>			
 			<format>I</format>
 		</para>
 		<para>
 			<name>THOUR</name>
-			<min></min>
-			<max></max>
-			<desc>
-				Define the start time of the observation.
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc>Define the start time of the observation.</desc>
 			<default>21</default>			
 			<format>I</format>
 		</para>
 		<para>
 			<name>TMINUTE</name>
-			<min></min>
-			<max></max>
-			<desc>
-				Define the start time of the observation.
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc>Define the start time of the observation.</desc>
 			<default>0</default>			
 			<format>I</format>
 		</para>
 		<para>
 			<name>TSECOND</name>
-			<min></min>
-			<max></max>
-			<desc>
-				Define the start time of the observation.
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc>Define the start time of the observation.</desc>
 			<default>0</default>			
 			<format>I</format>
 		</para>
 		<para>
 			<name>TDURATION</name>
-			<min>0</min>
-			<max></max>
-			<desc>
-				Duration of observation (in sec).
-			</desc>
+			<limits>
+				<min>0</min>
+				<max></max>
+			</limits>
+			<desc>Duration of observation (in sec).</desc>
 			<default>3600</default>			
 			<format>I</format>
 		</para>
@@ -2931,49 +2742,48 @@
 
 <setting>
 	<name>TLAT</name>
-	<desc>	
-		Lateral Telescope Site Parameters
-	</desc>
+	<desc>Lateral Telescope Site Parameters</desc>
 	<format>A4,</format>
-	<option>TRAJECT</option>
+	<options>TRAJECT</options>
+	<id>92</id>
 	<parameter>
 		<para>
 			<name>TLATDGR</name>
-			<min>0.0</min>
-			<max>90.0</max>
-			<desc>
-				Latitude of the telescope site (in degree).
-			</desc>
+			<limits>
+				<min>0.0</min>
+				<max>90.0</max>
+			</limits>
+			<desc>Latitude of the telescope site (in degree).</desc>
 			<default>28.0</default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>TLATMIN</name>
-			<min>0.0</min>
-			<max>60.0</max>
-			<desc>
-				Latitude of the telescope site (in min).
-			</desc>
+			<limits>
+				<min>0.0</min>
+				<max>60.0</max>
+			</limits>
+			<desc>Latitude of the telescope site (in min).</desc>
 			<default>45.0</default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>TLATSEC</name>
-			<min>0.0</min>
-			<max>60.0</max>
-			<desc>
-				Latitude of the telescope site (in sec).
-			</desc>
+			<limits>
+				<min>0.0</min>
+				<max>60.0</max>
+			</limits>
+			<desc>Latitude of the telescope site (in sec).</desc>
 			<default>24.462</default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>TLATDIR</name>
-			<min></min>
-			<max></max>
-			<desc>
-				Direction North = ’N’, South = ’S’ of the latitude of the telescope site.
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc>Direction North = ’N’, South = ’S’ of the latitude of the telescope site.</desc>
 			<default>N</default>			
 			<format>A1</format>
 		</para>
@@ -2982,49 +2792,48 @@
 
 <setting>
 	<name>TLONG</name>
-	<desc>	
-		Longitudinal Telescope Site Parameters
-	</desc>
+	<desc>Longitudinal Telescope Site Parameters</desc>
 	<format>A5</format>
-	<option>TRAJECT</option>
+	<options>TRAJECT</options>
+	<id>93</id>
 	<parameter>
 		<para>
 			<name>TLONGDGR</name>
-			<min></min>
-			<max></max>
-			<desc>
-				Longitude of the telescope site (in degree).
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc>Longitude of the telescope site (in degree).</desc>
 			<default>17.0</default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>TLONGMIN</name>
-			<min></min>
-			<max></max>
-			<desc>
-				Longitude of the telescope site (in min).
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc>Longitude of the telescope site (in min).</desc>
 			<default>53.0</default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>TLONGSEC</name>
-			<min></min>
-			<max></max>
-			<desc>
-				Longitude of the telescope site (in sec).
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc>Longitude of the telescope site (in sec).</desc>
 			<default>26.525</default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>TLONGDIR</name>
-			<min></min>
-			<max></max>
-			<desc>
-				Direction East = ’E’, West = ’W’ of the longitude of the telescope site.
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc>Direction East = ’E’, West = ’W’ of the longitude of the telescope site.</desc>
 			<default>W</default>			
 			<format>A1</format>
 		</para>
@@ -3033,18 +2842,18 @@
 
 <setting>
 	<name>GEODEC</name>
-	<desc>	
-		Geomagnetic Declination of Telescope
-	</desc>
+	<desc>Geomagnetic Declination of Telescope</desc>
 	<format>A6</format>
-	<option>TRAJECT</option>
+	<options>TRAJECT</options>
+	<id>94</id>
 	<parameter>
 		<para>
 			<name>GEODECL</name>
-			<min>-45.0</min>
-			<max>45.0</max>
-			<desc>
-			</desc>
+			<limits>
+				<min>-45.0</min>
+				<max>45.0</max>
+			</limits>
+			<desc></desc>
 			<default>-6.35</default>			
 			<format>F</format>
 		</para>
@@ -3053,19 +2862,18 @@
 
 <setting>
 	<name>TRARAD</name>
-	<desc>	
-		Trajectory Broadening Parameter
-	</desc>
+	<desc>Trajectory Broadening Parameter</desc>
 	<format>A6</format>
-	<option>TRAJECT</option>
+	<options>TRAJECT</options>
+	<id>95</id>
 	<parameter>
 		<para>
 			<name>TRAD</name>
-			<min>0</min>
-			<max>3600</max>
-			<desc>
-				Defines the radius of a spread around the calculated trajectory (in arcmin).
-			</desc>
+			<limits>
+				<min>0</min>
+				<max>3600</max>
+			</limits>
+			<desc>Defines the radius of a spread around the calculated trajectory (in arcmin).</desc>
 			<default>0.0</default>			
 			<format>F</format>
 		</para>
@@ -3074,19 +2882,18 @@
 
 <setting>
 	<name>EINTER</name>
-	<desc>		
-		Interesting Energy Threshold
-	</desc>
+	<desc>Interesting Energy Threshold</desc>
 	<format>A6</format>
-	<option>ICECUBE1</option>
+	<options>ICECUBE1</options>
+	<id>96</id>
 	<parameter>
 		<para>
 			<name>ENERGY_INTER</name>
-			<min></min>
-			<max></max>
-			<desc>
-				Threshold energy (in GeV) above which particles are interesting for production of high-energy neutrinos for the IceCube [56] experiment
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc>Threshold energy (in GeV) above which particles are interesting for production of high-energy neutrinos for the IceCube [56] experiment</desc>
 			<default>1000.0</default>			
 			<format>F</format>
 		</para>
@@ -3095,19 +2902,18 @@
 
 <setting>
 	<name>PIPE</name>
-	<desc>	
-		PIPE Output Redirection Flag
-	</desc>
+	<desc>PIPE Output Redirection Flag</desc>
 	<format>A4</format>
-	<option>ICECUBE2</option>
+	<options>ICECUBE2</options>
+	<id>97</id>
 	<parameter>
 		<para>
 			<name>PIPE_OUTPUT</name>
-			<min></min>
-			<max></max>
-			<desc>
-				If .true., the output is redirected to a pipe-buffer. This buffer should serve as on-line input to a detector simulation program.
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc>If .true., the output is redirected to a pipe-buffer. This buffer should serve as on-line input to a detector simulation program.</desc>
 			<default>F</default>			
 			<format>L</format>
 		</para>
@@ -3116,19 +2922,18 @@
 
 <setting>
 	<name>COMPRESS</name>
-	<desc>
-		Compress Output Flag
-	</desc>
+	<desc>Compress Output Flag</desc>
 	<format>A8</format>
-	<option>ICECUBE2</option>
+	<options>ICECUBE2</options>
+	<id>98</id>
 	<parameter>
 		<para>
 			<name>GZIP_OUTPUT</name>
-			<min></min>
-			<max></max>
-			<desc>
-				If .true., the output is compressed using the gzip procedure to reduce storage space. The gain in space reduction will not be very dramatic
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc>If .true., the output is compressed using the gzip procedure to reduce storage space. The gain in space reduction will not be very dramatic</desc>
 			<default>T</default>			
 			<format>L</format>
 		</para>
@@ -3137,17 +2942,18 @@
 
 <setting>
 	<name>DATBAS</name>
-	<desc>		
-	</desc>
+	<desc></desc>
 	<format>A6</format>
-	<option>UNIX</option>
+	<options>UNIX</options>
+	<id>99</id>
 	<parameter>
 		<para>
 			<name>FDBASE</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>F</default>			
 			<format>L</format>
 		</para>
@@ -3156,19 +2962,18 @@
 
 <setting>
 	<name>USER</name>
-	<desc>	
-		User Name
-	</desc>
+	<desc>User Name</desc>
 	<format>A4</format>
-	<option></option>
+	<options></options>
+	<id>100</id>
 	<parameter>
 		<para>
 			<name>USER</name>
-			<min></min>
-			<max></max>
-			<desc>
-				A user name is read in to be written to the ’DATnnnnnn.dbase’ file. Lower case characters of USER are not converted to capitals.
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc>A user name is read in to be written to the ’DATnnnnnn.dbase’ file. Lower case characters of USER are not converted to capitals.</desc>
 			<default> </default>			
 			<format>A60</format>
 		</para>
@@ -3177,18 +2982,18 @@
 
 <setting>
 	<name>HOST</name>
-	<desc>		
-	</desc>
+	<desc>Host Name</desc>
 	<format>A4</format>
-	<option></option>
+	<options></options>
+	<id>101</id>
 	<parameter>
 		<para>
 			<name>HOST</name>
-			<min></min>
-			<max></max>
-			<desc>
-				A host name is read in to be written to the ’DATnnnnnn.dbase’ file. Lower case characters of HOST are not converted to capitals.
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc>A host name is read in to be written to the ’DATnnnnnn.dbase’ file. Lower case characters of HOST are not converted to capitals.</desc>
 			<default> </default>			
 			<format>A60</format>
 		</para>
@@ -3197,45 +3002,48 @@
 
 <setting>
 	<name>DEBUG</name>
-	<desc>
-		Debugging
-	</desc>
+	<desc>Debugging</desc>
 	<format>A5</format>
-	<option></option>
+	<options></options>
+	<id>102</id>
 	<parameter>
 		<para>
 			<name>DEBUG</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>F</default>			
 			<format>L</format>
 		</para>
 		<para>
 			<name>MDEBUG</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default></default>			
 			<format>I</format>
 		</para>
 		<para>
 			<name>DEBDEL</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>F</default>			
 			<format>L</format>
 		</para>
 		<para>
 			<name>NDEBDL</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>100000</default>			
 			<format>I</format>
 		</para>
@@ -3244,18 +3052,18 @@
 
 <setting>
 	<name>EGSDEB</name>
-	<desc>	
-		Debugging EGS
-	</desc>
+	<desc>Debugging EGS</desc>
 	<format>A6</format>
-	<option></option>
+	<options></options>
+	<id>103</id>
 	<parameter>
 		<para>
 			<name>JCLOCK</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>2147483647</default>			
 			<format>I</format>
 		</para>
@@ -3264,18 +3072,18 @@
 
 <setting>
 	<name>FLUDBG</name>
-	<desc>		
-		FLUKA Printing
-	</desc>
+	<desc>FLUKA Printing</desc>
 	<format>A6</format>
-	<option>FLUKA</option>
+	<options>FLUKA</options>
+	<id>104</id>
 	<parameter>
 		<para>
 			<name>FFLUDB</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>F</default>			
 			<format>L</format>
 		</para>
@@ -3284,18 +3092,18 @@
 
 <setting>
 	<name>GHEIDB</name>
-	<desc>	
-		GHEISHA Debugging
-	</desc>
+	<desc>GHEISHA Debugging</desc>
 	<format>A6</format>
-	<option>GHEISHA</option>
+	<options>GHEISHA</options>
+	<id>105</id>
 	<parameter>
 		<para>
 			<name>GHEISDB</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>F</default>			
 			<format>L</format>
 		</para>
@@ -3304,27 +3112,28 @@
 
 <setting>
 	<name>URQMD</name>
-	<desc>	
-		URQMD Debugging
-	</desc>
+	<desc>URQMD Debugging</desc>
 	<format>A5</format>
-	<option>URQMD</option>
+	<options>URQMD</options>
+	<id>106</id>
 	<parameter>
 		<para>
 			<name>FURQMD</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>T</default>			
 			<format>L</format>
 		</para>
 		<para>
 			<name>IUDEBUG</name>
-			<min>0</min>
-			<max>3</max>
-			<desc>
-			</desc>
+			<limits>
+				<min>0</min>
+				<max>3</max>
+			</limits>
+			<desc></desc>
 			<default>0</default>			
 			<format>I</format>
 		</para>
@@ -3333,27 +3142,28 @@
 
 <setting>
 	<name>PYTHIA</name>
-	<desc>	
-		PYTHIA Printing
-	</desc>
+	<desc>PYTHIA Printing</desc>
 	<format>A6</format>
-	<option>DPMJET,CHARM,TAULEP</option>
+	<options>DPMJET,CHARM,TAULEP</options>
+	<id>107</id>
 	<parameter>
 		<para>
 			<name>IFLGPYW</name>
-			<min>0</min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min>0</min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>0</default>			
 			<format>I</format>
 		</para>
 		<para>
 			<name>IFLGPYE</name>
-			<min>0</min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min>0</min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>0</default>			
 			<format>I</format>
 		</para>
@@ -3362,18 +3172,18 @@
 
 <setting>
 	<name>CDEBUG</name>
-	<desc>	
-		Cherenkov Debugging
-	</desc>
+	<desc>Cherenkov Debugging</desc>
 	<format>A6</format>
-	<option>CERENKOV</option>
+	<options>CERENKOV</options>
+	<id>108</id>
 	<parameter>
 		<para>
 			<name>LCERDB</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>F</default>			
 			<format>L</format>
 		</para>
@@ -3382,27 +3192,28 @@
 
 <setting>
 	<name>INTTST</name>
-	<desc>		
-		Interaction Test Target Definition
-	</desc>
+	<desc>Interaction Test Target Definition</desc>
 	<format>A6</format>
-	<option>INTTEST</option>
+	<options>INTTEST</options>
+	<id>109</id>
 	<parameter>
 		<para>
 			<name>ITTAR</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>0</default>			
 			<format>I</format>
 		</para>
 		<para>
 			<name>MCM</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>0</default>			
 			<format>I</format>
 		</para>
@@ -3411,45 +3222,48 @@
 
 <setting>
 	<name>INTDEC</name>
-	<desc>	
-		Interaction Test Decay
-	</desc>
+	<desc>Interaction Test Decay</desc>
 	<format>A6</format>
-	<option>INTTEST</option>
+	<options>INTTEST</options>
+	<id>110</id>
 	<parameter>
 		<para>
 			<name>LPI0</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>T</default>			
 			<format>L</format>
 		</para>
 		<para>
 			<name>LETA</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>T</default>			
 			<format>L</format>
 		</para>
 		<para>
 			<name>LHYP</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>T</default>			
 			<format>L</format>
 		</para>
 		<para>
 			<name>LK0S</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>T</default>			
 			<format>L</format>
 		</para>
@@ -3458,18 +3272,18 @@
 
 <setting>
 	<name>INTSPC</name>
-	<desc>	
-		Interaction Test Spectator Definition
-	</desc>
+	<desc>Interaction Test Spectator Definition</desc>
 	<format>A6</format>
-	<option>INTTEST</option>
+	<options>INTTEST</options>
+	<id>111</id>
 	<parameter>
 		<para>
 			<name>LSPEC</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>F</default>			
 			<format>L</format>
 		</para>
@@ -3478,18 +3292,18 @@
 
 <setting>
 	<name>DIFOFF</name>
-	<desc>	
-		Interaction Test Diffraction Flag
-	</desc>
+	<desc>Interaction Test Diffraction Flag</desc>
 	<format>A6</format>
-	<option>INTTEST</option>
+	<options>INTTEST</options>
+	<id>112</id>
 	<parameter>
 		<para>
 			<name>NDIF</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>0</default>			
 			<format>I</format>
 		</para>
@@ -3498,18 +3312,18 @@
 
 <setting>
 	<name>TRIGGER</name>
-	<desc>	
-		Interaction Test Trigger Condition
-	</desc>
+	<desc>Interaction Test Trigger Condition</desc>
 	<format>A7</format>
-	<option>INTTEST</option>
+	<options>INTTEST</options>
+	<id>113</id>
 	<parameter>
 		<para>
 			<name>NTRIG</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>0</default>			
 			<format>I</format>
 		</para>
@@ -3518,18 +3332,18 @@
 
 <setting>
 	<name>HISTDS</name>
-	<desc>	
-		Interaction Test Histogram Output
-	</desc>
+	<desc>Interaction Test Histogram Output</desc>
 	<format>A6</format>
-	<option>INTTEST</option>
+	<options>INTTEST</options>
+	<id>114</id>
 	<parameter>
 		<para>
 			<name>HISTDS</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>histo.corsika.inttest</default>			
 			<format>A120</format>
 		</para>
@@ -3538,18 +3352,18 @@
 
 <setting>
 	<name>PLOTSH</name>
-	<desc>		
-		Plot Output
-	</desc>
+	<desc>Plot Output</desc>
 	<format>A6</format>
-	<option>PLOTSH,PLOTSH2</option>
+	<options>PLOTSH,PLOTSH2</options>
+	<id>115</id>
 	<parameter>
 		<para>
 			<name>PLOTSH</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>F</default>			
 			<format>L</format>
 		</para>
@@ -3558,63 +3372,68 @@
 
 <setting>
 	<name>PLAXES</name>
-	<desc>		
-		Plot Axes Definition
-	</desc>
+	<desc>Plot Axes Definition</desc>
 	<format>A6</format>
-	<option>PLOTSH2</option>
+	<options>PLOTSH2</options>
+	<id>116</id>
 	<parameter>
 		<para>
 			<name>X1</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>-500000.0</default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>X2</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>500000.0</default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>Y1</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>-500000.0</default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>Y2</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>500000.0</default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>Z1</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>0.0</default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>Z2</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>3000000.0</default>			
 			<format>F</format>
 		</para>
@@ -3623,63 +3442,68 @@
 
 <setting>
 	<name>PLCUTS</name>
-	<desc>		
-		Plot Energy Cut Definition
-	</desc>
+	<desc>Plot Energy Cut Definition</desc>
 	<format>A6</format>
-	<option>PLOTSH2</option>
+	<options>PLOTSH2</options>
+	<id>117</id>
 	<parameter>
 		<para>
 			<name>ELCUTS1</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>0.3</default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>ELCUTS2</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>0.3</default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>ELCUTS3</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>0.003</default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>ELCUTS4</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>0.003</default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>TCUT</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>100000.0</default>			
 			<format>F</format>
 		</para>
 		<para>
 			<name>FBOXCUT</name>
-			<min></min>
-			<max></max>
-			<desc>
-			</desc>
+			<limits>
+				<min></min>
+				<max></max>
+			</limits>
+			<desc></desc>
 			<default>F</default>			
 			<format>L</format>
 		</para>
@@ -3688,10 +3512,10 @@
 
 <setting>
 	<name>EXIT</name>
-	<desc>		
-	</desc>
+	<desc>End of Steering</desc>
 	<format>A4</format>
-	<option></option>
+	<options></options>
+	<id>118</id>
 	<parameter></parameter>
 </setting>
 

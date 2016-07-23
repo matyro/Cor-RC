@@ -1,13 +1,7 @@
 {% include "header.html" %}
-<style>
-.row {
-	height: 100%;
-    display: table;	
-	float: none;
-}
 
-.row [class*="col-"] {
-    float: none;
+<style>
+.row [class*="col-"] {   
     display: table-cell;
     vertical-align: top;	
 }
@@ -20,85 +14,35 @@
 {% end %}
 
 <!-- Main jumbotron for a primary marketing message or call to action -->
-<div class="container col-sm-12 col-md-12 col-lg-12 no-float"  style="height: 100%; max-height: 100%; min-height: 100%">
-	<div class="jumbotron" style="height:85vh;">
-		<div class="row" style="width:100%;">
-			<div class="col-sm-3 col-md-3 col-lg-3 text-left">
-				<div class="tree" style="overflow-x:scroll; overflow-y:scroll; max-height:70vh;">
-					<ul>
-						{% raw fileTree %}
-					</ul>
-					<!--<ul>
-						<li>
-							<span><i class="glyphicon glyphicon-folder-open"></i> Parent</span> 
+<div class="container">	 
+	<div class="row">
+		<div class="col-md-12" style="height:100%;">  
+		
+			<div class="panel panel-default" style="height:100%;">	
+				<div class="row no-float" style="display: table; width:100%;">
+					<div class="col-sm-3 col-md-3 col-lg-3 no-float" style="height:100%;">
+						<div class="tree" style="overflow-x:scroll; overflow-y:scroll; max-height:70vh;">
 							<ul>
-								<li>
-									<span><i class="glyphicon glyphicon-minus-sign"></i> Child</span> 
-									<ul>
-										<li>
-											<span><i class="glyphicon glyphicon-leaf"></i> <a href="/edit?name">Grand Child</a></span> 
-										</li>
-									</ul>
-								</li>
-								<li>
-									<span><i class="glyphicon glyphicon-minus-sign"></i> Child</span> 
-									<ul>
-										<li>
-											<span><i class="glyphicon glyphicon-leaf"></i> Grand Child</span> 
-										</li>
-										<li>
-											<span><i class="glyphicon glyphicon-minus-sign"></i> Grand Child</span>
-											<ul>
-												<li>
-													<span><i class="glyphicon glyphicon-minus-sign"></i> Great Grand Child</span>
-													<ul>
-														<li>
-															<span><i class="glyphicon glyphicon-leaf"></i> Great great Grand Child</span> 
-														</li>
-														<li>
-															<span><i class="glyphicon glyphicon-leaf"></i> Great great Grand Child</span> 
-														</li>
-													</ul>
-												</li>
-												<li>
-													<span><i class="glyphicon glyphicon-leaf"></i> Great Grand Child</span>
-												</li>
-												<li>
-													<span><i class="glyphicon glyphicon-leaf"></i> Great Grand Child</span> 
-												</li>
-											</ul>
-										</li>
-										<li>
-											<span><i class="glyphicon glyphicon-leaf"></i> Grand Child</span> 
-										</li>
-									</ul>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<span><i class="glyphicon glyphicon-folder-open"></i> Parent2</span> 
-							<ul>
-								<li>
-									<span><i class="glyphicon glyphicon-leaf"></i> Child</span> 
-								</li>
-							</ul>
-						</li>
-					</ul>-->
-				
+								{% raw fileTree %}
+							</ul>					
+
+						</div>
+					</div>
+					<div class="col-sm-9 col-md-9 col-lg-9 no-float" style="height:100%;">
+						<form action="/edit" method="POST" role="form" style="width:100%;height:100%">
+							<label for="Edit">Edit:  </label>
+							<input type="text" name="filePath" id="filePath" class="form-control" style="width:100%; resize:none;" value="{{ filePath }}">  </input>
+							<textarea name="fileContent" id="fileContent" style="width:100%;height:calc(100% - 85px); resize:none; margin-bottom:10px">
+								{{ fileContent }}
+							</textarea>	
+								{% raw xsrf_form_html() %}
+							<a href="/edit?action=reload" class="btn btn-danger pull-left">Reload</a>
+							<button id='submit' type="submit" href="/edit?action=save" class="btn btn-success pull-right" >Save</button>
+						</form>										
+					</div>
 				</div>
 			</div>
-			<div class="col-sm-9 col-md-9 col-lg-9" style="height:100%;">
-					<form action="/edit" method="POST" role="form" style="width:100%;height:100%">
-						<label for="Edit">Edit:  </label>
-						<input type="text" name="filePath" id="filePath" class="form-control" style="width:100%; resize:none;" value="{{ filePath }}">  </input>
-						<textarea name="fileContent" id="fileContent" style="width:100%;height:calc(100% - 85px); resize:none; margin-bottom:10px">
-							{{ fileContent }}
-						</textarea>	
-						{% raw xsrf_form_html() %}
-						<a href="/edit?action=reload" class="btn btn-danger pull-left">Reload</a>
-						<button id='submit' type="submit" href="/edit?action=save" class="btn btn-success pull-right" >Save</button>
-					</form>										
-			</div>
+			
 		</div>
 	</div>
 </div>

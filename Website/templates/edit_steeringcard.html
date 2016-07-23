@@ -1,35 +1,87 @@
 {% include "header.html" %}
-	
-  <div class="container" style="padding: 70px;">   
-     {% if steering is None %}	   
-       <div class="alert alert-warning">
-         <strong>Warning!</strong> Steering card not found or no permission to view.
-       </div>
-	 {& else %}
-	 <form action="/edit_card" method="POST" role="form">
-       <div class="panel panel-default">
-	      <div class="form-group">
-            <label for="sel1">Select list:</label>
-            <select class="form-control" id="sel1">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            </select>
-			<button type="button" class="btn btn-default btn-sm">Copy</button>
-         </div>
-         <div class="panel-heading">
-		   <input type="text" class="form-control" id="name">
-		 </div>
-         <div class="panel-body">
-		   <label for="card">Steering-Card:</label>
-           <textarea class="form-control" rows="5" id="comment">{{steering.card}}</textarea>
-		 </div>
-		 <button type="submit" class="btn btn-success">Save</button>
-       </div>
-	 </form>
-	 {% end %}
-  </div>
+
+<style type="text/css">
+.col-md-3
+{	
+    display: table-cell;    
+	height: 100%;
+	width: 23%;
+}
+.col-md-9
+{	
+    display: table-cell;  
+	height: 100%;	
+	width: 73%;
+}
+</style>
+
+
+<div class="container" >
+	<div class="row">
+
+		<div class="col-md-3 panel pull-left">		
+			<label for="settings">Select settings to add:</label>
+			<select multiple class="form-control" id="settings" style="height: calc(100% - 85px);">
+				<option>1</option>
+				<option>2</option>
+				<option>3</option>
+				<option>4</option>
+				<option>5</option>
+			</select>				
+			<button type="button" class="btn btn-info pull-left no-float" style="width:35%; margin: 10px;">Add</button>
+			<label class="btn btn-success pull-right no-float" for="submit-form" style="width:35%; margin: 10px;">Submit</label>
+		</div>	
+
+		<div class="col-md-9 no-float panel pull-right" style="overflow-y:scroll;">
+			<form action="/edit_card" method="POST" role="form">
+
+				<ul id="sortList">
+
+					<li id="listWithHandle" class="panel panel-info">				
+						<div class="panel-heading">	Setting 1</div>
+						<div class="panel-body">
+							Description,  checkbox, input field
+						</div>
+					</li>
+					<li>				
+						test
+					</li>
+					<li>				
+						test2
+					</li>
+				</ul>
+
+				<input type="submit" id="submit-form" class="hidden" />
+			</form>
+
+		</div>
+
+	</div>
+</div>
+<div id="listWithHandle2" class="list-group">
+	<div class="list-group-item">
+		<span class="badge">14</span>
+		<span class="glyphicon glyphicon-move" aria-hidden="true"/>
+      Drag me by the handle
+	</div>
+	<div class="list-group-item">
+		<span class="badge">2</span>
+		<span class="glyphicon glyphicon-move" aria-hidden="true"/>
+      You can also select text
+	</div>
+	<div class="list-group-item">
+		<span class="badge">1</span>
+		<span class="glyphicon glyphicon-move" aria-hidden="true"/>
+      Best of both worlds!
+	</div>
+</div>
+<script type="text/javascript">
+// List with handle
+Sortable.create(listWithHandle2, {
+  handle: '.glyphicon-move',
+  animation: 150
+});
+</script>
 
 
 {% include "footer.html" %}

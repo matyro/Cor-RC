@@ -1,51 +1,63 @@
 {% include "header.html" %}
-	
-  <div class="container" style="padding: 70px;">   
-      <style>
-	    body
-        {
-        counter-reset: Serial;           /* Set the Serial counter to 0 */
-        }      
 
-        tr td:first-child:before
-        {
-        counter-increment: Serial;      /* Increment the Serial counter */
-        content: counter(Serial);       /* Display the counter */
-        }  
-      </style>
-	<div class="jumbotron">
-      <table class="table table-hover ">
-        <thead class="thead-inverse">
-        <tr>
-		  <th scope="row">#</th>
-		  <th>Status</th>	          
-          <th>IP</th>
-          <th>User</th>
-		  <th>Start</th>
-		  <th>Profile</th>		  
-        </tr>
-      </thead>
-      <tbody>	    
+<style>
+tr td:first-child:before
+{
+    counter-increment: Serial;      /* Increment the Serial counter */
+    content: counter(Serial);       /* Display the counter */
+}  
+</style>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">  
+			<div class="panel panel-default">
+			
+				<table class="table table-hover ">
+					<thead class="thead-inverse">
+						<tr>
+							<th scope="row">#</th>
+							<th>Status</th>	          
+							<th>IP</th>
+							<th>User</th>
+							<th>Start</th>
+							<th>Profile</th>		  
+						</tr>
+					</thead>
+					<tbody>	    
 	    {% for itr in simulation %}  
-        <tr>	
-          <td></td>		
+						<tr>	
+							<td/>		
 		  {% if itr.status is 1 %}
-		  <td> <img height="20" width="20" src="{{static_url('images/green.png')}}" > </td>
+							<td>
+								<img height="20" width="20" src="{{static_url('images/green.png')}}" />
+							</td>
 		  {% elif itr.status is 2 %}
-		  <td> <img height="20" width="20" src="{{static_url('images/red.png')}}" > </td>
+							<td>
+								<img height="20" width="20" src="{{static_url('images/red.png')}}" />
+							</td>
 		  {% else %}
-		  <td> <img height="20" width="20" src="{{static_url('images/white.png')}}" > </td>
+							<td>
+								<img height="20" width="20" src="{{static_url('images/white.png')}}" />
+							</td>
 		  {% end %}		  
-          <td>{{itr.ip}}</td>
-          <td>{{itr.user.username}}</td>     
-		  <td>{{itr.startTime}}</td>  	
-          <td><a href="show_cards?id={{itr.steering_card_id}}">{{itr.profile}}</a></td>         
-        </tr>
+							<td>{{itr.ip}}</td>
+							<td>{{itr.user.username}}</td>     
+							<td>{{itr.startTime}}</td>  	
+							<td>
+								<a href="show_cards?id={{itr.steering_card_id}}">{{itr.profile}}</a>
+							</td>         
+						</tr>
 		{% end %}     
-      </tbody>
-    </table>
+					</tbody>
+				</table>
+				
+			</div>
+		</div>
 	</div>
-  </div>
+</div>
+
+
 
 
 

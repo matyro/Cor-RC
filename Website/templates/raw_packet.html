@@ -2,36 +2,51 @@
 
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="container">
-	<div class="jumbotron">
-		<h2>Send RAW packets to specific corsika clients</h2>
-		<form action="/raw" class="form-signin" method="POST" role="form">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
 
-			<div class="form-inline">
-				<div class="form-group">
-					<b>Client list:</b> <select id="client" name="client">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Send RAW packets to specific corsika clients</h3>
+				</div>
+
+				<div class="panel-body">
+					<form action="/raw" class="form-signin" method="POST" role="form">
+
+						<div class="form-inline">
+							<div class="form-group">
+								<b>Client list:</b>
+								<select id="client" name="client">
 						{% for itr in simulation %}
-						<option>{{itr.ip}}</option>
+									<option>{{itr.ip}}</option>
 						{% end %}
-					</select>
-				</div>
-				<div class="form-group">
-					<b style="margin-left: 50px; margin-right: 10px;">Header:</b> <input id="ex6"
+								</select>
+							</div>
+							<div class="form-group">
+								<b style="margin-left: 50px; margin-right: 10px;">Header:</b>
+								<input id="ex6"
 						type="text" data-slider-min="0" data-slider-max="255"
-						data-slider-step="1" data-slider-value="0" name="header"/> <span style="margin-left: 10px;"
+						data-slider-step="1" data-slider-value="0" name="header"/>
+								<span style="margin-left: 10px;"
 						id="ex6SliderVal" >0</span>
+							</div>
+						</div>
+						<label style="margin-top:40px;">Input message content in hexadecimal without
+				whitespace:</label>
+						<div class="input-group">
+							<span class="input-group-addon">0x</span> 
+							<input type="text" name="message" class="form-control" placeholder="Message"/>
+						</div>
+			{% raw xsrf_form_html() %}
+						<button type="submit" class="btn btn-success btn-block"	style="margin-top: 20px;">Send</button>
+					</form>
 				</div>
 			</div>
-			<label style="margin-top:40px;">Input message content in hexadecimal without
-				whitespace:</label>
-			<div class="input-group">
-				<span class="input-group-addon">0x</span> 
-				<input type="text" name="message" class="form-control" placeholder="Message">
-			</div>
-			{% raw xsrf_form_html() %}
-			<button type="submit" class="btn btn-success btn-block"	style="margin-top: 20px;">Send</button>
-		</form>
+			
+		</div>
 	</div>
 </div>
+
 
 
 

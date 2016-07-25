@@ -11,7 +11,7 @@
 {	
     display: table-cell;  
 	height: 100%;	
-	width: 73%;
+	width: 73%;	
 }
 </style>
 
@@ -20,34 +20,75 @@
 	<div class="row">
 
 		<div class="col-md-3 panel pull-left">		
-			<label for="settings">Select settings to add:</label>
-			<select multiple class="form-control" id="settings" style="height: calc(100% - 85px);">
-				<option>1</option>
-				<option>2</option>
-				<option>3</option>
-				<option>4</option>
-				<option>5</option>
-			</select>				
-			<button type="button" class="btn btn-info pull-left no-float" style="width:35%; margin: 10px;">Add</button>
-			<label class="btn btn-success pull-right no-float" for="submit-form" style="width:35%; margin: 10px;">Submit</label>
+			<div class="panel-heading">		
+				<a class="panel-title"> Select settings to add: </a>
+			</div>
+			<div class="panel-body" style="height: 100%;">
+				<select multiple class="form-control" id="settings" style="height: calc(100% - 85px);">
+					<option>1</option>
+					<option>2</option>
+					<option>3</option>
+					<option>4</option>
+					<option>5</option>
+				</select>				
+				<button type="button" class="btn btn-info pull-left no-float" style="width:35%; margin: 10px;">Add</button>
+				<label class="btn btn-success pull-right no-float" for="submit-form" style="width:35%; margin: 10px;">Submit</label>
+			</div>
 		</div>	
 
 		<div class="col-md-9 no-float panel pull-right" style="overflow-y:scroll;">
 			<form action="/edit_card" method="POST" role="form">
 
-				<ul id="sortList">
-
-					<li id="listWithHandle" class="panel panel-info">				
-						<div class="panel-heading">	Setting 1</div>
-						<div class="panel-body">
-							Description,  checkbox, input field
+				<ul id="moveList" class="panel-group list-unstyled" style="padding:20px;">
+					<li class="panel panel-default">
+						<div class="panel-heading" style="height:25px; padding-top:0px; padding-bottom:6px;">		
+							<a class="panel-title"> Setting 1 </a>
+							<span class="text-left col-xs-1 panel-title" data-parent="#moveList" data-toggle="collapse" href="#collapse1" >
+								<i class="fa fa-bars"></i>
+							</span>							
+						</div>
+						<div id="collapse1" class="panel-collapse collapse">
+							<div class="panel-body">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+								sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+								minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+								commodo consequat.
+							</div>
 						</div>
 					</li>
-					<li>				
-						test
+
+					<li class="panel panel-default">
+						<div class="panel-heading" style="height:25px; padding-top:0px; padding-bottom:6px;">		
+							<a class="panel-title"> Setting 2 </a>
+							<span class="text-left col-xs-1 panel-title" data-parent="#moveList" data-toggle="collapse" href="#collapse2" >
+								<i class="fa fa-bars"></i>
+							</span>							
+						</div>
+						<div id="collapse2" class="panel-collapse collapse">
+							<div class="panel-body">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+								sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+								minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+								commodo consequat.
+							</div>
+						</div>
 					</li>
-					<li>				
-						test2
+					
+					<li class="panel panel-default">
+						<div class="panel-heading" style="height:25px; padding-top:0px; padding-bottom:6px;">		
+							<a class="panel-title"> Setting 3 </a>
+							<span class="text-left col-xs-1 panel-title" data-parent="#moveList" data-toggle="collapse" href="#collapse3" >
+								<i class="fa fa-bars"></i>
+							</span>							
+						</div>
+						<div id="collapse3" class="panel-collapse collapse">
+							<div class="panel-body">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+								sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+								minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+								commodo consequat.
+							</div>
+						</div>
 					</li>
 				</ul>
 
@@ -58,29 +99,14 @@
 
 	</div>
 </div>
-<div id="listWithHandle2" class="list-group">
-	<div class="list-group-item">
-		<span class="badge">14</span>
-		<span class="glyphicon glyphicon-move" aria-hidden="true"/>
-      Drag me by the handle
-	</div>
-	<div class="list-group-item">
-		<span class="badge">2</span>
-		<span class="glyphicon glyphicon-move" aria-hidden="true"/>
-      You can also select text
-	</div>
-	<div class="list-group-item">
-		<span class="badge">1</span>
-		<span class="glyphicon glyphicon-move" aria-hidden="true"/>
-      Best of both worlds!
-	</div>
-</div>
-<script type="text/javascript">
-// List with handle
-Sortable.create(listWithHandle2, {
-  handle: '.glyphicon-move',
-  animation: 150
-});
+
+<script>
+   $(function(){
+        $('.panel').lobiPanel({
+            //Options go here
+            ...
+        });
+    });
 </script>
 
 

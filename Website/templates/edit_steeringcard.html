@@ -13,6 +13,36 @@
 	height: 100%;	
 	width: 73%;	
 }
+
+.panel-heading .accordion-toggle:after {
+    /* symbol for "opening" panels */
+    font-family: 'Glyphicons Halflings';  /* essential for enabling glyphicon */
+    content: "\e114";    /* adjust as needed, taken from bootstrap.css */
+    float: right;        /* adjust as needed */
+    color: grey;         /* adjust as needed */
+}
+.panel-heading .accordion-toggle.collapsed:after {
+    /* symbol for "collapsed" panels */
+    content: "\e080";    /* adjust as needed, taken from bootstrap.css */
+}
+
+.ui-state-highlight { 
+	height: 1.5em;
+	line-height: 1.2em;
+	margin: 8px;
+}
+
+.trash{	
+	background-color: lightgrey;
+	border-radius: 10px;
+}
+.trash_highlight{	
+	background-color: red;
+	border-radius: 10px;
+}
+
+.my_collaps{
+}
 </style>
 
 
@@ -24,72 +54,54 @@
 				<a class="panel-title"> Select settings to add: </a>
 			</div>
 			<div class="panel-body" style="height: 100%;">
-				<select multiple class="form-control" id="settings" style="height: calc(100% - 85px);">
-					<option>1</option>
-					<option>2</option>
-					<option>3</option>
-					<option>4</option>
-					<option>5</option>
-				</select>				
-				<button type="button" class="btn btn-info pull-left no-float" style="width:35%; margin: 10px;">Add</button>
-				<label class="btn btn-success pull-right no-float" for="submit-form" style="width:35%; margin: 10px;">Submit</label>
+			
+				<ul id="collectionList" class="panel-group list-unstyled" style="padding:20px;">
+					<li class="group">							
+						<h3 class="panel-title">Setting 1</h3>	
+						<div >
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+								sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+								minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+								commodo consequat.
+						</div>
+					</li>
+
+				<li class="group">							
+						<h3 class="panel-title">Setting 2</h3>	
+						<div >
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+								sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+								minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+								commodo consequat.
+						</div>
+					</li>
+
+					<li class="group">							
+						<h3 class="panel-title">Setting 3</h3>	
+						<div >
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+								sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+								minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+								commodo consequat.
+						</div>
+					</li>
+				</ul>			
+				
+				<label class="btn btn-success btn-block" for="submit-form" style="margin: 10px;">Submit</label>
 			</div>
 		</div>	
 
-		<div class="col-md-9 no-float panel pull-right" style="overflow-y:scroll;">
+		<div class="col-md-9 no-float panel panel-default pull-right" style="overflow-y:scroll;">
+			<div class="panel-heading clearfix" style="margin-left: 10px; margin-right: 10px;">	
+				<h2 class="panel-title pull-left" style="padding-top: 7.5px;"><b>Steering Card:</b></h2>
+				<div id="trash" class="trash pull-right">
+					<a><i class="fa fa-trash fa-3x" aria-hidden="true"></i></a>
+				</div>					
+			</div>
+			
 			<form action="/edit_card" method="POST" role="form">
 
-				<ul id="moveList" class="panel-group list-unstyled" style="padding:20px;">
-					<li class="panel panel-default">
-						<div class="panel-heading" style="height:25px; padding-top:0px; padding-bottom:6px;">		
-							<a class="panel-title"> Setting 1 </a>
-							<span class="text-left col-xs-1 panel-title" data-parent="#moveList" data-toggle="collapse" href="#collapse1" >
-								<i class="fa fa-bars"></i>
-							</span>							
-						</div>
-						<div id="collapse1" class="panel-collapse collapse">
-							<div class="panel-body">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-								sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-								minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-								commodo consequat.
-							</div>
-						</div>
-					</li>
-
-					<li class="panel panel-default">
-						<div class="panel-heading" style="height:25px; padding-top:0px; padding-bottom:6px;">		
-							<a class="panel-title"> Setting 2 </a>
-							<span class="text-left col-xs-1 panel-title" data-parent="#moveList" data-toggle="collapse" href="#collapse2" >
-								<i class="fa fa-bars"></i>
-							</span>							
-						</div>
-						<div id="collapse2" class="panel-collapse collapse">
-							<div class="panel-body">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-								sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-								minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-								commodo consequat.
-							</div>
-						</div>
-					</li>
-					
-					<li class="panel panel-default">
-						<div class="panel-heading" style="height:25px; padding-top:0px; padding-bottom:6px;">		
-							<a class="panel-title"> Setting 3 </a>
-							<span class="text-left col-xs-1 panel-title" data-parent="#moveList" data-toggle="collapse" href="#collapse3" >
-								<i class="fa fa-bars"></i>
-							</span>							
-						</div>
-						<div id="collapse3" class="panel-collapse collapse">
-							<div class="panel-body">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-								sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-								minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-								commodo consequat.
-							</div>
-						</div>
-					</li>
+				<ul id="steeringList" class="panel-group list-unstyled" style="padding:20px;">				
 				</ul>
 
 				<input type="submit" id="submit-form" class="hidden" />
@@ -101,12 +113,70 @@
 </div>
 
 <script>
-   $(function(){
-        $('.panel').lobiPanel({
-            //Options go here
-            ...
-        });
+    $( function(){
+    $( "#steeringList" ).sortable({		
+		placeholder: "ui-state-highlight",	
+		axis: "y",
+		receive: function(e,ui) {			
+            copyHelper = null;					
+			$(".accordion").accordion( "refresh" );
+        },
+		stop: function( event, ui ) {
+			ui.item.children( "h3" ).triggerHandler( "focusout" );			
+			// Refresh accordion to handle new order
+			$(".accordion").accordion( "refresh" );
+		}
     });
+	
+	$("#steeringList").accordion({
+		header: "> li > h3",
+		active: false,
+		collapsible: true
+	})
+	
+	$( "#collectionList" ).sortable({	
+		connectWith: "#steeringList" ,
+		forcePlaceholderSize: false,
+		placeholder: "ui-state-highlight",		
+		helper: function(e,li) {
+			copyHelper = li.clone(true,true).insertAfter(li);
+			
+			var tmp = li.clone(true,true);			
+			return tmp;
+		},
+		beforeStop: function(event, ui) {
+			// Don't allow resorting in list1... would call cancel here, but there is a jquery 1.7 bug so we
+			// need to do the check here but do the cancel in "stop" below. @see http://bugs.jqueryui.com/ticket/6054
+			$(this).sortable("option", "selfDrop", $(ui.placeholder).parent()[0] == this);
+		},
+		stop: function(event, ui) {
+			copyHelper && copyHelper.remove();
+			
+			var $sortable = $(this);
+			if ($sortable.sortable("option", "selfDrop")) {
+				$sortable.sortable('cancel');
+				return;
+			}
+		}
+    });
+	
+	$("#collectionList").accordion({
+		header: "> li > h3",
+		active: false,
+		collapsible: true
+	})
+	
+    $( "#steeringList, #collectionList" ).disableSelection();
+	
+	
+	$("#trash").droppable({			
+		drop: function(ev, ui) {
+			ui.draggable.remove();			 
+		},        
+		tolerance: "pointer",
+		hoverClass: "trash_highlight"
+	});   
+});
 </script>
 
 

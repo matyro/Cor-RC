@@ -17,7 +17,7 @@
 				</div>
 				
 				<div class="panel-body">
-					<form action="/login" class="form-signin" method="POST" role="form">				     
+					<form action="/login" class="form-signin" method="POST" role="form" id="loginForm">				     
 						<div class="form-group">
 							<label for="inputName" class="sr-only">Username</label>
 							<input type="text" name="username" id="inputName" class="form-control input-lg" placeholder="Username" required autofocus />
@@ -44,7 +44,9 @@
 	</div>
 </div>
 
-
+<script>
+	$("<input>", { type: "hidden", name: "next", value: getUrlParameter("next") }).appendTo("#loginForm");
+</script>
 
 {% include "footer.html" %}
 

@@ -43,6 +43,58 @@
 
 .my_collaps{
 }
+
+label {
+	display: inline-block;
+	width: 5em;
+}
+
+
+
+.ui-tooltip, .arrow:after {
+    background: black;
+	border: 2px solid white;
+}
+.ui-tooltip {
+    padding: 10px 20px;
+    color: white;
+    border-radius: 20px;
+    font: bold 14px "Helvetica Neue", Sans-Serif;
+    text-transform: uppercase;
+    box-shadow: 0 0 7px black;
+}
+.arrow {
+    width: 70px;
+    height: 16px;
+    overflow: hidden;
+    position: absolute;
+    left: 50%;
+    margin-left: -35px;
+    bottom: -16px;
+}
+.arrow.top {
+    top: -16px;
+    bottom: auto;
+}
+.arrow.left {
+    left: 20%;
+}
+.arrow:after {
+    content: "";
+    position: absolute;
+    left: 20px;
+    top: -20px;
+    width: 25px;
+    height: 25px;
+    box-shadow: 6px 5px 9px -9px black;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.arrow.top:after {
+    bottom: -20px;
+    top: auto;
+}
 </style>
 
 
@@ -55,36 +107,30 @@
 			</div>
 			<div class="panel-body" style="height: 100%;">
 			
-				<ul id="collectionList" class="panel-group list-unstyled" style="padding:20px;">
+				<ul id="collectionList" class="list-unstyled" style="padding:20px;">
+				{% for itr in steering %}
 					<li class="group">							
-						<h3 class="panel-title">Setting 1</h3>	
+						<h3 class="deactivate">
+							{{itr.name}}
+							<div id="tt" class="trash pull-right" title="{% raw itr.desc %}">
+								<i class="fa fa-question fa-lg" aria-hidden="true"></i>
+							</div>
+						</h3>	
 						<div >
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-								sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-								minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-								commodo consequat.
+							{% raw itr.content %}
 						</div>
 					</li>
-
+				{% end %}
 				<li class="group">							
-						<h3 class="panel-title">Setting 2</h3>	
-						<div >
+						<h3 class="deactivate" title="Test">Setting 2</h3>	
+						<div>
 								Lorem ipsum dolor sit amet, consectetur adipisicing elit,
 								sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
 								minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
 								commodo consequat.
 						</div>
 					</li>
-
-					<li class="group">							
-						<h3 class="panel-title">Setting 3</h3>	
-						<div >
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-								sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-								minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-								commodo consequat.
-						</div>
-					</li>
+					
 				</ul>			
 				
 				<label class="btn btn-success btn-block" for="submit-form" style="margin: 10px;">Submit</label>
@@ -94,7 +140,7 @@
 		<div class="col-md-9 no-float panel panel-default pull-right" style="overflow-y:scroll;">
 			<div class="panel-heading clearfix" style="margin-left: 10px; margin-right: 10px;">	
 				<h2 class="panel-title pull-left" style="padding-top: 7.5px;"><b>Steering Card:</b></h2>
-				<div id="trash" class="trash pull-right">
+				<div id="trash" class="trash pull-right" title="Pull elements over it to remove them!">
 					<a><i class="fa fa-trash fa-3x" aria-hidden="true"></i></a>
 				</div>					
 			</div>
@@ -114,25 +160,38 @@
 
 <script>
     $( function(){
+	
+	$('#tt').on({
+		"mouseover": function() {			
+			$(this).tooltip("show");
+			
+		},
+		"mouseout": function() {      
+			$(this).tooltip('destroy');   
+		}
+	});
+	
     $( "#steeringList" ).sortable({		
 		placeholder: "ui-state-highlight",	
 		axis: "y",
 		receive: function(e,ui) {			
-            copyHelper = null;					
-			$(".accordion").accordion( "refresh" );
+            copyHelper = null;		
+			$(this).find("h3").removeClass("deactivate");
+			$(".accordion").accordion( "refresh" );				
         },
 		stop: function( event, ui ) {
-			ui.item.children( "h3" ).triggerHandler( "focusout" );			
+			ui.item.children( "h3" ).triggerHandler( "focusout" );				
+			
 			// Refresh accordion to handle new order
 			$(".accordion").accordion( "refresh" );
+			
+			
 		}
-    });
-	
-	$("#steeringList").accordion({
+    }).accordion({
 		header: "> li > h3",
 		active: false,
-		collapsible: true
-	})
+		collapsible: true		
+	}).disableSelection();
 	
 	$( "#collectionList" ).sortable({	
 		connectWith: "#steeringList" ,
@@ -141,7 +200,7 @@
 		helper: function(e,li) {
 			copyHelper = li.clone(true,true).insertAfter(li);
 			
-			var tmp = li.clone(true,true);			
+			var tmp = li.clone(true,true);	
 			return tmp;
 		},
 		beforeStop: function(event, ui) {
@@ -158,24 +217,31 @@
 				return;
 			}
 		}
-    });
-	
-	$("#collectionList").accordion({
+    }).accordion({
 		header: "> li > h3",
 		active: false,
-		collapsible: true
-	})
-	
-    $( "#steeringList, #collectionList" ).disableSelection();
-	
-	
+		collapsible: true,
+		beforeActivate: function (event, ui) {
+			var a = ui.newHeader;
+			if (ui.newHeader.hasClass("deactivate"))	{
+				event.preventDefault();
+				event.stopPropagation();
+				event.stopImmediatePropagation();
+				return false;
+			}
+		return true;
+		}	
+	}).disableSelection();		
+    	
 	$("#trash").droppable({			
 		drop: function(ev, ui) {
 			ui.draggable.remove();			 
 		},        
 		tolerance: "pointer",
 		hoverClass: "trash_highlight"
-	});   
+	}).tooltip({		
+		track: true
+    });   
 });
 </script>
 

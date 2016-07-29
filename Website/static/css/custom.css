@@ -23,6 +23,7 @@ h1, h2, h3, h4, h5, h6, a, div, p{
 	font-family: 'PT Sans', sans-serif;	
 }
 
+
 .jumbotron
 {
 	border-radius: 0px;
@@ -69,6 +70,112 @@ h1, h2, h3, h4, h5, h6, a, div, p{
     float: none; 
 }
 
+.form-control
+{
+	border-radius: 0px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: lightgrey;
+}
+
+.ui-accordion{
+	border-radius: 1px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: lightgrey;	
+}
+.ui-accordion .ui-accordion-content{
+	border-radius: 0px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: lightgrey;
+}
+.ui-accordion .ui-accordion-content-active {
+	border-radius: 0px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: lightgrey;
+}
+.ui-accordion .ui-accordion-header{ 
+	background-color: lightgrey; 
+	border-radius: 0px;
+	border-width: 1px;
+	border-color: grey;
+	border-style: solid;
+	
+	cursor: pointer;
+	position: relative;
+	margin-top: 1px;
+}
+.ui-accordion .ui-accordion-header-active {
+	background-color: lightgrey; 
+	border-radius: 0px;
+	border-width: 1px;
+	border-color: grey;
+	border-style: solid;
+}
+.ui-accordion-header.ui-state-active{
+	border-radius: 0px;
+	border-width: 1px;
+	border-color: grey;
+	border-style: solid;
+}
+
+
+
+
+.ui-tooltip {
+    background: black;
+    color: white;
+    border: none;
+    padding: 0;
+    opacity: 0.8;
+	
+	text-align:center;	
+	
+	border-radius: 0px;
+	font: bold 12px "Helvetica Neue", Sans-Serif;
+    text-transform: uppercase;
+    box-shadow: 0 0 7px darkgrey;
+}
+.ui-tooltip-content {
+    position: relativ;
+    padding: 1em;
+}
+.ui-tooltip-content::after {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    display: block;
+    width: 0;
+}
+.noarrow-tooltip .ui-tooltip-content::after {
+	display: none;
+}
+.right-tooltip .ui-tooltip-content::after {
+    top: 18px;
+    left: -10px;
+    border-color: transparent black;
+    border-width: 10px 10px 10px 0; /*top, right, bottom, left */
+}
+.left-tooltip .ui-tooltip-content::after {
+    top: 18px;
+    right: -10px;
+    border-color: transparent black;
+    border-width: 10px 0 10px 10px;
+}
+.top-tooltip .ui-tooltip-content::after {
+    bottom: -10px;
+    left: 72px;
+    border-color: black transparent;
+    border-width: 10px 10px 0;    
+}
+.bottom-tooltip .ui-tooltip-content::after {
+    top: -10px;
+    left: 72px;
+    border-color: black transparent;
+    border-width: 0 10px 10px;		/* top, right&left, bottom */
+}
 
 
 

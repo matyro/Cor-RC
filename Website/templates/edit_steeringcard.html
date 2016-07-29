@@ -48,8 +48,6 @@
 	border-radius: 10px;
 }
 
-.my_collaps{
-}
 
 label {
 	display: inline-block;
@@ -57,50 +55,67 @@ label {
 }
 
 
-
-.ui-tooltip, .arrow:after {
-    background: black;
-	border: 2px solid white;
-}
 .ui-tooltip {
-    padding: 10px 20px;
+    background: black;
     color: white;
-    border-radius: 20px;
-    font: bold 14px "Helvetica Neue", Sans-Serif;
+    border: none;
+    padding: 0;
+    opacity: 0.8;
+	
+	text-align:center;	
+	
+	border-radius: 0px;
+	font: bold 12px "Helvetica Neue", Sans-Serif;
     text-transform: uppercase;
-    box-shadow: 0 0 7px black;
+    box-shadow: 0 0 7px darkgrey;
 }
-.arrow {
-    width: 70px;
-    height: 16px;
-    overflow: hidden;
+.ui-tooltip-content {
+    position: relativ;
+    padding: 1em;
+}
+.ui-tooltip-content::after {
+    content: '';
     position: absolute;
-    left: 50%;
-    margin-left: -35px;
-    bottom: -16px;
+    border-style: solid;
+    display: block;
+    width: 0;
 }
-.arrow.top {
-    top: -16px;
-    bottom: auto;
+.noarrow-tooltip .ui-tooltip-content::after {
+	display: none;
 }
-.arrow.left {
-    left: 20%;
+.right-tooltip .ui-tooltip-content::after {
+    top: 18px;
+    left: -10px;
+    border-color: transparent black;
+    border-width: 10px 10px 10px 0; /*top, right, bottom, left */
 }
-.arrow:after {
-    content: "";
-    position: absolute;
-    left: 20px;
-    top: -20px;
-    width: 25px;
-    height: 25px;
-    box-shadow: 6px 5px 9px -9px black;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
+.left-tooltip .ui-tooltip-content::after {
+    top: 18px;
+    right: -10px;
+    border-color: transparent black;
+    border-width: 10px 0 10px 10px;
 }
-.arrow.top:after {
-    bottom: -20px;
-    top: auto;
+.top-tooltip .ui-tooltip-content::after {
+    bottom: -10px;
+    left: 72px;
+    border-color: black transparent;
+    border-width: 10px 10px 0;    
+}
+.bottom-tooltip .ui-tooltip-content::after {
+    top: -10px;
+    left: 72px;
+    border-color: black transparent;
+    border-width: 0 10px 10px;		/* top, right&left, bottom */
+}
+
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
 }
 </style>
 
@@ -108,15 +123,16 @@ label {
 <div class="container">
 	<div class="row">
 
-		<div class="col-md-3 panel pull-left">		
+		<div class="col-md-3 panel pull-left" style="padding-left:0px; padding-right:0px;">		
 			<div class="panel-heading">		
 				<a class="panel-title"> Select settings to add: </a>
 			</div>
 			<div class="panel-body">
 			
-				<ul id="collectionList" class="list-unstyled no-float" style="padding:20px; max-height:85%; overflow-y:scroll;">
+				<div style="max-height:80%; padding:10px; border-width: 1px; border-style: solid; border-color: darkgrey; overflow-y:scroll;">
+				<ul id="collectionList" class="list-unstyled no-float">
 				{% for itr in steering %}
-					<li class="group">							
+					<li class="group" style="margin:2px">							
 						<h3 class="deactivate">
 							{{itr.name}}
 							<div class="tt trash pull-right" title="{% raw itr.desc %}">
@@ -128,26 +144,30 @@ label {
 						</div>
 					</li>
 				{% end %}					
-				</ul>			
-				
-				<label class="btn btn-success btn-block" for="submit-form" style="margin: 20px;">Submit</label>
+				</ul>
+				</div>
+				<form id="form1" action="/edit_card" method="POST" role="form" style="margin-top: 10px; margin-bottom: 10px;">
+					{% raw xsrf_form_html() %}
+					<input type="text" name="filename" class="form-control input-lg" placeholder="Filename"></input>				
+				</form>				
+				<button class="btn btn-success btn-block" id="savebutton">Save</button>
 			</div>
 		</div>	
 
-		<div class="col-md-9 no-float panel panel-default pull-right" style="overflow-y:scroll;">
-			<div class="panel-heading clearfix" style="margin-left: 10px; margin-right: 10px;">	
+		<div class="col-md-9 no-float panel panel-default pull-right" style="overflow-y:scroll; padding-left:0px; padding-right:0px;">
+			<div class="panel-heading clearfix">	
 				<h2 class="panel-title pull-left" style="padding-top: 7.5px;"><b>Steering Card:</b></h2>
 				<div id="trash" class="trash pull-right" title="Pull elements over it to remove them!">
 					<a><i class="fa fa-trash fa-3x" aria-hidden="true"></i></a>
 				</div>					
 			</div>
 			
-			<form action="/edit_card" method="POST" role="form">
+			<form id="form2" action="/edit_card" method="POST" role="form">
 
 				<ul id="steeringList" class="panel-group list-unstyled" style="padding:20px;">				
 				</ul>
-
-				<input type="submit" id="submit-form" class="hidden" />
+				{% raw xsrf_form_html() %}
+				<input id="steering" name="steering" type="hidden" value=""></input>				
 			</form>
 
 		</div>
@@ -157,41 +177,53 @@ label {
 
 <script>
     $( function(){
+		
 	
-	$('.tt').on({
-		"mouseover": function() {			
-			$(this).tooltip("show");
-			
+	$('.tt').mouseover(function(e) {
+		$(this).tooltip({
+				items: '.tt',				
+				position: {
+			my: "right center",
+			at: "right-20 center",
+			offset: "-40 0",
+			of: $(this).parent()
 		},
-		"mouseout": function() {      
-			$(this).tooltip('destroy');   
-		},
-		"mousedown": function() {      
-			$(this).tooltip('destroy');   
-		}
+		relative: true,
+		tooltipClass: "noarrow-tooltip" });
+		$(this).tooltip("open");
+		
+	}).mouseleave(function() {
+		$(this).tooltip("destroy");
+	}).mousedown(function() {
+		$(this).tooltip("destroy");
 	});
+
 	
     $( "#steeringList" ).sortable({		
 		placeholder: "ui-state-highlight",	
 		axis: "y",
 		receive: function(e,ui) {			
             copyHelper = null;		
+			
+			var input = $( "#steering" );
+			input.val($(this).find("h3").text().trim().replace(/(\r\n|\n|\r)+/gm,",") );
+			
 			$(this).find("h3").removeClass("deactivate");
-			$(".accordion").accordion( "refresh" );				
+			$(".accordion").accordion( "refresh" );			
         },
 		stop: function( event, ui ) {
 			ui.item.children( "h3" ).triggerHandler( "focusout" );				
 			
 			// Refresh accordion to handle new order
-			$(".accordion").accordion( "refresh" );
-			
-			
+			$(".accordion").accordion( "refresh" );			
 		}
     }).accordion({
 		header: "> li > h3",
 		active: false,
-		collapsible: true		
-	}).disableSelection();
+		collapsible: true,
+		heightStyle: "content",
+		autoHeight: true
+	});
 	
 	$( "#collectionList" ).sortable({	
 		connectWith: "#steeringList" ,
@@ -221,6 +253,8 @@ label {
 		header: "> li > h3",
 		active: false,
 		collapsible: true,
+		heightStyle: "content",
+		autoHeight: true,
 		beforeActivate: function (event, ui) {
 			var a = ui.newHeader;
 			if (ui.newHeader.hasClass("deactivate"))	{
@@ -231,18 +265,36 @@ label {
 			}
 		return true;
 		}	
-	}).disableSelection();		
+	});		
     	
-	$("#trash").droppable({			
+	$("#trash").tooltip({	     
+		position: {
+			my: "right center",
+			at: "left center"
+		},
+		tooltipClass: "left-tooltip",
+		relative: true,
+		tracking: true
+    }).droppable({			
 		drop: function(ev, ui) {
 			ui.draggable.remove();			 
 		},        
 		tolerance: "pointer",
-		hoverClass: "trash_highlight"
-	}).tooltip({		
-		track: true
-    });   
+		hoverClass: "trash_highlight"		
+	});   
 });
+
+$(document).ready(function() {
+    $("#savebutton").click(function() {	
+		var dataForm1 = $("#form1").serialize();
+		var dataForm2 = $("#form2").serialize();
+		
+        $.post($("#form1").attr("action"), dataForm1 + "&" + dataForm2,
+            function() {
+				alert('Saved!');
+              });
+      });
+});	
 </script>
 
 

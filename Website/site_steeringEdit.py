@@ -19,6 +19,7 @@ class Setting(object):
 
 import xml.etree.ElementTree as etree 
 def createSettings():
+    parameterCounter = 0
     tree = etree.parse('Corsika/steering/steering_75xx.xml')
     root = tree.getroot()
         
@@ -31,37 +32,39 @@ def createSettings():
             if x.find("format").text == 'I':
                 content = content + '<div class=\"form-group\"><div class=\"form-inline\"><label id=\"tt\" title=\"' + xstr(x.find('desc').text)  + '\">'          
                 content = content + xstr(x.find('name').text) + ':</label>'
-                content = content + '<input type=\"number\" step=\"any\" class=\"input-sm \" name=\"' + xstr(x.find('name').text) + '\"'
-                ##content = content + ' id=\"' + xstr(x.find('name').text) + '\"'
+                content = content + '<input type=\"number\" step=\"any\" class=\"form-control input-sm \" name=\"' + xstr(x.find('name').text) + '\"'                
                 content = content + '\" value=\"' + xstr(x.find('default').text) + '\"'
                 content = content +  '/></div></div> <!-- I -->'
                     
             elif x.find("format").text == 'F':
                 content = content + '<div class=\"form-group\"><div class=\"form-inline\"><label id=\"tt\" title=\"' + xstr(x.find('desc').text)  + '\">'          
                 content = content + xstr(x.find('name').text) + ':</label>'
-                content = content + '<input type=\"number\" step=\"any\" class=\"input-sm \" name=\"' + xstr(x.find('name').text) + '\"'
+                content = content + '<input type=\"number\" step=\"any\" class=\"form-control input-sm \" name=\"' + xstr(x.find('name').text) + '\"'
                 content = content + 'value=\"' + xstr(x.find('default').text) + '\"' 
                 content = content + '/></div></div> <!-- F -->'
                     
             elif x.find("format").text == 'L':
                 content = content + '<div class=\"form-group\"><div class=\"form-inline\"><label id=\"tt\" title=\"' + xstr(x.find('desc').text)  + '\">'          
                 content = content + xstr(x.find('name').text) + ':</label>'
-                content = content + '<input type=\"checkbox\" class=\"input-sm \" name=\"' + xstr(x.find('name').text) + '\"'
+                content = content + '<input type=\"checkbox\" name=\"' + xstr(x.find('name').text) + '\"'
                 content = content + 'value=\"' + xstr(x.find('default').text) + '\"' 
                 content = content + '/></div></div> <!-- L -->'                
                    
             else: 
                 content = content + '<div class=\"form-group\"><div class=\"form-inline\"><label id=\"tt\" title=\"' + xstr(x.find('desc').text)  + '\">'          
                 content = content + xstr(x.find('name').text) + ':</label>'
-                content = content + '<input maxlength=\"256\" type=\"text\" class=\"input-sm \" name=\"' + xstr(x.find('name').text) + '\"'
+                content = content + '<input maxlength=\"256\" type=\"text\" class=\"form-control input-sm \" name=\"' + xstr(x.find('name').text) + '\"'
                 content = content + 'value=\"' + xstr(x.find('default').text) + '\"' 
                 content = content + '/></div></div> <!-- ELSE -->'
                 
-            content = content + '\n'
-            
+            parameterCounter = parameterCounter + 1
+                
+            content = content + '\n'           
 
         list.append(Setting(name,desc,content))
-    
+        
+        
+    print('Parameter Counter: ' + str(parameterCounter))
     return list
 
 class SteeringCardEditHandler(BaseHandler):
@@ -73,7 +76,7 @@ class SteeringCardEditHandler(BaseHandler):
         #    self.render('edit_steeringcard.html', steering=tmp)
                    
        
-        self.render('edit_steeringcard.html', steering=createSettings())
+        self.render('edit_steeringcard.html', steering=createSettings(), steeringFiles=[])
         
     def post(self):
         print(self.request.arguments)

@@ -1,0 +1,2986 @@
+{
+  "steering": {
+    "setting": [
+      {
+        "name": "RUNNR",
+        "desc": "Run Number",
+        "format": "A5",
+		"options": "",
+        "id": "1",
+        "parameter": {
+          "para": {
+            "name": "NRRUN",
+            "limits": {
+              "min": "0",
+              "max": "999999"
+            },
+            "desc": "Run number of this simulation. This number is used to form part of the name of the various output files.",
+            "default": "1",
+            "format": "I"
+          }
+        }
+      },
+      {
+        "name": "EVTNR",
+        "desc": "First Event Number",
+        "format": "A5",
+		"options": "",
+        "id": "2",
+        "parameter": {
+          "para": {
+            "name": "SHOWNO",
+            "limits": {
+              "min": "1",
+              "max": "999999"
+            },
+            "desc": "Event number of first shower. The second shower will get number SHOWNO+1 and so on.",
+            "default": "1",
+            "format": "I"
+          }
+        }
+      },
+      {
+        "name": "SEED",
+        "desc": "Random Number Generator Initialization (Hadron,EGS4,Cherenkov photons,Offset of telescope systems,offset scattering to Auger core,Parallel,Conex)",
+        "format": "A4",
+		"options": "",
+        "id": "3",
+        "parameter": {
+          "para": [
+            {
+              "name": "ISEED1",
+              "limits": {
+                "min": "1",
+                "max": "900000000"
+              },
+              "desc": "Contains the seed of the random number sequence.",
+              "default": "1",
+              "format": "I"
+            },
+            {
+              "name": "ISEED2",
+              "limits": {
+                "min": "1",
+                "max": "900000000"
+              },
+              "desc": "Number of calls to the RNG for initialization.",
+              "default": "1",
+              "format": "I"
+            },
+            {
+              "name": "ISEED3",
+              "limits": {
+                "min": "1",
+                "max": "900000000"
+              },
+              "desc": "Number of calls to the RNG for initialization times 10^9. Should be avoided because of cinsiderable computing time.",
+              "default": "1",
+              "format": "I"
+            }
+          ]
+        }
+      },
+      {
+        "name": "NSHOW",
+        "desc": "Number of SHowers",
+        "format": "A5",
+		"options": "",
+        "id": "4",
+        "parameter": {
+          "para": {
+            "name": "NSHOW",
+            "limits": { "min": "1" },
+            "desc": "Number of showers to be generated in a run.",
+            "default": "10",
+            "format": "I"
+          }
+        }
+      },
+      {
+        "name": "PRMPAR",
+        "desc": "Primary Particle Definition",
+        "format": "A6",
+        "options": "!STACKINT",
+        "id": "5",
+        "parameter": {
+          "para": {
+            "name": "PRMPAR",
+            "limits": {
+              "min": "1",
+              "max": "5656"
+            },
+            "desc": "Particle format of the primary particle. See Table 4 (page 110) for the particle codes in the userguide.",
+            "default": "14",
+            "format": "I"
+          }
+        }
+      },
+      {
+        "name": "ERANGE",
+        "desc": "Energy Range: If LLIMIT = ULIMIT, the primary energy is fixed at this value.",
+        "format": "A6",
+        "options": "!STACKIN",
+        "id": "6",
+        "parameter": {
+          "para": [
+            {
+              "name": "LLIMIT",
+              "limits": {
+                
+              },
+              "desc": "Lower limit of the primary particle energy range (in GeV). The primary energy is selected at random out of this interval. For detailed limits see page 65 in the userguide.",
+              "default": "1000.0",
+              "format": "F"
+            },
+            {
+              "name": "ULIMIT",
+              "limits": {
+                
+              },
+              "desc": "Upper limit of the primary particle energy range (in GeV). The primary energy is selected at random out of this interval. For detailed limits see page 65 in the userguide.",
+              "default": "1000.0",
+              "format": "F"
+            }
+          ]
+        }
+      },
+      {
+        "name": "ESLOPE",
+        "desc": "Slope of Energy Spectrum",
+        "format": "A6",
+        "options": "!STACKIN",
+        "id": "7",
+        "parameter": {
+          "para": {
+            "name": "PSLOPE",
+            "limits": {
+              
+            },
+            "desc": "Exponent gamma of differential primary energy spectrum. PSLOPE has no meaning in case of fixed primary energy. The energies are total energies and include the particle rest mass.",
+            "default": "0.0",
+            "format": "F"
+          }
+        }
+      },
+      {
+        "name": "THETAP",
+        "desc": "Zenith Angle Definition: THETPR is the angle of incidence at a horizontal detector. THETPR = 0 is vertical.",
+        "format": "A6",
+		"options": "",
+        "id": "8",
+        "parameter": {
+          "para": [
+            {
+              "name": "THETPR1",
+              "limits": {
+                "min": "0",
+                "max": "70"
+              },
+              "desc": "Low edge of zenith angle range of primary particle (in degree).",
+              "default": "0",
+              "format": "F"
+            },
+            {
+              "name": "THETPR2",
+              "limits": {
+                "min": "0",
+                "max": "70"
+              },
+              "desc": "High edge of zenith angle range of primary particle (in degree).",
+              "default": "0.0",
+              "format": "F"
+            }
+          ]
+        }
+      },
+      {
+        "name": "PHIP",
+        "desc": "Azimuth Angle Definition: For 0 degree the shower axis points to magnetic North, for 90 degree it points to West, see Fig. 1 (page 108).",
+        "format": "A4",
+        "options": "",
+        "id": "9",
+        "parameter": {
+          "para": [
+            {
+              "name": "PHIPR1",
+              "limits": {
+                "min": "-360",
+                "max": "360"
+              },
+              "desc": "Low edge of azimuth angle range of primary particle (in degree).",
+              "default": "0",
+              "format": "F"
+            },
+            {
+              "name": "PHIPR2",
+              "limits": {
+                "min": "-360.0",
+                "max": "360.0"
+              },
+              "desc": "High edge of azimuth angle range of primary particle (in degree).",
+              "default": "0.0",
+              "format": "F"
+            }
+          ]
+        }
+      },
+      {
+        "name": "VIEWCONE",
+        "desc": "Viewing Cone Specifications: The VIEWCONE option (see Sect. 3.5.34 page 60) selects the direction of primaries in a circular cone around the fixed primary direction.",
+        "format": "A8",
+        "options": "VIEWCONE",
+        "id": "10",
+        "parameter": {
+          "para": [
+            {
+              "name": "VUECON1",
+              "limits": {
+                "min": "0",
+                "max": "90"
+              },
+              "desc": "Inner limiting angle of viewing cone (in degree).",
+              "default": "0.0",
+              "format": "F"
+            },
+            {
+              "name": "VUECON2",
+              "limits": {
+                "min": "0",
+                "max": "90"
+              },
+              "desc": "Outer  limiting angle of viewing cone (in degree).",
+              "default": "0.0",
+              "format": "F"
+            }
+          ]
+        }
+      },
+      {
+        "name": "FIXCHI",
+        "desc": "Starting Grammage",
+        "format": "A6",
+        "options": "",
+        "id": "11",
+        "parameter": {
+          "para": {
+            "name": "THICK0",
+            "limits": { "min": "0" },
+            "desc": "The starting altitude (in g/cm^2 mass overburden) of the primary particle is set for all showers. This choice is not effective if the height of the first interaction is set by FIXHEI > 0. (see Sect. 4.13 below). With this keyword the development of sub-showers starting at the chosen altitude within the atmosphere may be followed. The starting altitude must be above the lowest observation level.",
+            "default": "0",
+            "format": "F"
+          }
+        }
+      },
+      {
+        "name": "TSTART",
+        "format": "A6",
+        "options": "!CONEX,!CURVED,!SLANT,!STACKIN",
+        "id": "12",
+        "parameter": {
+          "para": {
+            "name": "TMARGIN",
+            "limits": {
+              
+            },
+            "default": "F",
+            "format": "L"
+          }
+        }
+      },
+      {
+        "name": "FIXHEI",
+        "desc": "First Interaction Definition",
+		"format": "A6",
+        "options": "",
+        "id": "13",
+        "parameter": {
+          "para": [
+            {
+              "name": "FIXHEI",
+              "limits": { "min": "0" },
+              "default": "0.0",
+              "format": "F"
+            },
+            {
+              "name": "N1STTR",
+              "limits": {
+                
+              },
+              "default": "0",
+              "format": "I"
+            }
+          ]
+        }
+      },
+      {
+        "name": "IMPACT",
+        "desc": "Skimming Incidence",
+        "format": "A6",
+        "options": "CURVED+UPWARD",
+        "id": "14",
+        "parameter": {
+          "para": [
+            {
+              "name": "HIMPACT1",
+              "limits": {
+                
+              },
+              "desc": "Lower value (in cm) for minimum altitude of horizontal shower axis.",
+              "default": "0.0",
+              "format": "F"
+            },
+            {
+              "name": "HIMPACT2",
+              "limits": {
+                
+              },
+              "desc": "Upper value (in cm) for minimum altitude of horizontal shower axis.",
+              "default": "0.0",
+              "format": "F"
+            }
+          ]
+        }
+      },
+      {
+        "name": "INFILE",
+        "format": "A6",
+        "options": "STACKIN",
+        "id": "15",
+        "parameter": {
+          "para": {
+            "name": "FILINP",
+            "limits": {
+              
+            },
+            "default": " ",
+            "format": "A132"
+          }
+        }
+      },
+      {
+        "name": "OUTFILE",
+        "desc": "Stack Output File Name",
+        "format": "A7",
+        "options": "!CONEX,!STACKIN",
+        "id": "16",
+        "parameter": {
+          "para": {
+            "name": "FILOUT",
+            "limits": {
+              
+            },
+            "desc": "File name to define the name and directory of the output file which will contain the parameters of the secondary particles produced in the first interaction. These particles are written only if the file name is defined. These particles may be read in in a later CORSIKA-run established with the STACKIN option (see Sect. 3.5.29 page 56).",
+            "default": " ",
+            "format": "A132"
+          }
+        }
+      },
+      {
+        "name": "ATMOD",
+        "desc": "Atmospheric Model Selection",
+        "format": "A5",
+        "options": "",
+        "id": "17",
+        "parameter": {
+          "para": {
+            "name": "MODATM",
+            "limits": {
+              "min": "0",
+              "max": "29"
+            },
+            "desc": "Gives the number of the atmospheric parameterization. See page 69 for a list.",
+            "default": "1",
+            "format": "I"
+          }
+        }
+      },
+      {
+        "name": "ATMA",
+        "id": "18",
+        "parameter": {
+          "para": {
+            "limits": {
+              
+            },
+            "default": " "
+          }
+        }
+      },
+      {
+        "name": "ATMB",
+        "id": "19",
+        "parameter": {
+          "para": {
+            "limits": {
+              
+            },
+            "default": " "
+          }
+        }
+      },
+      {
+        "name": "ATMC",
+        "id": "20",
+        "parameter": {
+          "para": {
+            "limits": {
+              
+            },
+            "default": " "
+          }
+        }
+      },
+      {
+        "name": "ATMLAY",
+        "id": "21",
+        "parameter": {
+          "para": {
+            "limits": {
+              
+            },
+            "default": " "
+          }
+        }
+      },
+      {
+        "name": "ATMOSPHERE",
+        "desc": "External Tabulated Atmosphere",
+        "format": "A10",
+        "options": "ATMEXT",
+        "id": "22",
+        "parameter": {
+          "para": [
+            {
+              "name": "IATMOX",
+              "limits": { "min": "1" },
+              "desc": "MODTRAN Atmospheric model. This requires a file named atmprofi.dat to be present in CORSIKA directory.",
+              "default": "0",
+              "format": "I"
+            },
+            {
+              "name": "FREFRX",
+              "limits": {
+                
+              },
+              "desc": "If .true., the atmospheric refraction for Cherenkov photons is taken into account (for plane-parallel atmosphere); if .false., refraction is ignored.",
+              "default": "F",
+              "format": "L"
+            }
+          ]
+        }
+      },
+      {
+        "name": "MAGNET",
+        "desc": "Earth's Magnetic Field",
+        "format": "A6",
+        "options": "",
+        "id": "23",
+        "parameter": {
+          "para": [
+            {
+              "name": "BX",
+              "limits": {
+                
+              },
+              "desc": "Is the horizontal component of the Earth’s magnetic field (in μT) to the x-direction of the coordinate system (North) (see Fig. 1 page 108)",
+              "default": "20.40",
+              "format": "F"
+            },
+            {
+              "name": "BZ",
+              "limits": {
+                
+              },
+              "desc": "Is the vertical component of the Earth’s magnetic field (in μT) downwards.",
+              "default": "43.23",
+              "format": "F"
+            }
+          ]
+        }
+      },
+      {
+        "name": "GCOORD",
+        "desc": "Experiment Coordinates for Pre-Showering and CONEX",
+        "format": "A6",
+        "options": "CONEX,PRESHOWER",
+        "id": "24",
+        "parameter": {
+          "para": [
+            {
+              "name": "GLONG",
+              "limits": {
+                "min": "-180.0",
+                "max": "180.0"
+              },
+              "default": "-69.585",
+              "format": "F"
+            },
+            {
+              "name": "GLATI",
+              "limits": {
+                "min": "-90.0",
+                "max": "90.0"
+              },
+              "default": "-35.463",
+              "format": "F"
+            },
+            {
+              "name": "GRFYEAR",
+              "limits": {
+                "min": "1965.0",
+                "max": "2015.0"
+              },
+              "default": "2003.0",
+              "format": "F"
+            },
+            {
+              "name": "IPREPR",
+              "limits": {
+                
+              },
+              "default": "1",
+              "format": "I"
+            },
+            {
+              "name": "IPRSTP",
+              "limits": {
+                
+              },
+              "default": "0",
+              "format": "I"
+            }
+          ]
+        }
+      },
+      {
+        "name": "DPMJET",
+        "desc": "DPMJET Selection Flag",
+        "format": "A6",
+        "options": "DPMJET",
+        "id": "25",
+        "parameter": {
+          "para": {
+            "limits": {
+              
+            },
+            "default": " "
+          }
+        }
+      },
+      {
+        "name": "DPJSIG",
+        "desc": "DPJSIG Selection Flag",
+        "options": "DPMJET",
+        "id": "26",
+        "parameter": {
+          "para": {
+            "limits": {
+              
+            },
+            "default": " "
+          }
+        }
+      },
+      {
+        "name": "EPOS",
+        "desc": "EPOS Selection Flag",
+        "options": "EPOS",
+        "id": "27",
+        "parameter": {
+          "para": {
+            "limits": {
+              
+            },
+            "default": " "
+          }
+        }
+      },
+      {
+        "name": "EPOPAR",
+        "desc": "EPOS Parameters",
+        "options": "EPOS",
+        "id": "28",
+        "parameter": {
+          "para": {
+            "limits": {
+              
+            },
+            "default": " "
+          }
+        }
+      },
+      {
+        "name": "EPOSIG",
+        "desc": "EPOSIG Selection Flag",
+        "options": "EPOS",
+        "id": "29",
+        "parameter": {
+          "para": {
+            "limits": {
+              
+            },
+            "default": " "
+          }
+        }
+      },
+      {
+        "name": "NEXUS",
+        "desc": "NEXUS Selection Flag",
+        "format": "A5",
+        "options": "NEXUS",
+        "id": "30",
+        "parameter": {
+          "para": [
+            {
+              "name": "FNEXUS",
+              "limits": {
+                
+              },
+              "default": "T",
+              "format": "L"
+            },
+            {
+              "name": "ISH0N",
+              "limits": {
+                "min": "0",
+                "max": "9"
+              },
+              "default": "0",
+              "format": "I"
+            }
+          ]
+        }
+      },
+      {
+        "name": "NEXPAR",
+        "desc": "NEXUS Parameters",
+        "format": "A6",
+        "options": "NEXUS",
+        "id": "31",
+        "parameter": {
+          "para": {
+            "name": "parcha",
+            "limits": {
+              
+            },
+            "default": " ",
+            "format": "A74"
+          }
+        }
+      },
+      {
+        "name": "NEXSIG",
+        "desc": "NEXSIG Selection Flag",
+        "format": "A6",
+        "options": "NEXUS",
+        "id": "32",
+        "parameter": {
+          "para": {
+            "name": "FNEXSG",
+            "limits": {
+              
+            },
+            "default": "T",
+            "format": "L"
+          }
+        }
+      },
+      {
+        "name": "QGSJET",
+        "desc": "QGSJET Selection Flag",
+        "format": "A6",
+        "options": "QGSJET",
+        "id": "33",
+        "parameter": {
+          "para": [
+            {
+              "name": "FQGS",
+              "limits": {
+                
+              },
+              "default": "T",
+              "format": "L"
+            },
+            {
+              "name": "LEVLDQ",
+              "limits": {
+                "min": "0",
+                "max": "4"
+              },
+              "default": "0",
+              "format": "I"
+            }
+          ]
+        }
+      },
+      {
+        "name": "QGSSIG",
+        "desc": "QGSSIG Selection Flag",
+        "format": "A6",
+        "options": "QGSJET",
+        "id": "34",
+        "parameter": {
+          "para": {
+            "name": "FQGSSG",
+            "limits": {
+              
+            },
+            "default": "T",
+            "format": "L"
+          }
+        }
+      },
+      {
+        "name": "SIBYLL",
+        "desc": "SIBYLL Selection Flag",
+        "format": "A6",
+        "options": "SIBYLL",
+        "id": "35",
+        "parameter": {
+          "para": [
+            {
+              "name": "FSIBYL",
+              "limits": {
+                
+              },
+              "default": "T",
+              "format": "L"
+            },
+            {
+              "name": "ISDEBUG",
+              "limits": {
+                "min": "0",
+                "max": "6"
+              },
+              "default": "0",
+              "format": "I"
+            }
+          ]
+        }
+      },
+      {
+        "name": "SIBSIG",
+        "desc": "SIBSIG Selection Flag",
+        "format": "A6",
+        "options": "SIBYLL",
+        "id": "36",
+        "parameter": {
+          "para": {
+            "name": "FSIBSG",
+            "limits": {
+              
+            },
+            "default": "T",
+            "format": "L"
+          }
+        }
+      },
+      {
+        "name": "VENUS",
+        "desc": "VENUS Selection Flag",
+        "format": "A5",
+        "options": "VENUS",
+        "id": "37",
+        "parameter": {
+          "para": [
+            {
+              "name": "FVENUS",
+              "limits": {
+                
+              },
+              "default": "T",
+              "format": "L"
+            },
+            {
+              "name": "ISH00",
+              "limits": {
+                "min": "0",
+                "max": "98"
+              },
+              "default": "0",
+              "format": "I"
+            }
+          ]
+        }
+      },
+      {
+        "name": "VENPAR",
+        "desc": "VENUS Parameters: Advanced user only",
+        "format": "A6",
+        "options": "VENUS",
+        "id": "38",
+        "parameter": {
+          "para": [
+            {
+              "name": "PARCHA",
+              "limits": {
+                
+              },
+              "default": "      ",
+              "format": "A6"
+            },
+            {
+              "name": "PARVAL",
+              "limits": {
+                
+              },
+              "default": "0.0",
+              "format": "F"
+            }
+          ]
+        }
+      },
+      {
+        "name": "VENSIG",
+        "desc": "VENSIG Selection Flag",
+        "format": "A6",
+        "options": "VENUS",
+        "id": "39",
+        "parameter": {
+          "para": {
+            "name": "FVENSG",
+            "limits": {
+              
+            },
+            "default": "T",
+            "format": "L"
+          }
+        }
+      },
+      {
+        "name": "HADFLG",
+        "desc": "HDPM Interaction Parameters and Fragmentation",
+        "format": "A6",
+        "options": "",
+        "id": "40",
+        "parameter": {
+          "para": [
+            {
+              "name": "NFLAIN",
+              "limits": {
+                "min": "0",
+                "max": "100"
+              },
+              "default": "0",
+              "format": "I"
+            },
+            {
+              "name": "NFLDIF",
+              "limits": {
+                "min": "0",
+                "max": "100"
+              },
+              "default": "0",
+              "format": "I"
+            },
+            {
+              "name": "NFLPI0",
+              "limits": {
+                "min": "0",
+                "max": "100"
+              },
+              "default": "0",
+              "format": "I"
+            },
+            {
+              "name": "NFLPIF",
+              "limits": {
+                "min": "0",
+                "max": "100"
+              },
+              "default": "0",
+              "format": "I"
+            },
+            {
+              "name": "NFLCHE",
+              "limits": {
+                "min": "0",
+                "max": "100"
+              },
+              "default": "0",
+              "format": "I"
+            },
+            {
+              "name": "NFRAGM",
+              "limits": {
+                "min": "0",
+                "max": "100"
+              },
+              "default": "2",
+              "format": "I"
+            }
+          ]
+        }
+      },
+      {
+        "name": "NUSLCT",
+        "desc": "Neutrino Interaction format Selection",
+        "format": "A6",
+        "options": "",
+        "id": "41",
+        "parameter": {
+          "para": {
+            "name": "NUSLCT",
+            "limits": {
+              
+            },
+            "default": "2",
+            "format": "I"
+          }
+        }
+      },
+      {
+        "name": "SIGMAQ",
+        "desc": "Charm Interaction Cross Section",
+        "options": "CHARM",
+        "id": "42",
+        "parameter": {
+          "para": [
+            {
+              "name": "SIGMAQ1",
+              "limits": {
+                
+              },
+              "default": "0.0",
+              "format": "F"
+            },
+            {
+              "name": "SIGMAQ2",
+              "limits": {
+                
+              },
+              "default": "0.0",
+              "format": "F"
+            },
+            {
+              "name": "SIGMAQ3",
+              "limits": {
+                
+              },
+              "default": "0.0",
+              "format": "F"
+            },
+            {
+              "name": "SIGMAQ4",
+              "limits": {
+                
+              },
+              "default": "0.0",
+              "format": "F"
+            }
+          ]
+        }
+      },
+      {
+        "name": "PROPAQ",
+        "desc": "Charm Interaction Selection",
+        "format": "A6",
+        "options": "CHARM+QGSJET",
+        "id": "43",
+        "parameter": {
+          "para": {
+            "name": "PROPMOD",
+            "limits": {
+              
+            },
+            "default": "1",
+            "format": "I"
+          }
+        }
+      },
+      {
+        "name": "HILOW",
+        "desc": "Transition Energy between Models",
+        "format": "A5",
+        "options": "",
+        "id": "44",
+        "parameter": {
+          "para": {
+            "name": "HILOELB",
+            "limits": {
+              
+            },
+            "default": "80.0",
+            "format": "F"
+          }
+        }
+      },
+      {
+        "name": "ELMFLG",
+        "desc": "Electromagnetic Interaction Steering Flags",
+        "format": "A6",
+        "options": "",
+        "id": "45",
+        "parameter": {
+          "para": [
+            {
+              "name": "FNKG",
+              "limits": {
+                
+              },
+              "default": "T",
+              "format": "L"
+            },
+            {
+              "name": "FEGS",
+              "limits": {
+                
+              },
+              "default": "T",
+              "format": "L"
+            }
+          ]
+        }
+      },
+      {
+        "name": "STEPFC",
+        "desc": "Electron Multiple Scattering Length Factor",
+        "format": "A6",
+        "options": "",
+        "id": "46",
+        "parameter": {
+          "para": {
+            "name": "STEPFC",
+            "limits": {
+              "min": "0.0",
+              "max": "10.0"
+            },
+            "default": "1.0",
+            "format": "F"
+          }
+        }
+      },
+      {
+        "name": "RADNKG",
+        "format": "A6",
+        "options": "",
+        "id": "47",
+        "parameter": {
+          "para": {
+            "name": "RADNKG",
+            "limits": { "min": "100.0" },
+            "default": "20000",
+            "format": "F"
+          }
+        }
+      },
+      {
+        "name": "CASCADE",
+        "format": "A7",
+        "options": "CONEX",
+        "id": "48",
+        "parameter": {
+          "para": [
+            {
+              "name": "FCXCAS",
+              "limits": {
+                
+              },
+              "default": "T",
+              "format": "L"
+            },
+            {
+              "name": "FCXLCE",
+              "limits": {
+                
+              },
+              "default": "F",
+              "format": "L"
+            },
+            {
+              "name": "FCXGHE",
+              "limits": {
+                
+              },
+              "default": "F",
+              "format": "L"
+            }
+          ]
+        }
+      },
+      {
+        "name": "CONEX",
+        "desc": "Thresholds for CONEX Cascade Equations",
+        "format": "A5",
+        "options": "CONEX",
+        "id": "49",
+        "parameter": {
+          "para": [
+            {
+              "name": "CXTHR1",
+              "limits": {
+                "min": "0.0",
+                "max": "1.0"
+              },
+              "default": "0.001",
+              "format": "F"
+            },
+            {
+              "name": "CXTHR2",
+              "limits": {
+                "min": "0.0",
+                "max": "1.0"
+              },
+              "default": "1.0",
+              "format": "F"
+            },
+            {
+              "name": "CXTHR3",
+              "limits": {
+                "min": "0.0",
+                "max": "1.0"
+              },
+              "default": "0.0001",
+              "format": "F"
+            }
+          ]
+        }
+      },
+      {
+        "name": "CX2COR",
+        "desc": "Thresholds for Transition from CONEX to CORSIKA",
+        "options": "CONEX",
+        "id": "50",
+        "parameter": {
+          "para": {
+            "limits": {
+              
+            },
+            "default": " "
+          }
+        }
+      },
+      {
+        "name": "CXWMX",
+        "desc": "Weight Sampling for CONEX",
+        "options": "CONEX",
+        "id": "51",
+        "parameter": {
+          "para": {
+            "limits": {
+              
+            },
+            "default": " "
+          }
+        }
+      },
+      {
+        "name": "CORSIKA",
+        "desc": "CONEX without CORSIKA",
+        "format": "A7",
+        "options": "CONEX",
+        "id": "52",
+        "parameter": {
+          "para": {
+            "name": "FCORS",
+            "limits": {
+              
+            },
+            "default": "T",
+            "format": "L"
+          }
+        }
+      },
+      {
+        "name": "THIN",
+        "desc": "Thinning Definition",
+        "options": "THIN",
+        "id": "53",
+        "parameter": {
+          "para": {
+            "limits": {
+              
+            },
+            "default": " "
+          }
+        }
+      },
+      {
+        "name": "THINH",
+        "desc": "Hadronic Thinning Definition",
+        "options": "THIN",
+        "id": "54",
+        "parameter": {
+          "para": {
+            "limits": {
+              
+            },
+            "default": " "
+          }
+        }
+      },
+      {
+        "name": "THINEM",
+        "desc": "Electromagnetic Thinning Definition",
+        "options": "THIN",
+        "id": "55",
+        "parameter": {
+          "para": {
+            "limits": {
+              
+            },
+            "default": " "
+          }
+        }
+      },
+      {
+        "name": "CORECUT",
+        "desc": "CORECUT Maximum Radius Cut",
+        "id": "56",
+        "parameter": {
+          "para": {
+            "name": "RCUT",
+            "limits": {
+              
+            },
+            "default": "0.0",
+            "format": "F"
+          }
+        }
+      },
+      {
+        "name": "ECUTS",
+        "desc": "Energy Cut-Offs: The low energy cut-off (in GeV) of the particle kinetic energy",
+        "format": "A5",
+        "options": "",
+        "id": "57",
+        "parameter": {
+          "para": [
+            {
+              "name": "ELCUT1",
+              "limits": { "min": "0.05" },
+              "desc": "Hadron",
+              "default": "0.3",
+              "format": "F"
+            },
+            {
+              "name": "ELCUT2",
+              "limits": { "min": "0.01" },
+              "desc": "Muon",
+              "default": "0.3",
+              "format": "F"
+            },
+            {
+              "name": "ELCUT3",
+              "limits": { "min": "0.00005" },
+              "desc": "Electron",
+              "default": "0.003",
+              "format": "F"
+            },
+            {
+              "name": "ELCUT4",
+              "limits": { "min": "0.00005" },
+              "desc": "Photon and pi0",
+              "default": "0.003",
+              "format": "F"
+            }
+          ]
+        }
+      },
+      {
+        "name": "TIMLIM",
+        "desc": "Time Cut-Off",
+        "format": "A6",
+        "options": "CURVED",
+        "id": "58",
+        "parameter": {
+          "para": [
+            {
+              "name": "DSTLIM",
+              "limits": {
+                
+              },
+              "default": "100000000.0",
+              "format": "F"
+            },
+            {
+              "name": "LTMLMPR",
+              "limits": {
+                
+              },
+              "default": "F",
+              "format": "L"
+            }
+          ]
+        }
+      },
+      {
+        "name": "LONGI",
+        "desc": "Longitudinal Shower Development",
+        "format": "A5",
+        "options": "",
+        "id": "59",
+        "parameter": {
+          "para": [
+            {
+              "name": "LLONGI",
+              "limits": {
+                
+              },
+              "default": "F",
+              "format": "L"
+            },
+            {
+              "name": "THSTEP",
+              "limits": {
+                
+              },
+              "default": "20.0",
+              "format": "F"
+            },
+            {
+              "name": "FLGFIT",
+              "limits": {
+                
+              },
+              "default": "F",
+              "format": "L"
+            },
+            {
+              "name": "FLONGOUT",
+              "limits": {
+                
+              },
+              "default": "F",
+              "format": "L"
+            }
+          ]
+        }
+      },
+      {
+        "name": "MUMULT",
+        "desc": "Muon Multiple Scattering Treatment",
+        "format": "A6",
+        "options": "",
+        "id": "60",
+        "parameter": {
+          "para": {
+            "name": "FMOLI",
+            "limits": {
+              
+            },
+            "default": "T",
+            "format": "L"
+          }
+        }
+      },
+      {
+        "name": "EMADDI",
+        "desc": "Additional Electromagnetic Particle Information",
+        "format": "A6",
+        "options": "EHISTORY,!INTTEST",
+        "id": "61",
+        "parameter": {
+          "para": {
+            "name": "FEMADD",
+            "limits": {
+              
+            },
+            "default": "F",
+            "format": "L"
+          }
+        }
+      },
+      {
+        "name": "MUADDI",
+        "desc": "Additional Muon Information",
+        "format": "A6",
+        "options": "!INTTEST",
+        "id": "62",
+        "parameter": {
+          "para": {
+            "name": "FMUADD",
+            "limits": {
+              
+            },
+            "default": "F",
+            "format": "L"
+          }
+        }
+      },
+      {
+        "name": "NUADDI",
+        "desc": "Additional Neutrino Information",
+        "format": "A6",
+        "options": "EHISTORY,!INTTEST",
+        "id": "63",
+        "parameter": {
+          "para": {
+            "name": "FNUADD",
+            "limits": {
+              
+            },
+            "default": "F",
+            "format": "L"
+          }
+        }
+      },
+      {
+        "name": "OBSLEV",
+        "desc": "Observation Level Definition",
+        "format": "A6",
+        "options": "",
+        "id": "64",
+        "parameter": {
+          "para": {
+            "name": "OBSLEV",
+            "limits": { "min": "0.0" },
+            "default": "11000.0",
+            "format": "F"
+          }
+        }
+      },
+      {
+        "name": "INCLIN",
+        "desc": "Inclined Observation Plane",
+        "format": "A6",
+        "options": "INCLINED",
+        "id": "65",
+        "parameter": {
+          "para": [
+            {
+              "name": "XPINCL",
+              "limits": {
+                
+              },
+              "default": "0.0",
+              "format": "F"
+            },
+            {
+              "name": "YPINCL",
+              "limits": {
+                
+              },
+              "default": "0.0",
+              "format": "F"
+            },
+            {
+              "name": "ZPINCL",
+              "limits": {
+                
+              },
+              "format": "F"
+            },
+            {
+              "name": "THINCL",
+              "limits": {
+                
+              },
+              "default": "0.0",
+              "format": "F"
+            },
+            {
+              "name": "PHINCL",
+              "limits": {
+                
+              },
+              "default": "0.0",
+              "format": "F"
+            }
+          ]
+        }
+      },
+      {
+        "name": "CURVOUT",
+        "desc": "Observation Level Curvature",
+        "format": "A7",
+        "options": "CURVED+!ANAHIST+!AUGERHIST",
+        "id": "66",
+        "parameter": {
+          "para": {
+            "name": "FCURVOUT",
+            "limits": {
+              
+            },
+            "default": "T",
+            "format": "L"
+          }
+        }
+      },
+      {
+        "name": "ARRANG",
+        "desc": "Array Rotation",
+        "id": "67",
+        "parameter": {
+          "para": {
+            "name": "ARRANG",
+            "limits": {
+              "min": "-180.0",
+              "max": "180.0"
+            },
+            "default": "0.0",
+            "format": "F"
+          }
+        }
+      },
+      {
+        "name": "AUGSCT",
+        "desc": "Auger Detector Scattering",
+        "format": "A6",
+        "options": "AUGERHIT",
+        "id": "68",
+        "parameter": {
+          "para": [
+            {
+              "name": "MAUGPOS",
+              "limits": {
+                "min": "0",
+                "max": "20"
+              },
+              "default": "1",
+              "format": "I"
+            },
+            {
+              "name": "DRADIUS",
+              "limits": { "min": "0.0" },
+              "default": "35.0",
+              "format": "F"
+            },
+            {
+              "name": "DETDIS",
+              "limits": { "min": "0.0" },
+              "default": "1500.0",
+              "format": "F"
+            },
+            {
+              "name": "FTANKSHADOW",
+              "limits": {
+                
+              },
+              "default": "T",
+              "format": "L"
+            },
+            {
+              "name": "FANYMODE",
+              "limits": {
+                
+              },
+              "default": "T",
+              "format": "L"
+            }
+          ]
+        }
+      },
+      {
+        "name": "AUGHIT",
+        "desc": "Auger Detector Scattering Positions",
+        "format": "A6",
+        "options": "AUGERHIT",
+        "id": "69",
+        "parameter": {
+          "para": [
+            {
+              "name": "XSHCORE",
+              "limits": {
+                
+              },
+              "desc": "Detector position in x-direction (in meter) of the ith scattering relative to the shower core.",
+              "default": "0.0",
+              "format": "F"
+            },
+            {
+              "name": "YSHCORE",
+              "limits": {
+                
+              },
+              "desc": "Detector position in y-direction (in meter) of the ith scattering relative to the shower core.",
+              "default": "0.0",
+              "format": "F"
+            }
+          ]
+        }
+      },
+      {
+        "name": "DETCFG",
+        "desc": "String Detector Configuration",
+        "format": "A6",
+        "options": "VOLUMECORR",
+        "id": "70",
+        "parameter": {
+          "para": {
+            "name": "DETCFG",
+            "limits": { "min": "0.0" },
+            "default": "0.0",
+            "format": "F"
+          }
+        }
+      },
+      {
+        "name": "MAXPRT",
+        "desc": "Event Printout",
+        "format": "A6",
+        "options": "",
+        "id": "71",
+        "parameter": {
+          "para": {
+            "name": "MAXPRT",
+            "limits": { "min": "0" },
+            "desc": "Is the maximum number of events that produce a detailed printout during the simulation run.",
+            "default": "10",
+            "format": "I"
+          }
+        }
+      },
+      {
+        "name": "ECTMAP",
+        "desc": "Particle Printout",
+        "format": "A6",
+        "options": "",
+        "id": "72",
+        "parameter": {
+          "para": {
+            "name": "ECTMAP",
+            "limits": {
+              
+            },
+            "desc": "Defines a cut in the particle gamma factor (or energy in GeV for em-particles and neutrinos) above which they are printed out on the logical unit MONIOU when passing an observation level.",
+            "default": "10000",
+            "format": "F"
+          }
+        }
+      },
+      {
+        "name": "DIRECT",
+        "desc": "Output Directory",
+        "format": "A6",
+        "options": "",
+        "id": "73",
+        "parameter": {
+          "para": {
+            "name": "DSN",
+            "limits": {
+              
+            },
+            "default": "anynameupto239characters/",
+            "format": "A239"
+          }
+        }
+      },
+      {
+        "name": "PAROUT",
+        "desc": "Table Output",
+        "format": "A6",
+        "options": "",
+        "id": "74",
+        "parameter": {
+          "para": [
+            {
+              "name": "FPAROUT",
+              "limits": {
+                
+              },
+              "default": "T",
+              "format": "L"
+            },
+            {
+              "name": "FTABOUT",
+              "limits": {
+                
+              },
+              "default": "F",
+              "format": "L"
+            }
+          ]
+        }
+      },
+      {
+        "name": "COMOUT",
+        "desc": "Compact Output",
+        "options": "COMPACT",
+        "id": "75",
+        "parameter": {
+          "para": {
+            "name": "COMOUT",
+            "limits": {
+              
+            },
+            "default": "T",
+            "format": "L"
+          }
+        }
+      },
+      {
+        "name": "OUTPUT",
+        "desc": "Printer Output Unit",
+        "format": "A6",
+        "options": "",
+        "id": "76",
+        "parameter": {
+          "para": {
+            "name": "MONNEW",
+            "limits": {
+              
+            },
+            "default": "6",
+            "format": "I"
+          }
+        }
+      },
+      {
+        "name": "DATDIR",
+        "desc": "Data Table Directory",
+        "format": "A6",
+        "options": "",
+        "id": "77",
+        "parameter": {
+          "para": {
+            "name": "DATDIR",
+            "limits": {
+              
+            },
+            "default": "./",
+            "format": "A132"
+          }
+        }
+      },
+      {
+        "name": "PARALLEL",
+        "desc": "Parameters for Parallel Treatment",
+        "format": "A8",
+        "options": "PARALLEL",
+        "id": "78",
+        "parameter": {
+          "para": [
+            {
+              "name": "ECTCUT",
+              "limits": {
+                
+              },
+              "default": "10000.0",
+              "format": "F"
+            },
+            {
+              "name": "ECTMAX",
+              "limits": {
+                
+              },
+              "default": "10000000.0",
+              "format": "F"
+            },
+            {
+              "name": "MPIID",
+              "limits": {
+                
+              },
+              "default": "1",
+              "format": "I"
+            },
+            {
+              "name": "FECTOUT",
+              "limits": {
+                
+              },
+              "default": "F",
+              "format": "L"
+            }
+          ]
+        }
+      },
+      {
+        "name": "CUTFILE",
+        "desc": "Reading of Cutted Particle File for Parallel Treatment",
+        "format": "A7",
+        "options": "PARALLEL,!PARALLELIB",
+        "id": "79",
+        "parameter": {
+          "para": [
+            {
+              "name": "CFILINP",
+              "limits": {
+                
+              },
+              "default": " ",
+              "format": "A255"
+            },
+            {
+              "name": "I1CUTPAR",
+              "limits": {
+                
+              },
+              "default": "0",
+              "format": "I"
+            },
+            {
+              "name": "I2CUTPAR",
+              "limits": {
+                
+              },
+              "default": "0",
+              "format": "I"
+            }
+          ]
+        }
+      },
+      {
+        "name": "CUTPAR",
+        "desc": "Parameters of Cutted Particles for Parallel Treatment",
+        "format": "A6",
+        "options": "PARALLEL+!PARALLELIB",
+        "id": "80",
+        "parameter": {
+          "para": [
+            {
+              "name": "CUTPAR0",
+              "limits": {
+                
+              },
+              "format": "Z"
+            },
+            {
+              "name": "CUTPAR1",
+              "limits": {
+                
+              },
+              "format": "Z"
+            },
+            {
+              "name": "CUTPAR2",
+              "limits": {
+                
+              },
+              "format": "Z"
+            },
+            {
+              "name": "CUTPAR3",
+              "limits": {
+                
+              },
+              "format": "Z"
+            },
+            {
+              "name": "CUTPAR4",
+              "limits": {
+                
+              },
+              "format": "Z"
+            },
+            {
+              "name": "CUTPAR5",
+              "limits": {
+                
+              },
+              "format": "Z"
+            },
+            {
+              "name": "CUTPAR6",
+              "limits": {
+                
+              },
+              "format": "Z"
+            },
+            {
+              "name": "CUTPAR7",
+              "limits": {
+                
+              },
+              "format": "Z"
+            },
+            {
+              "name": "CUTPAR8",
+              "limits": {
+                
+              },
+              "format": "Z"
+            },
+            {
+              "name": "CUTPAR9",
+              "limits": {
+                
+              },
+              "format": "Z"
+            },
+            {
+              "name": "CUTPAR10",
+              "limits": {
+                
+              },
+              "format": "Z"
+            },
+            {
+              "name": "CUTPAR11",
+              "limits": {
+                
+              },
+              "format": "Z"
+            },
+            {
+              "name": "CUTPAR12",
+              "limits": {
+                
+              },
+              "format": "Z"
+            },
+            {
+              "name": "CUTPAR13",
+              "limits": {
+                
+              },
+              "format": "Z"
+            },
+            {
+              "name": "CUTPAR14",
+              "limits": {
+                
+              },
+              "format": "Z"
+            },
+            {
+              "name": "CUTPAR15",
+              "limits": {
+                
+              },
+              "format": "Z"
+            },
+            {
+              "name": "CUTPAR16",
+              "limits": {
+                
+              },
+              "format": "Z"
+            },
+            {
+              "name": "CUTPAR17",
+              "limits": {
+                
+              },
+              "format": "Z"
+            },
+            {
+              "name": "CUTPAR18",
+              "limits": {
+                
+              },
+              "format": "Z"
+            }
+          ]
+        }
+      },
+      {
+        "name": "CERARY",
+        "desc": "Cherenkov Detector Array Definition",
+        "format": "A6",
+        "options": "CERENKOV,!IACT",
+        "id": "81",
+        "parameter": {
+          "para": [
+            {
+              "name": "NCERX",
+              "limits": { "min": "1" },
+              "default": "27",
+              "format": "I"
+            },
+            {
+              "name": "NCERY",
+              "limits": { "min": "1" },
+              "default": "27",
+              "format": "I"
+            },
+            {
+              "name": "DCERX",
+              "limits": { "min": "1.0" },
+              "default": "1500.0",
+              "format": "F"
+            },
+            {
+              "name": "DCERY",
+              "limits": { "min": "1.0" },
+              "default": "1500.0",
+              "format": "F"
+            },
+            {
+              "name": "ACERX",
+              "limits": { "min": "1.0" },
+              "default": "100.0",
+              "format": "F"
+            },
+            {
+              "name": "ACERY",
+              "limits": { "min": "1.0" },
+              "default": "100.0",
+              "format": "F"
+            }
+          ]
+        }
+      },
+      {
+        "name": "CWAVLG",
+        "desc": "CherenkovWavelength Band",
+        "format": "A6",
+        "options": "CERENKOV,AUGCERLONG,AUGERHIST",
+        "id": "82",
+        "parameter": {
+          "para": [
+            {
+              "name": "WAVLGL",
+              "limits": { "min": "100.0" },
+              "desc": "Lower limit (in nm) of the wavelength band for Cherenkov radiation production.",
+              "default": "300.0",
+              "format": "F"
+            },
+            {
+              "name": "WAVLGU",
+              "limits": { "max": "700.0" },
+              "desc": "Upper limit (in nm) of the wavelength band for Cherenkov radiation production.",
+              "default": "450.0",
+              "format": "F"
+            }
+          ]
+        }
+      },
+      {
+        "name": "CERSIZ",
+        "desc": "Cherenkov Bunch Size Definition",
+        "format": "A6",
+        "options": "CERENKOV,AUGCERLONG,AUGERHIST",
+        "id": "83",
+        "parameter": {
+          "para": {
+            "name": "CERSIZ",
+            "limits": { "min": "0.0" },
+            "default": "0.0",
+            "format": "F"
+          }
+        }
+      },
+      {
+        "name": "CERFIL",
+        "desc": "Cherenkov Output Steering",
+        "format": "A6",
+        "options": "CERENKOV",
+        "id": "84",
+        "parameter": {
+          "para": {
+            "name": "LCERFI",
+            "limits": {
+              
+            },
+            "default": "T",
+            "format": "L"
+          }
+        }
+      },
+      {
+        "name": "CERQEF",
+        "desc": "Cherenkov Quantum Efficiency",
+        "format": "A6",
+        "options": "CEFFIC+CERENKOV",
+        "id": "85",
+        "parameter": {
+          "para": [
+            {
+              "name": "CERQEF",
+              "limits": {
+                
+              },
+              "default": "F",
+              "format": "L"
+            },
+            {
+              "name": "CERATA",
+              "limits": {
+                
+              },
+              "default": "F",
+              "format": "L"
+            },
+            {
+              "name": "CERMIR",
+              "limits": {
+                
+              },
+              "default": "F",
+              "format": "L"
+            }
+          ]
+        }
+      },
+      {
+        "name": "CSCAT",
+        "desc": "Multiple Use of Cherenkov Events",
+        "format": "A5",
+        "options": "CERENKOV",
+        "id": "86",
+        "parameter": {
+          "para": [
+            {
+              "name": "ICERML",
+              "limits": {
+                "min": "0",
+                "max": "20"
+              },
+              "default": "1",
+              "format": "I"
+            },
+            {
+              "name": "XSCATT",
+              "limits": { "min": "0.0" },
+              "desc": "Maximum scattering of core location in +-X direction (in cm). See Sect. 3.4.1 page 36 ff.",
+              "default": "0.0",
+              "format": "F"
+            },
+            {
+              "name": "YSCATT",
+              "limits": { "min": "0.0" },
+              "desc": "Maximum scattering of core location in +-Y direction (in cm). See Sect. 3.4.1 page 36 ff.",
+              "default": "0.0",
+              "format": "F"
+            }
+          ]
+        }
+      },
+      {
+        "name": "TELESCOPE",
+        "desc": "Cherenkov Telescope Dimensions",
+        "format": "A9",
+        "options": "CERENKOV+IACT",
+        "id": "87",
+        "parameter": {
+          "para": [
+            {
+              "name": "X",
+              "limits": {
+                
+              },
+              "format": "F"
+            },
+            {
+              "name": "Y",
+              "limits": {
+                
+              },
+              "format": "F"
+            },
+            {
+              "name": "Z",
+              "limits": {
+                
+              },
+              "format": "F"
+            },
+            {
+              "name": "R",
+              "limits": { "min": "0" },
+              "format": "F"
+            }
+          ]
+        }
+      },
+      {
+        "name": "TELFIL",
+        "desc": "Cherenkov Telescope Data File Name",
+        "format": "A6",
+        "options": "CERENKOV+IACT",
+        "id": "88",
+        "parameter": {
+          "para": {
+            "name": "TELFNM",
+            "limits": {
+              
+            },
+            "default": " ",
+            "format": "A512"
+          }
+        }
+      },
+      {
+        "name": "TRAFLG",
+        "desc": "Trajectory Selection Flag",
+        "format": "A6",
+        "options": "TRAJECT",
+        "id": "89",
+        "parameter": {
+          "para": {
+            "name": "TLOGIC",
+            "limits": {
+              
+            },
+            "default": "T",
+            "format": "L"
+          }
+        }
+      },
+      {
+        "name": "SRCPOS",
+        "desc": "Source Position Parameters",
+        "format": "A6",
+        "options": "TRAJECT",
+        "id": "90",
+        "parameter": {
+          "para": [
+            {
+              "name": "RA",
+              "limits": {
+                "min": "0.0",
+                "max": "24.0"
+              },
+              "default": "5.57",
+              "format": "F"
+            },
+            {
+              "name": "DEC",
+              "limits": {
+                "min": "-90.0",
+                "max": "90.0"
+              },
+              "default": "22.0",
+              "format": "F"
+            }
+          ]
+        }
+      },
+      {
+        "name": "TRATM",
+        "desc": "Trajectory Time Parameters",
+        "format": "A5",
+        "options": "TRAJECT",
+        "id": "91",
+        "parameter": {
+          "para": [
+            {
+              "name": "TYEAR",
+              "limits": {
+                
+              },
+              "desc": "Define the start time of the observation.",
+              "default": "2000",
+              "format": "I"
+            },
+            {
+              "name": "TMONTH",
+              "limits": {
+                
+              },
+              "desc": "Define the start time of the observation.",
+              "default": "1",
+              "format": "I"
+            },
+            {
+              "name": "TDAY",
+              "limits": {
+                
+              },
+              "desc": "Define the start time of the observation.",
+              "default": "1",
+              "format": "I"
+            },
+            {
+              "name": "THOUR",
+              "limits": {
+                
+              },
+              "desc": "Define the start time of the observation.",
+              "default": "21",
+              "format": "I"
+            },
+            {
+              "name": "TMINUTE",
+              "limits": {
+                
+              },
+              "desc": "Define the start time of the observation.",
+              "default": "0",
+              "format": "I"
+            },
+            {
+              "name": "TSECOND",
+              "limits": {
+                
+              },
+              "desc": "Define the start time of the observation.",
+              "default": "0",
+              "format": "I"
+            },
+            {
+              "name": "TDURATION",
+              "limits": { "min": "0" },
+              "desc": "Duration of observation (in sec).",
+              "default": "3600",
+              "format": "I"
+            }
+          ]
+        }
+      },
+      {
+        "name": "TLAT",
+        "desc": "Lateral Telescope Site Parameters",
+        "format": "A4,",
+        "options": "TRAJECT",
+        "id": "92",
+        "parameter": {
+          "para": [
+            {
+              "name": "TLATDGR",
+              "limits": {
+                "min": "0.0",
+                "max": "90.0"
+              },
+              "desc": "Latitude of the telescope site (in degree).",
+              "default": "28.0",
+              "format": "F"
+            },
+            {
+              "name": "TLATMIN",
+              "limits": {
+                "min": "0.0",
+                "max": "60.0"
+              },
+              "desc": "Latitude of the telescope site (in min).",
+              "default": "45.0",
+              "format": "F"
+            },
+            {
+              "name": "TLATSEC",
+              "limits": {
+                "min": "0.0",
+                "max": "60.0"
+              },
+              "desc": "Latitude of the telescope site (in sec).",
+              "default": "24.462",
+              "format": "F"
+            },
+            {
+              "name": "TLATDIR",
+              "limits": {
+                
+              },
+              "desc": "Direction North = ’N’, South = ’S’ of the latitude of the telescope site.",
+              "default": "N",
+              "format": "A1"
+            }
+          ]
+        }
+      },
+      {
+        "name": "TLONG",
+        "desc": "Longitudinal Telescope Site Parameters",
+        "format": "A5",
+        "options": "TRAJECT",
+        "id": "93",
+        "parameter": {
+          "para": [
+            {
+              "name": "TLONGDGR",
+              "limits": {
+                
+              },
+              "desc": "Longitude of the telescope site (in degree).",
+              "default": "17.0",
+              "format": "F"
+            },
+            {
+              "name": "TLONGMIN",
+              "limits": {
+                
+              },
+              "desc": "Longitude of the telescope site (in min).",
+              "default": "53.0",
+              "format": "F"
+            },
+            {
+              "name": "TLONGSEC",
+              "limits": {
+                
+              },
+              "desc": "Longitude of the telescope site (in sec).",
+              "default": "26.525",
+              "format": "F"
+            },
+            {
+              "name": "TLONGDIR",
+              "limits": {
+                
+              },
+              "desc": "Direction East = ’E’, West = ’W’ of the longitude of the telescope site.",
+              "default": "W",
+              "format": "A1"
+            }
+          ]
+        }
+      },
+      {
+        "name": "GEODEC",
+        "desc": "Geomagnetic Declination of Telescope",
+        "format": "A6",
+        "options": "TRAJECT",
+        "id": "94",
+        "parameter": {
+          "para": {
+            "name": "GEODECL",
+            "limits": {
+              "min": "-45.0",
+              "max": "45.0"
+            },
+            "default": "-6.35",
+            "format": "F"
+          }
+        }
+      },
+      {
+        "name": "TRARAD",
+        "desc": "Trajectory Broadening Parameter",
+        "format": "A6",
+        "options": "TRAJECT",
+        "id": "95",
+        "parameter": {
+          "para": {
+            "name": "TRAD",
+            "limits": {
+              "min": "0",
+              "max": "3600"
+            },
+            "desc": "Defines the radius of a spread around the calculated trajectory (in arcmin).",
+            "default": "0.0",
+            "format": "F"
+          }
+        }
+      },
+      {
+        "name": "EINTER",
+        "desc": "Interesting Energy Threshold",
+        "format": "A6",
+        "options": "ICECUBE1",
+        "id": "96",
+        "parameter": {
+          "para": {
+            "name": "ENERGY_INTER",
+            "limits": {
+              
+            },
+            "desc": "Threshold energy (in GeV) above which particles are interesting for production of high-energy neutrinos for the IceCube [56] experiment",
+            "default": "1000.0",
+            "format": "F"
+          }
+        }
+      },
+      {
+        "name": "PIPE",
+        "desc": "PIPE Output Redirection Flag",
+        "format": "A4",
+        "options": "ICECUBE2",
+        "id": "97",
+        "parameter": {
+          "para": {
+            "name": "PIPE_OUTPUT",
+            "limits": {
+              
+            },
+            "desc": "If .true., the output is redirected to a pipe-buffer. This buffer should serve as on-line input to a detector simulation program.",
+            "default": "F",
+            "format": "L"
+          }
+        }
+      },
+      {
+        "name": "COMPRESS",
+        "desc": "Compress Output Flag",
+        "format": "A8",
+        "options": "ICECUBE2",
+        "id": "98",
+        "parameter": {
+          "para": {
+            "name": "GZIP_OUTPUT",
+            "limits": {
+              
+            },
+            "desc": "If .true., the output is compressed using the gzip procedure to reduce storage space. The gain in space reduction will not be very dramatic",
+            "default": "T",
+            "format": "L"
+          }
+        }
+      },
+      {
+        "name": "DATBAS",
+        "format": "A6",
+        "options": "UNIX",
+        "id": "99",
+        "parameter": {
+          "para": {
+            "name": "FDBASE",
+            "limits": {
+              
+            },
+            "default": "F",
+            "format": "L"
+          }
+        }
+      },
+      {
+        "name": "USER",
+        "desc": "User Name",
+        "format": "A4",
+        "options": "",
+        "id": "100",
+        "parameter": {
+          "para": {
+            "name": "USER",
+            "limits": {
+              
+            },
+            "desc": "A user name is read in to be written to the ’DATnnnnnn.dbase’ file. Lower case characters of USER are not converted to capitals.",
+            "default": " ",
+            "format": "A60"
+          }
+        }
+      },
+      {
+        "name": "HOST",
+        "desc": "Host Name",
+        "format": "A4",
+        "options": "",
+        "id": "101",
+        "parameter": {
+          "para": {
+            "name": "HOST",
+            "limits": {
+              
+            },
+            "desc": "A host name is read in to be written to the ’DATnnnnnn.dbase’ file. Lower case characters of HOST are not converted to capitals.",
+            "default": " ",
+            "format": "A60"
+          }
+        }
+      },
+      {
+        "name": "DEBUG",
+        "desc": "Debugging",
+        "format": "A5",
+        "options": "",
+        "id": "102",
+        "parameter": {
+          "para": [
+            {
+              "name": "DEBUG",
+              "limits": {
+                
+              },
+              "default": "F",
+              "format": "L"
+            },
+            {
+              "name": "MDEBUG",
+              "limits": {
+                
+              },
+              "format": "I"
+            },
+            {
+              "name": "DEBDEL",
+              "limits": {
+                
+              },
+              "default": "F",
+              "format": "L"
+            },
+            {
+              "name": "NDEBDL",
+              "limits": {
+                
+              },
+              "default": "100000",
+              "format": "I"
+            }
+          ]
+        }
+      },
+      {
+        "name": "EGSDEB",
+        "desc": "Debugging EGS",
+        "format": "A6",
+        "options": "",
+        "id": "103",
+        "parameter": {
+          "para": {
+            "name": "JCLOCK",
+            "limits": {
+              
+            },
+            "default": "2147483647",
+            "format": "I"
+          }
+        }
+      },
+      {
+        "name": "FLUDBG",
+        "desc": "FLUKA Printing",
+        "format": "A6",
+        "options": "FLUKA",
+        "id": "104",
+        "parameter": {
+          "para": {
+            "name": "FFLUDB",
+            "limits": {
+              
+            },
+            "default": "F",
+            "format": "L"
+          }
+        }
+      },
+      {
+        "name": "GHEIDB",
+        "desc": "GHEISHA Debugging",
+        "format": "A6",
+        "options": "GHEISHA",
+        "id": "105",
+        "parameter": {
+          "para": {
+            "name": "GHEISDB",
+            "limits": {
+              
+            },
+            "default": "F",
+            "format": "L"
+          }
+        }
+      },
+      {
+        "name": "URQMD",
+        "desc": "URQMD Debugging",
+        "format": "A5",
+        "options": "URQMD",
+        "id": "106",
+        "parameter": {
+          "para": [
+            {
+              "name": "FURQMD",
+              "limits": {
+                
+              },
+              "default": "T",
+              "format": "L"
+            },
+            {
+              "name": "IUDEBUG",
+              "limits": {
+                "min": "0",
+                "max": "3"
+              },
+              "default": "0",
+              "format": "I"
+            }
+          ]
+        }
+      },
+      {
+        "name": "PYTHIA",
+        "desc": "PYTHIA Printing",
+        "format": "A6",
+        "options": "DPMJET,CHARM,TAULEP",
+        "id": "107",
+        "parameter": {
+          "para": [
+            {
+              "name": "IFLGPYW",
+              "limits": { "min": "0" },
+              "default": "0",
+              "format": "I"
+            },
+            {
+              "name": "IFLGPYE",
+              "limits": { "min": "0" },
+              "default": "0",
+              "format": "I"
+            }
+          ]
+        }
+      },
+      {
+        "name": "CDEBUG",
+        "desc": "Cherenkov Debugging",
+        "format": "A6",
+        "options": "CERENKOV",
+        "id": "108",
+        "parameter": {
+          "para": {
+            "name": "LCERDB",
+            "limits": {
+              
+            },
+            "default": "F",
+            "format": "L"
+          }
+        }
+      },
+      {
+        "name": "INTTST",
+        "desc": "Interaction Test Target Definition",
+        "format": "A6",
+        "options": "INTTEST",
+        "id": "109",
+        "parameter": {
+          "para": [
+            {
+              "name": "ITTAR",
+              "limits": {
+                
+              },
+              "default": "0",
+              "format": "I"
+            },
+            {
+              "name": "MCM",
+              "limits": {
+                
+              },
+              "default": "0",
+              "format": "I"
+            }
+          ]
+        }
+      },
+      {
+        "name": "INTDEC",
+        "desc": "Interaction Test Decay",
+        "format": "A6",
+        "options": "INTTEST",
+        "id": "110",
+        "parameter": {
+          "para": [
+            {
+              "name": "LPI0",
+              "limits": {
+                
+              },
+              "default": "T",
+              "format": "L"
+            },
+            {
+              "name": "LETA",
+              "limits": {
+                
+              },
+              "default": "T",
+              "format": "L"
+            },
+            {
+              "name": "LHYP",
+              "limits": {
+                
+              },
+              "default": "T",
+              "format": "L"
+            },
+            {
+              "name": "LK0S",
+              "limits": {
+                
+              },
+              "default": "T",
+              "format": "L"
+            }
+          ]
+        }
+      },
+      {
+        "name": "INTSPC",
+        "desc": "Interaction Test Spectator Definition",
+        "format": "A6",
+        "options": "INTTEST",
+        "id": "111",
+        "parameter": {
+          "para": {
+            "name": "LSPEC",
+            "limits": {
+              
+            },
+            "default": "F",
+            "format": "L"
+          }
+        }
+      },
+      {
+        "name": "DIFOFF",
+        "desc": "Interaction Test Diffraction Flag",
+        "format": "A6",
+        "options": "INTTEST",
+        "id": "112",
+        "parameter": {
+          "para": {
+            "name": "NDIF",
+            "limits": {
+              
+            },
+            "default": "0",
+            "format": "I"
+          }
+        }
+      },
+      {
+        "name": "TRIGGER",
+        "desc": "Interaction Test Trigger Condition",
+        "format": "A7",
+        "options": "INTTEST",
+        "id": "113",
+        "parameter": {
+          "para": {
+            "name": "NTRIG",
+            "limits": {
+              
+            },
+            "default": "0",
+            "format": "I"
+          }
+        }
+      },
+      {
+        "name": "HISTDS",
+        "desc": "Interaction Test Histogram Output",
+        "format": "A6",
+        "options": "INTTEST",
+        "id": "114",
+        "parameter": {
+          "para": {
+            "name": "HISTDS",
+            "limits": {
+              
+            },
+            "default": "histo.corsika.inttest",
+            "format": "A120"
+          }
+        }
+      },
+      {
+        "name": "PLOTSH",
+        "desc": "Plot Output",
+        "format": "A6",
+        "options": "PLOTSH,PLOTSH2",
+        "id": "115",
+        "parameter": {
+          "para": {
+            "name": "PLOTSH",
+            "limits": {
+              
+            },
+            "default": "F",
+            "format": "L"
+          }
+        }
+      },
+      {
+        "name": "PLAXES",
+        "desc": "Plot Axes Definition",
+        "format": "A6",
+        "options": "PLOTSH2",
+        "id": "116",
+        "parameter": {
+          "para": [
+            {
+              "name": "X1",
+              "limits": {
+                
+              },
+              "default": "-500000.0",
+              "format": "F"
+            },
+            {
+              "name": "X2",
+              "limits": {
+                
+              },
+              "default": "500000.0",
+              "format": "F"
+            },
+            {
+              "name": "Y1",
+              "limits": {
+                
+              },
+              "default": "-500000.0",
+              "format": "F"
+            },
+            {
+              "name": "Y2",
+              "limits": {
+                
+              },
+              "default": "500000.0",
+              "format": "F"
+            },
+            {
+              "name": "Z1",
+              "limits": {
+                
+              },
+              "default": "0.0",
+              "format": "F"
+            },
+            {
+              "name": "Z2",
+              "limits": {
+                
+              },
+              "default": "3000000.0",
+              "format": "F"
+            }
+          ]
+        }
+      },
+      {
+        "name": "PLCUTS",
+        "desc": "Plot Energy Cut Definition",
+        "format": "A6",
+        "options": "PLOTSH2",
+        "id": "117",
+        "parameter": {
+          "para": [
+            {
+              "name": "ELCUTS1",
+              "limits": {
+                
+              },
+              "default": "0.3",
+              "format": "F"
+            },
+            {
+              "name": "ELCUTS2",
+              "limits": {
+                
+              },
+              "default": "0.3",
+              "format": "F"
+            },
+            {
+              "name": "ELCUTS3",
+              "limits": {
+                
+              },
+              "default": "0.003",
+              "format": "F"
+            },
+            {
+              "name": "ELCUTS4",
+              "limits": {
+                
+              },
+              "default": "0.003",
+              "format": "F"
+            },
+            {
+              "name": "TCUT",
+              "limits": {
+                
+              },
+              "default": "100000.0",
+              "format": "F"
+            },
+            {
+              "name": "FBOXCUT",
+              "limits": {
+                
+              },
+              "default": "F",
+              "format": "L"
+            }
+          ]
+        }
+      },
+      {
+        "name": "EXIT",
+        "desc": "End of Steering",
+        "format": "A4",
+        "options": "",
+        "id": "118"
+      }
+    ]
+  }
+}

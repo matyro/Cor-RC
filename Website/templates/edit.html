@@ -12,27 +12,39 @@
 	<strong>{{msg}}</strong>
 </div>	
 {% end %}
-
-<!-- Main jumbotron for a primary marketing message or call to action -->
-<div class="container">	 
-	<div class="row">
-		<div class="col-md-12" style="height:100%;">  
-		
-			<div class="panel panel-default" style="height:100%;">	
-				<div class="row no-float" style="display: table; width:100%;">
-					<div class="col-sm-3 col-md-3 col-lg-3 no-float" style="height:100%;">
-						<div class="tree" style="overflow-x:scroll; overflow-y:scroll; max-height:70vh;">
+	 
+<div class="row">
+	<div class="col-cs-1"></div>
+	<div class="col-cs-10">  
+		<div class="row">
+			<div class="col-cs-3">
+				<div class="panel panel-default">
+					<div class="panel-heading">	
+						<h2 class="panel-title" >
+							Select file to edit:
+						</h2>								
+					</div>
+					<div class="panel-body">
+						<div class="tree" style="overflow-y:scroll;">
 							<ul>
 								{% raw fileTree %}
-							</ul>					
-
+							</ul>
 						</div>
 					</div>
-					<div class="col-sm-9 col-md-9 col-lg-9 no-float" style="height:100%;">
-						<form action="/edit" method="POST" role="form" style="width:100%;height:100%">
+				</div>
+			</div>					
+			<div class="col-cs-9">
+				<div class="panel panel-default">
+					<div class="panel-heading">	
+						<h2 class="panel-title" >
+							Edit:
+						</h2>								
+					</div>
+					<div class="panel-body">
+						<form action="/edit" method="POST" role="form" style="height:100%">
 							<label for="Edit">Edit:  </label>
-							<input type="text" name="filePath" id="filePath" class="form-control" style="width:100%; resize:none;" value="{{ filePath }}">  </input>
-							<textarea name="fileContent" id="fileContent" style="width:100%;height:calc(100% - 85px); resize:none; margin-bottom:10px">
+							<input type="text" name="filePath" class="form-control" value="{{ filePath }}">  </input>
+							<textarea name="fileContent" id="fileContent" style="width:100%;height:calc(100% - 105px); resize:none; margin-bottom:10px">
 								{{ fileContent }}
 							</textarea>	
 								{% raw xsrf_form_html() %}
@@ -42,10 +54,10 @@
 					</div>
 				</div>
 			</div>
-			
 		</div>
 	</div>
 </div>
+
 
 
 

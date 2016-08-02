@@ -1,38 +1,6 @@
 {% include "header.html" %}
 
 <style type="text/css">
-.col-md-3{	
-    display: table-cell;    
-	height: 100%;
-	width: 23%;
-}
-.col-md-9{	
-    display: table-cell;  
-	height: 100%;
-	width: 73%;	
-}
-.panel{
-	max-height: 85vh;
-	height: 85vh;	
-}
-
-.panel-body{
-	height: 100%;
-	max-height: 100%;		
-}
-
-.panel-heading .accordion-toggle:after {
-    /* symbol for "opening" panels */
-    font-family: 'Glyphicons Halflings';  /* essential for enabling glyphicon */
-    content: "\e114";    /* adjust as needed, taken from bootstrap.css */
-    float: right;        /* adjust as needed */
-    color: grey;         /* adjust as needed */
-}
-.panel-heading .accordion-toggle.collapsed:after {
-    /* symbol for "collapsed" panels */
-    content: "\e080";    /* adjust as needed, taken from bootstrap.css */
-}
-
 .ui-state-highlight { 
 	height: 1.5em;
 	line-height: 1.2em;
@@ -40,74 +8,14 @@
 }
 
 .trash{	
-	background-color: lightgrey;
+	border-color: white;
+	padding: 2px;
 	border-radius: 10px;
 }
 .trash_highlight{	
 	background-color: red;
 	border-radius: 10px;
 }
-
-
-label {
-	display: inline-block;
-	width: 5em;
-}
-
-
-.ui-tooltip {
-    background: black;
-    color: white;
-    border: none;
-    padding: 0;
-    opacity: 0.8;
-	
-	text-align:center;	
-	
-	border-radius: 0px;
-	font: bold 12px "Helvetica Neue", Sans-Serif;
-    text-transform: uppercase;
-    box-shadow: 0 0 7px darkgrey;
-}
-.ui-tooltip-content {
-    position: relativ;
-    padding: 1em;
-}
-.ui-tooltip-content::after {
-    content: '';
-    position: absolute;
-    border-style: solid;
-    display: block;
-    width: 0;
-}
-.noarrow-tooltip .ui-tooltip-content::after {
-	display: none;
-}
-.right-tooltip .ui-tooltip-content::after {
-    top: 18px;
-    left: -10px;
-    border-color: transparent black;
-    border-width: 10px 10px 10px 0; /*top, right, bottom, left */
-}
-.left-tooltip .ui-tooltip-content::after {
-    top: 18px;
-    right: -10px;
-    border-color: transparent black;
-    border-width: 10px 0 10px 10px;
-}
-.top-tooltip .ui-tooltip-content::after {
-    bottom: -10px;
-    left: 72px;
-    border-color: black transparent;
-    border-width: 10px 10px 0;    
-}
-.bottom-tooltip .ui-tooltip-content::after {
-    top: -10px;
-    left: 72px;
-    border-color: black transparent;
-    border-width: 0 10px 10px;		/* top, right&left, bottom */
-}
-
 
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
@@ -119,61 +27,78 @@ input[type="number"] {
 }
 </style>
 
-
-<div class="container">
 	<div class="row">
-
-		<div class="col-md-3 panel pull-left" style="padding-left:0px; padding-right:0px;">		
-			<div class="panel-heading">		
-				<a class="panel-title"> Select settings to add: </a>
-			</div>
-			<div class="panel-body">
-			
-				<div style="max-height:80%; padding:10px; border-width: 1px; border-style: solid; border-color: darkgrey; overflow-y:scroll;">
-				<ul id="collectionList" class="list-unstyled no-float">
-				{% for itr in steering %}
-					<li class="group" style="margin:2px">							
-						<h3 class="deactivate">
-							{{itr.name}}
-							<div class="tt trash pull-right" title="{% raw itr.desc %}">
-								<i class="fa fa-question fa-lg" aria-hidden="true"></i>
-							</div>
-						</h3>	
-						<div >
-							{% raw itr.content %}
-						</div>
-					</li>
-				{% end %}					
-				</ul>
+		<div class="col-cs-2">
+			<div class="panel panel-default">	
+				<div class="panel-heading">	
+					<h2 class="panel-title" >
+						Saved Cards:
+					</h2>								
 				</div>
-				<form id="form1" action="/edit_card" method="POST" role="form" style="margin-top: 10px; margin-bottom: 10px;">
+				<div class="panel-body" style="overflow-y:scroll;">					
+					<ul id="loadsteering" class="list-group">
+						{% for itr in steeringFiles %}
+						<li class="list-group-item">{{itr.name}}</li>
+						{% end %}
+					</ul>
 					{% raw xsrf_form_html() %}
-					<input type="text" name="filename" class="form-control input-lg" placeholder="Filename"></input>				
-				</form>				
-				<button class="btn btn-success btn-block" id="savebutton">Save</button>
+				</div>
 			</div>
-		</div>	
-
-		<div class="col-md-9 no-float panel panel-default pull-right" style="overflow-y:scroll; padding-left:0px; padding-right:0px;">
-			<div class="panel-heading clearfix">	
-				<h2 class="panel-title pull-left" style="padding-top: 7.5px;"><b>Steering Card:</b></h2>
-				<div id="trash" class="trash pull-right" title="Pull elements over it to remove them!">
-					<a><i class="fa fa-trash fa-3x" aria-hidden="true"></i></a>
-				</div>					
-			</div>
-			
-			<form id="form2" action="/edit_card" method="POST" role="form">
-
-				<ul id="steeringList" class="panel-group list-unstyled" style="padding:20px;">				
-				</ul>
-				{% raw xsrf_form_html() %}
-				<input id="steering" name="steering" type="hidden" value=""></input>				
-			</form>
-
 		</div>
+		
+		<div class="col-cs-8">
+			<div class="panel panel-default">
+				<div class="panel-heading">	
+					<h3 class="panel-title">Steering Card:</h3>
+					<div id="trash" class="trash pull-right" title="Pull elements over it to remove them!" style="margin-top: -32px;">
+						<a><i class="fa fa-trash fa-2x" aria-hidden="true"></i></a>
+					</div>					
+				</div>
+				<div class="panel-body" style="overflow-y:scroll;">
+					<form id="form2" action="/edit_card" method="POST" role="form">
 
+						<ul id="steeringList" class="list-unstyled">				
+						</ul>
+						{% raw xsrf_form_html() %}
+						<input id="steering" name="steering" type="hidden" value=""></input>				
+					</form>
+				</div>
+			</div>
+		</div>
+		
+		<div class="col-cs-2">
+			<div class="panel panel-default">		
+				<div class="panel-heading">		
+					<h2 class="panel-title"> Select settings to add: </h2>
+				</div>
+				<div class="panel-body">
+					<div style="max-height:calc(100% - 80px); padding:10px; border-width: 1px; border-style: solid; border-color: darkgrey; overflow-y:scroll;">
+						<ul id="collectionList" class="list-unstyled">
+							{% for itr in steering %}
+							<li class="group" style="margin:2px">							
+								<h3 class="deactivate">
+									{{itr.name}}
+									<div class="tt trash pull-right" title="{% raw itr.desc %}">
+										<i class="fa fa-question fa-lg" aria-hidden="true"></i>
+									</div>
+								</h3>	
+								<div >
+									{% raw itr.content %}
+								</div>
+							</li>
+							{% end %}					
+						</ul>
+					</div>
+					<form id="form1" action="/edit_card" method="POST" role="form" style="margin-top: 10px; margin-bottom: 10px;">
+						{% raw xsrf_form_html() %}
+						<input type="text" name="filename" class="form-control input-md" placeholder="Steering Card Name"></input>				
+					</form>				
+					<button class="btn btn-success btn-block" id="savebutton">Save</button>
+				</div>
+			</div>	
+		</div>		
 	</div>
-</div>
+
 
 <script>
     $( function(){
@@ -209,7 +134,9 @@ input[type="number"] {
 			input.val($(this).find("h3").text().trim().replace(/(\r\n|\n|\r)+/gm,",") );
 			
 			$(this).find("h3").removeClass("deactivate");
-			$(".accordion").accordion( "refresh" );			
+			$(".accordion").accordion( "refresh" );		
+			
+			unsaved_changes = true;
         },
 		stop: function( event, ui ) {
 			ui.item.children( "h3" ).triggerHandler( "focusout" );				
@@ -284,6 +211,7 @@ input[type="number"] {
 	});   
 });
 
+var unsaved_changes=  false;
 $(document).ready(function() {
     $("#savebutton").click(function() {	
 		var dataForm1 = $("#form1").serialize();
@@ -293,7 +221,32 @@ $(document).ready(function() {
             function() {
 				alert('Saved!');
               });
+			  
+		unsaved_changes = false;
       });
+	  
+	  
+	$("#loadsteering > li").dblclick( function() {
+		if(unsaved_changes){
+			if (!confirm('Discard all changes and load new file?')) { 
+				// do things if not OK
+				return;
+			}			
+		}		
+		
+		$("#loadsteering > li").each(function(index){			
+			$(this).removeClass("active");
+		});
+		
+		$(this).addClass("active");		
+		
+		$('#steeringList').load(document.URL +  ' #steeringList',{name: $(this).text(), _xsrf: $('input[name=_xsrf]').val()} );
+		unsaved_changes = false;
+	});
+	
+	$("input").change( function() {
+		unsaved_changes = true;
+	});
 });	
 </script>
 

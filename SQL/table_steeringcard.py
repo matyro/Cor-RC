@@ -15,14 +15,17 @@ class Steering_Card(Base):
         
         id = Column('id', Integer, primary_key=True)   
         
-        privat = Column('privat', Boolean(), default=False)
+        local_id = Column('local_id', Integer)   
+        inherit_id = Column('inherit_id', Integer, ForeignKey('Steering_Card.id', ondelete='SET NULL'), nullable=True)  
         
-        name = Column('name', String(32)) 
+       
+        name = Column('name', String(64)) 
         
-        card = Column('card', String(512)) 
         
-        create_date = Column('create_date', DateTime(), default=datetime.datetime.now(pytz.utc).replace(tzinfo=None))
-        update_date = Column('update_date', DateTime(), onupdate=datetime.datetime.now(pytz.utc).replace(tzinfo=None))
+        path = Column('path', String(512)) 
+        
+        
+        create_date = Column('create_date', DateTime(), default=datetime.datetime.now(pytz.utc).replace(tzinfo=None))        
         
         user_id = Column('user_id', Integer, ForeignKey('User.id'), default=1) 
                 

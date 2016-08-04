@@ -28,17 +28,15 @@ input[type="number"] {
 </style>
 
 	<div class="row">
-		<div class="col-cs-2">
-			<div class="panel panel-default">	
+		<div class="col-2">
+			<div class="panel">	
 				<div class="panel-heading">	
-					<h2 class="panel-title" >
-						Saved Cards:
-					</h2>								
+					<h2 >Saved Cards:</h2>								
 				</div>
 				<div class="panel-body" style="overflow-y:scroll;">					
-					<ul id="loadsteering" class="list-group">
+					<ul id="loadsteering">
 						{% for itr in steeringFiles %}
-						<li class="list-group-item">{{itr.name}}</li>
+						<li>{{itr.name}}</li>
 						{% end %}
 					</ul>
 					{% raw xsrf_form_html() %}
@@ -46,42 +44,41 @@ input[type="number"] {
 			</div>
 		</div>
 		
-		<div class="col-cs-8">
-			<div class="panel panel-default">
-				<div class="panel-heading">	
-					<h3 class="panel-title">Steering Card:</h3>
-					<div id="trash" class="trash pull-right" title="Pull elements over it to remove them!" style="margin-top: -32px;">
+		<div class="col-8">
+			<div class="panel">
+				<div class="panel-heading" >	
+					<h2 class="inline">Steering Card:</h2>
+					<div id="trash" class="trash" title="Pull elements over it to remove them!" style="float:right;">
 						<a><i class="fa fa-trash fa-2x" aria-hidden="true"></i></a>
 					</div>					
 				</div>
-				<div class="panel-body" style="overflow-y:scroll;">
-					<form id="form2" action="/edit_card" method="POST" role="form">
-
-						<ul id="steeringList" class="list-unstyled">				
-						</ul>
-						{% raw xsrf_form_html() %}
-						<input id="steering" name="steering" type="hidden" value=""></input>				
-					</form>
+				<div class="panel-body">
+					<div style="max-height: calc(100% - 20px); padding:10px; border-width: 1px; border-style: solid; border-color: darkgrey; overflow-y:scroll;">
+						<form id="form2" action="/edit_card" method="POST" role="form">
+							<ul id="steeringList" class="list-unstyled">				
+							</ul>
+							{% raw xsrf_form_html() %}
+							<input id="steering" name="steering" type="hidden" value=""></input>				
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>
 		
-		<div class="col-cs-2">
-			<div class="panel panel-default">		
+		<div class="col-2">
+			<div class="panel">		
 				<div class="panel-heading">		
-					<h2 class="panel-title"> Select settings to add: </h2>
+					<h2 > Select settings to add: </h2>
 				</div>
 				<div class="panel-body">
-					<div style="max-height:calc(100% - 80px); padding:10px; border-width: 1px; border-style: solid; border-color: darkgrey; overflow-y:scroll;">
+					<div style="max-height:calc(100% - 118px); padding:10px; border-width: 1px; border-style: solid; border-color: darkgrey; overflow-y:scroll;">
 						<ul id="collectionList" class="list-unstyled">
 							{% for itr in steering %}
-							<li class="group" style="margin:2px">							
-								<h3 class="deactivate">
-									{{itr.name}}
-									<div class="tt trash pull-right" title="{% raw itr.desc %}">
-										<i class="fa fa-question fa-lg" aria-hidden="true"></i>
-									</div>
-								</h3>	
+							<li style="margin:2px">							
+								<h5 class="deactivate">
+									<b>{{itr.name}}</b>									
+									<i class="tt trash fa fa-question fa-lg" style="float:right; vertical-align:top;" aria-hidden="true" title="{% raw itr.desc %}"></i>									
+								</h5>	
 								<div >
 									{% raw itr.content %}
 								</div>
@@ -91,9 +88,9 @@ input[type="number"] {
 					</div>
 					<form id="form1" action="/edit_card" method="POST" role="form" style="margin-top: 10px; margin-bottom: 10px;">
 						{% raw xsrf_form_html() %}
-						<input type="text" name="filename" class="form-control input-md" placeholder="Steering Card Name"></input>				
+						<input type="text" name="filename" class="input-block input-md" placeholder="Steering Card Name"></input>				
 					</form>				
-					<button class="btn btn-success btn-block" id="savebutton">Save</button>
+					<button class="btn btn-green btn-md btn-block" id="savebutton">Save</button>
 				</div>
 			</div>	
 		</div>		
@@ -109,7 +106,7 @@ input[type="number"] {
 				items: '.tt',				
 				position: {
 			my: "right center",
-			at: "right-20 center",
+			at: "right-30 center",
 			offset: "-40 0",
 			of: $(this).parent()
 		},
@@ -131,21 +128,21 @@ input[type="number"] {
             copyHelper = null;		
 			
 			var input = $( "#steering" );
-			input.val($(this).find("h3").text().trim().replace(/(\r\n|\n|\r)+/gm,",") );
+			input.val($(this).find("h5").text().trim().replace(/(\r\n|\n|\r)+/gm,",") );
 			
-			$(this).find("h3").removeClass("deactivate");
+			$(this).find("h5").removeClass("deactivate");
 			$(".accordion").accordion( "refresh" );		
 			
 			unsaved_changes = true;
         },
 		stop: function( event, ui ) {
-			ui.item.children( "h3" ).triggerHandler( "focusout" );				
+			ui.item.children( "h5" ).triggerHandler( "focusout" );				
 			
 			// Refresh accordion to handle new order
 			$(".accordion").accordion( "refresh" );			
 		}
     }).accordion({
-		header: "> li > h3",
+		header: "> li > h5",
 		active: false,
 		collapsible: true,
 		heightStyle: "content",
@@ -177,7 +174,7 @@ input[type="number"] {
 			}
 		}
     }).accordion({
-		header: "> li > h3",
+		header: "> li > h5",
 		active: false,
 		collapsible: true,
 		heightStyle: "content",

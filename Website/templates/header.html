@@ -7,28 +7,35 @@
 		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->    
 		<title>Corsika Control Server</title>
 
-		<!-- Bootstrap -->
-		<link rel="stylesheet" type= "text/css" href="{{ static_url('css/bootstrap.min.css') }}" />
-		<!-- Bootstrap theme -->
-		<link rel="stylesheet" type= "text/css" href="{{ static_url('css/bootstrap-theme.min.css') }}" />		
+		
 		<!-- Font -->
-		<link rel='stylesheet' type= 'text/css' href='https://fonts.googleapis.com/css?family=PT+Sans:400,700&subset=latin,latin-ext'>
-		<!-- Slider -->
-		<link rel="stylesheet" type= "text/css" href="{{ static_url('css/bootstrap-slider.min.css') }}" />		
-		<!-- Slider -->
+		<link rel='stylesheet' type= 'text/css' href='https://fonts.googleapis.com/css?family=PT+Sans:400,700&subset=latin,latin-ext'>			
+		<!-- Glyphs -->
 		<link rel="stylesheet" type= "text/css" href="{{ static_url('css/font-awesome.min.css') }}" />		
 		<!-- JQuery UI -->
 		<link rel="stylesheet" href="{{ static_url('css/jquery-ui.min.css') }}">
 		<link rel="stylesheet" href="{{ static_url('css/jquery-ui.theme.min.css') }}">
 		
+		<!-- CustomNavbar -->
+		<link rel="stylesheet" type= "text/css" href="{{ static_url('css/custom_navbar.css') }}" />	
+		<!-- CustomNavbar -->
+		<link rel="stylesheet" type= "text/css" href="{{ static_url('css/custom_button.css') }}" />	
+		<!-- CustomPanel -->
+		<link rel="stylesheet" type= "text/css" href="{{ static_url('css/custom_panel.css') }}" />	
+		<!-- CustomForm -->
+		<link rel="stylesheet" type= "text/css" href="{{ static_url('css/custom_form.css') }}" />	
+		<!-- CustomTable -->
+		<link rel="stylesheet" type= "text/css" href="{{ static_url('css/custom_table.css') }}" />	
+		<!-- CustomTree -->
+		<link rel="stylesheet" type= "text/css" href="{{ static_url('css/custom_tree.css') }}" />	
+		<!-- CustomJQueryUI -->
+		<link rel="stylesheet" type= "text/css" href="{{ static_url('css/custom_jqueryui.css') }}" />	
 		<!-- Custom -->
 		<link rel="stylesheet" type= "text/css" href="{{ static_url('css/custom.css') }}" />	
 				
 				
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src=" {{ static_url('js/jquery-2.2.4.min.js') }}"></script>
-		<!-- Slider  -->
-		<script src=" {{ static_url('js/bootstrap-slider.min.js') }}"></script>
+		<script src=" {{ static_url('js/jquery-2.2.4.min.js') }}"></script>		
 		<!-- Sorting/Moving  -->
 		<script src=" {{ static_url('js/Sortable.min.js') }}"></script>
 		<!-- JQuery UI  -->
@@ -39,10 +46,6 @@
 		
 		
 		
-		 <!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src=" {{ static_url('js/bootstrap.min.js') }} "></script>		
-	
-
 		<link rel="apple-touch-icon" sizes="180x180" href="{{ static_url('favicon/apple-touch-icon.png') }}" />
 		<link rel="icon" type="image/png" href="{{ static_url('favicon/favicon-32x32.png') }}" sizes="32x32" />
 		<link rel="icon" type="image/png" href="{{ static_url('favicon/favicon-16x16.png') }}" sizes="16x16" />
@@ -62,64 +65,51 @@
 	<body role="document">
 
 		<!-- Fixed navbar -->
-		<nav id="custom-bootstrap-menu" class="navbar navbar-fixed-top navbar-default" role="navigation">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"/>
-						<span class="icon-bar"/>
-						<span class="icon-bar"/>
-					</button> 						
-					<img class="navbar-left" style="max-width:50px;" src="{{ static_url('favicon/android-chrome-192x192.png') }}" />
-					<a class="navbar-brand" href="/">CORSIKA RemoteControl</a>			
-				</div>		
-				<div id="navbar" class="navbar-collapse collapse navbar-menubuilder" >				    
-					{% if current_user is not None %}	
-					<ul class="nav navbar-nav navbar-left"> 		
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Shortcuts <span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li>	<a href="#">Running server</a>	</li>
-								<li>	<a href="#">SQL Statistic</a>	</li>
-								<li>	<a href="#">Steering Cards</a>	</li>  
-								<li role="separator" class="divider"></li>
-                  						<li class="dropdown-header">Admin</li>              
-							</ul>
-						</li>		
-						{% if current_user.permission > 9000 %}
-						<li>
-							<a href="/edit">Edit</a>
-						</li>				
-						{% end %}						
-					</ul> 					
-					<ul class="nav navbar-nav navbar-right" style="margin-right:0px">						
-						<li>
-							<a href="/ucp">{{current_user.username}}</a>
-						</li>
-						<li>
-							<p class="navbar-btn"><a href="/logout" class="btn btn-danger">Logout</a></p>		
-						</li>						
-					</ul>
-					{% else %} 
-					<div class="nav navbar-nav navbar-right">
-						<form action="/login" class="navbar-form" method="POST" role="form">
-							<div class="input-group">
-								<div class="form-group">
-									<input type="text" name="username" id="inputName" class="form-control" placeholder="Username" required />
-								</div>			
-								<div class="form-group">
-									<input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required />
-								</div>					
-								{% raw xsrf_form_html() %}
-								<button class="btn btn-success" type="submit">Sign in</button>
-							</div>
-						</form> 
-					</div>
-					{% end %}
-				</div>
-				<!--/.nav-collapse -->       
-			</div>
+		<nav class="navbar">
+			<ul>
+				<li class="navbar-left">						
+					<img style="max-height:50px; vertical-align:middle;" src="{{ static_url('favicon/android-chrome-192x192.png') }}" />					
+				</li>	
+				<li class="navbar-left">
+					<div class="navbar-brand">
+						<a href="/">CORSIKA RemoteControl</a>
+					<div>
+				</li>
+				{% if current_user is not None %}	
+				<li class="navbar-left dropdown">
+					<a>Shortcut</a>
+					<ul class="dropdown-content">
+						<li href="#">Link 1</li>
+						<li href="#">Link 2</li>
+						<li href="#">Link 3</li>
+					</ul>											
+				</li>				
+				{% if current_user.permission > 9000 %}	
+				<li class="navbar-left navbar-seperator"></li>
+				<li class="navbar-left">					
+					<a href="/edit">Edit</a>
+				</li>	
+				{% end %}					
+				<li class="navbar-right">						
+					<a class="navbar-no-highlight" style="background-color:red;" href="/logout">Logout</a >						
+				</li>	
+				<li class="navbar-right">
+					<a href="/ucp">{{current_user.username}}</a>
+				</li>
+				{%else%}
+				<li class="navbar-right">
+					<form action="/login" id="navbarLogin" method="POST" role="form">		
+						<div class="inline">
+							<input type="text" name="username" id="inputName" class="input-md" placeholder="Username" required />							
+							<input type="password" name="password" id="inputPassword" class="input-md" placeholder="Password" required />	
+							<input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;" tabindex="-1" />
+							{% raw xsrf_form_html() %}
+						</div>
+						<a href="#" class="navbar-no-highlight inline" style="background-color:green;" onclick="document.forms['navbarLogin'].submit(); return false;">Sign in</a>	
+					</form> 					
+				</li>	
+				{% end %}		     
+			</ul>
 		</nav>
 	
 		<div class="websiteBody">

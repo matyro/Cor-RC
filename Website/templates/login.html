@@ -9,32 +9,31 @@
 
 
 	<div class="row">
-		<div class="col-md-4 col-md-offset-4">
+		<div class="col-4 col-offset-4">
 		
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h3 class="panel-title">Please sign in</h3>
-				</div>
-				
+					<h3>Please sign in</h3>
+				</div>				
 				<div class="panel-body">
-					<form action="/login" class="form-signin" method="POST" role="form" id="loginForm">				     
-						<div class="form-group">
-							<label for="inputName" class="sr-only">Username</label>
-							<input type="text" name="username" id="inputName" class="form-control input-lg" placeholder="Username" required autofocus />
+					<form action="/login" class="center" method="POST" role="form" id="loginForm">				     
+						<div class="form-control">
+							<span style="width:20px; display:inline-block;"><i class="fa fa-user"></i></span>						
+							<input type="text" name="username" class="input-md" placeholder="Username" required autofocus />
 						</div>       
-						<div class="form-group">
-							<label for="inputPassword" class="sr-only">Password</label>
-							<input type="password" name="password" id="inputPassword" class="form-control input-lg" placeholder="Password" required />
+						<div class="form-control">							
+							<span style="width:20px; display:inline-block;"><i class="fa fa-key"></i></span>
+							<input type="password" name="password" class="input-md" placeholder="Password" required />
 						</div>               
 						<div class="checkbox">
-							<label>
+							<label>								
 								<input type="checkbox" name="checkbox" value="remember-me" /> Remember me
 							</label>
 						</div>         
-				{% raw xsrf_form_html() %}
-						<button class="btn btn-lg btn-success btn-block" type="submit">Sign in</button>
+						{% raw xsrf_form_html() %}						
+						<button class="btn btn-green btn-md" type="submit">Sign in</button>						
 					</form>
-					<div class="login-help">
+					<div class="center">
 						<a href="#">Register</a> - <a href="#">Forgot Password</a>
 					</div>
 				</div>

@@ -30,32 +30,32 @@ def createSettings():
         content = ''
         for x in el.find('parameter'):
             if x.find("format").text == 'I':
-                content = content + '<div class=\"form-group\"><div class=\"form-inline\"><label id=\"tt\" title=\"' + xstr(x.find('desc').text)  + '\">'          
+                content = content + '<div class=\"form-group\"><label id=\"tt\" title=\"' + xstr(x.find('desc').text)  + '\">'          
                 content = content + xstr(x.find('name').text) + ':</label>'
-                content = content + '<input type=\"number\" step=\"any\" class=\"form-control input-sm \" name=\"' + xstr(x.find('name').text) + '\"'                
+                content = content + '<input type=\"number\" step=\"any\" class=\"inline input-sm \" name=\"' + xstr(x.find('name').text) + '\"'                
                 content = content + '\" value=\"' + xstr(x.find('default').text) + '\"'
-                content = content +  '/></div></div> <!-- I -->'
+                content = content +  '/></div><!-- I -->'
                     
             elif x.find("format").text == 'F':
-                content = content + '<div class=\"form-group\"><div class=\"form-inline\"><label id=\"tt\" title=\"' + xstr(x.find('desc').text)  + '\">'          
+                content = content + '<div class=\"form-group\"><label id=\"tt\" title=\"' + xstr(x.find('desc').text)  + '\">'          
                 content = content + xstr(x.find('name').text) + ':</label>'
-                content = content + '<input type=\"number\" step=\"any\" class=\"form-control input-sm \" name=\"' + xstr(x.find('name').text) + '\"'
+                content = content + '<input type=\"number\" step=\"any\" class=\"inline input-sm \" name=\"' + xstr(x.find('name').text) + '\"'
                 content = content + 'value=\"' + xstr(x.find('default').text) + '\"' 
-                content = content + '/></div></div> <!-- F -->'
+                content = content + '/></div><!-- F -->'
                     
             elif x.find("format").text == 'L':
-                content = content + '<div class=\"form-group\"><div class=\"form-inline\"><label id=\"tt\" title=\"' + xstr(x.find('desc').text)  + '\">'          
+                content = content + '<div class=\"form-group\"><label id=\"tt\" title=\"' + xstr(x.find('desc').text)  + '\">'          
                 content = content + xstr(x.find('name').text) + ':</label>'
-                content = content + '<input type=\"checkbox\" name=\"' + xstr(x.find('name').text) + '\"'
+                content = content + '<input type=\"checkbox\" class="inline" name=\"' + xstr(x.find('name').text) + '\"'
                 content = content + 'value=\"' + xstr(x.find('default').text) + '\"' 
-                content = content + '/></div></div> <!-- L -->'                
+                content = content + '/></div><!-- L -->'                
                    
             else: 
-                content = content + '<div class=\"form-group\"><div class=\"form-inline\"><label id=\"tt\" title=\"' + xstr(x.find('desc').text)  + '\">'          
+                content = content + '<div class=\"form-group\"><label id=\"tt\" title=\"' + xstr(x.find('desc').text)  + '\">'          
                 content = content + xstr(x.find('name').text) + ':</label>'
-                content = content + '<input maxlength=\"256\" type=\"text\" class=\"form-control input-sm \" name=\"' + xstr(x.find('name').text) + '\"'
+                content = content + '<input maxlength=\"256\" type=\"text\" class=\"inline input-sm \" name=\"' + xstr(x.find('name').text) + '\"'
                 content = content + 'value=\"' + xstr(x.find('default').text) + '\"' 
-                content = content + '/></div></div> <!-- ELSE -->'
+                content = content + '/></div><!-- ELSE -->'
                 
             parameterCounter = parameterCounter + 1
                 

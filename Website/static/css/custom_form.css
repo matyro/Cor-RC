@@ -1,0 +1,65 @@
+input{
+	margin:0px auto 0px;
+	
+	padding:2px;	
+	
+	color: rgb(255,255,255);	
+	font-weight: bold;
+	
+	box-sizing: border-box;
+	
+	background-color: rgba(240,210,210,.5);
+	
+	border-radius: 0px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: rgb(0,0,0);
+	
+	mix-blend-mode: exclusion;
+}
+input:focus {
+  outline-color: rgba(0,0,0,0);
+  background-color: rgba(255,255,255,.7);
+  color: rgb(222, 78, 0);
+  
+  mix-blend-mode: initial;
+}
+
+.input-sm{
+	height: 30px;		 
+	padding: 5px 10px;
+	font-size: 12px;
+	line-height: 1.5;
+}
+.input-md{
+	height: 38px;
+	padding: 8px 13px;
+	font-size: 15px;
+	line-height: 1.3333333;
+}
+.input-lg{
+	height: 46px;
+	padding: 10px 16px;
+	font-size: 18px;
+	line-height: 1.3333333;
+}
+
+.input-block{
+	width:100%;
+}
+
+.form-control{
+	display: block;
+	text-align:center;
+	margin: 0px auto 10px;
+}
+
+.form-group{
+	margin-bottom: 16px;
+}
+
+
+label{
+	display: inline-block;
+	margin-right: 30px;
+}

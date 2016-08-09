@@ -1,39 +1,42 @@
 {% include "header.html" %}
 
-{% if len(error) is not 0 %}	
-<div class="alert alert-danger" style="margin-top:70px;">
-	<strong>{{error}}</strong>
+{% if len(error) is not 0 %}
+<div class="overlay">	
+	<span class="overlay_closebtn" onclick='this.parentNode.parentNode.removeChild(this.parentNode); return false;'>X</span>
+	<div class="alert alert-danger" style="margin-top:70px;">
+		<strong>{{error}}</strong>
+	</div>
 </div>
 {% end %}	
 <div class="container">
 
 
 	<div class="row">
-		<div class="col-4 col-offset-4">
+		<div class="col-2 col-offset-5">
 		
-			<div class="panel panel-default">
+			<div class="panel panel-white">
 				<div class="panel-heading">
 					<h3>Please sign in</h3>
 				</div>				
 				<div class="panel-body">
 					<form action="/login" class="center" method="POST" role="form" id="loginForm">				     
 						<div class="form-control">
-							<span style="width:20px; display:inline-block;"><i class="fa fa-user"></i></span>						
-							<input type="text" name="username" class="input-md" placeholder="Username" required autofocus />
+							<i class="fa fa-user fa-2x"></i>						
+							<input type="text" name="username" class="input-md  input-block" placeholder="Username" required autofocus />
 						</div>       
 						<div class="form-control">							
-							<span style="width:20px; display:inline-block;"><i class="fa fa-key"></i></span>
-							<input type="password" name="password" class="input-md" placeholder="Password" required />
+							<i class="fa fa-key fa-2x"></i>
+							<input type="password" name="password" class="input-md  input-block" placeholder="Password" required />
 						</div>               
-						<div class="checkbox">
+						<!--<div class="checkbox">
 							<label>								
 								<input type="checkbox" name="checkbox" value="remember-me" /> Remember me
 							</label>
-						</div>         
+						</div>   -->      
 						{% raw xsrf_form_html() %}						
 						<button class="btn btn-green btn-md" type="submit">Sign in</button>						
 					</form>
-					<div class="center">
+					<div class="text">
 						<a href="#">Register</a> - <a href="#">Forgot Password</a>
 					</div>
 				</div>

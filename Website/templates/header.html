@@ -14,7 +14,7 @@
 		<link rel="stylesheet" type= "text/css" href="{{ static_url('css/font-awesome.min.css') }}" />		
 		<!-- JQuery UI -->
 		<link rel="stylesheet" href="{{ static_url('css/jquery-ui.min.css') }}">
-		<link rel="stylesheet" href="{{ static_url('css/jquery-ui.theme.min.css') }}">
+		<!-- <link rel="stylesheet" href="{{ static_url('css/jquery-ui.theme.min.css') }}"> -->
 		
 		<!-- CustomNavbar -->
 		<link rel="stylesheet" type= "text/css" href="{{ static_url('css/custom_navbar.css') }}" />	
@@ -91,7 +91,7 @@
 				</li>	
 				{% end %}					
 				<li class="navbar-right">						
-					<a class="navbar-no-highlight" style="background-color:red;" href="/logout">Logout</a >						
+					<a class="navbar-no-highlight" style="background-color:red; box-shadow: 0px 0px 20px 3px rgba(44, 45, 51, 0.43) inset;" href="/logout">Logout</a >						
 				</li>	
 				<li class="navbar-right">
 					<a href="/ucp">{{current_user.username}}</a>
@@ -105,7 +105,7 @@
 							<input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;" tabindex="-1" />
 							{% raw xsrf_form_html() %}
 						</div>
-						<a href="#" class="navbar-no-highlight inline" style="background-color:green;" onclick="document.forms['navbarLogin'].submit(); return false;">Sign in</a>	
+						<a href="#" class="navbar-no-highlight inline" style="background-color:green; box-shadow: 0px 0px 25px 4px rgba(255, 255, 255, 0.43) inset;" onclick="document.forms['navbarLogin'].submit(); return false;">Sign in</a>	
 					</form> 					
 				</li>	
 				{% end %}		     

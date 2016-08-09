@@ -12,3 +12,4 @@ var getUrlParameter = function getUrlParameter(sParam) {
         }
     }
 };
+
